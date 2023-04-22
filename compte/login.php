@@ -4,6 +4,9 @@ if (isset($_GET['s'])) {
     if ($s < 7 && $s > 0) {
         setcookie("account", $_GET['s'], time()+60*60*24*30);
         header("Location: ../compte");
+    } elseif ($s == 99) {
+        setcookie("account", 0);
+        header("Location: ../");
     } else {
         echo "Erreur: Code non reconnu";
         exit();
@@ -244,7 +247,7 @@ if (isset($_GET['s'])) {
                         <div class="fr-modal__content">
                             <h1 id="fr-modal-2-title" class="fr-modal__title">
                                 <span class="fr-fi-arrow-right-line fr-fi--lg"></span>
-                                Simuler un élève membre d'une instance lycéenne
+                                Simuler un élève membre d'une instance lycéenne <p class="fr-badge fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
                             </h1>
                             <p></p>
                         </div>
@@ -310,7 +313,7 @@ if (isset($_GET['s'])) {
                         <div class="fr-modal__content">
                             <h1 id="fr-modal-2-title" class="fr-modal__title">
                                 <span class="fr-fi-arrow-right-line fr-fi--lg"></span>
-                                Simuler un Délégué à la vie lycéenne et collégienne
+                                Simuler un Délégué à la vie lycéenne et collégienne <p class="fr-badge fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
                             </h1>
                             <p></p>
                         </div>

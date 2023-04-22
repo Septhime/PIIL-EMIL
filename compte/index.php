@@ -252,6 +252,28 @@ if (isset($_COOKIE["account"])) {
                                     <div class="fr-card__body">
                                         <div class="fr-card__content">
                                             <h4 class="fr-card__title">
+                                                <a href="#">Nouvelle réunion en visioconférence !</a>
+                                            </h4>
+                                            <p class="fr-card__desc">Une nouvelle réunion en visioconférence a été programmé par M. ... le 24/06/2022 à 14H00</p>
+                                            <div class="fr-card__start">
+                                                <ul class="fr-badge-group">
+                                                    <li>
+                                                        <p class="fr-badge">Visioconférence</p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="fr-badge">Commission &Eacute;galité</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-12 fr-col-md-12">
+                                <div class="fr-card fr-enlarge-link fr-card--lg fr-card--horizontal">
+                                    <div class="fr-card__body">
+                                        <div class="fr-card__content">
+                                            <h4 class="fr-card__title">
                                                 <a href="#">Nouvelle affectation !</a>
                                             </h4>
                                             <p class="fr-card__desc">Vous avez été affecté à la commission "égalité". Vous avez désormais accès aux ressources correspondantes.</p>

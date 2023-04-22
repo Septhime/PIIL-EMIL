@@ -242,7 +242,7 @@ include "../../commun.php";
         <div class="fr-my-7w fr-mt-md-12w fr-mb-md-10w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
             <h2>Membres lycéen au Conseil Supérieur de l'Education</h2>
         </div>
-        <div class="fr-mb-7w fr-md-10w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
+        <div class="fr-mb-2w fr-md-10w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
             <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
               <div class="fr-tile fr-enlarge-link">
                 <div class="fr-tile__body">
@@ -299,7 +299,12 @@ include "../../commun.php";
                 </div>
               </div>
             </div>
+        </div>
+        <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+          <div class="fr-mb-7w">
+            <a href="#" class="fr-btn">Envoyer un message à l'ensemble des élus</a>
           </div>
+        </div>
       </div>
     </main>
     <footer class="fr-footer" role="contentinfo" id="footer-1267">

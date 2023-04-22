@@ -321,14 +321,14 @@
             </div>
         </header>
         <main role="main" id="content">
-            <div class="fr-container fr-pb-2w">
+            <div class="fr-container fr-px-3w">
                 <div class="fr-my-7w fr-mt-md-12w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
                     <div>
-                        <h1>Conseil Académique de Vie Lycéen de Normandie</h1>
+                        <h1>Conseil Académique de Vie Lycéenne de Normandie</h1>
                         <p>Depuis 2020, l'académie de Normandie rassemble l'ancienne académie de Rouen et de Caen.<br>Le CAVL de Normandie rassemble les élu.e.s lycéen.ne.s provenant de l'ancienne basse Normandie et la haute Normandie.</p>
                     </div>
                     <div class="fr-mt-5v">
-                        <h4>Dernières actualités académique</h4>
+                        <h3>Dernières actualités académique</h3>
                         <div class="fr-grid-row fr-grid-row--gutters">
                             <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
                                 <div class="fr-card fr-enlarge-link">
@@ -386,7 +386,7 @@
                                     <div class="fr-card__body">
                                         <div class="fr-card__content">
                                             <h4 class="fr-card__title">
-                                                <a href="#">Compte rendu de l'appel à projet</a>
+                                                <a href="#" data-fr-opened="false" aria-controls="modal-choice-article">Que s'est-il passé lors de la permière réunion du CAVL 2022-2023 ?</a>
                                             </h4>
                                             <p class="fr-card__desc">Lorem [...] elit ut.</p>
                                             <div class="fr-card__start">
@@ -400,7 +400,7 @@
                                     </div>
                                     <div class="fr-card__header">
                                         <div class="fr-card__img">
-                                            <img class="fr-responsive-img" src="../../assets/img/placeholder.9x16.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" />
+                                            <img class="fr-responsive-img" src="https://pbs.twimg.com/media/Fj7Ww3dXgAAfM_j?format=jpg&name=900x900" alt="[À MODIFIER - vide ou texte alternatif de l’image]" />
                                             <!-- L’alternative de l’image (attribut alt) doit toujours être présente, sa valeur peut-être vide (image n’apportant pas de sens supplémentaire au contexte) ou non (porteuse de texte ou apportant du sens) selon votre contexte -->
                                         </div>
                                     </div>
@@ -933,6 +933,41 @@
                 </div>
             </div>
         </footer>
+<!-- Modal pour choix de version article -->
+<dialog id="modal-choice-article" class="fr-modal" role="dialog" aria-labelledby="modal-choice-article-title">
+    <div class="fr-container fr-container--fluid fr-container-md">
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-12 fr-col-md-10 fr-col-lg-8">
+                <div class="fr-modal__body">
+                    <div class="fr-modal__header">
+                        <button class="fr-btn--close fr-btn" aria-controls="modal-choice-article" title="Fermer">
+                            Fermer
+                        </button>
+                    </div>
+                    <div class="fr-modal__content">
+                        <h1 id="modal-1033-title" class="fr-modal__title">
+                            <span class="fr-icon-arrow-right-line fr-icon--lg" aria-hidden="true"></span>
+                            Choix de la version d'affichage de l'article <p class="fr-badge fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
+                        </h1>
+                        <ul class="fr-btns-group fr-mt-15v">
+                            <li>
+                                <a class="fr-btn" href="actualite/v1">
+                                    Version n°1
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fr-btn" href="actualite/v2">
+                                    Version n°2
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</dialog>
+
 <button class="fr-display-button fr-background-default--grey fr-btn fr-btn--lg fr-icon-theme-fill fr-btn--secondary" aria-controls="fr-theme-modal" data-fr-opened="false" style="z-index: 1600">
     Label bouton
 </button>

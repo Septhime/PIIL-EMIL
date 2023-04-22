@@ -246,7 +246,7 @@ include "../commun.php";
               <div class="fr-tile fr-enlarge-link">
                 <div class="fr-tile__body">
                   <h4 class="fr-tile__title">
-                    <a class="fr-tile__link" href="#">Réunion Visioconférence</a>
+                    <a class="fr-tile__link" href="visio">Réunion Visioconférence</a>
                   </h4>
                 </div>
                 <div class="fr-tile__img">
