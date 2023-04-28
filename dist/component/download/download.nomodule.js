@@ -1,4 +1,4 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 (function () {
   'use strict';
@@ -7,7 +7,7 @@
     prefix: 'fr',
     namespace: 'dsfr',
     organisation: '@gouvfr',
-    version: '1.7.2'
+    version: '1.9.2'
   };
 
   var api = window[config.namespace];
@@ -53,7 +53,7 @@
       fetch(this.href, { method: 'HEAD', mode: 'cors' }).then(function (response) {
         this$1$1.length = response.headers.get('content-length') || -1;
         if (this$1$1.length === -1) {
-          console.warn('Impossible de détecter le poids du fichier ' + this$1$1.href + '\nErreur de récupération de l\'en-tête HTTP : "content-length"');
+          api.inspector.warn('File size unknown: ' + this$1$1.href + '\nUnable to get HTTP header: "content-length"');
         }
         this$1$1.update();
       });

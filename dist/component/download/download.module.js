@@ -1,10 +1,10 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 const config = {
   prefix: 'fr',
   namespace: 'dsfr',
   organisation: '@gouvfr',
-  version: '1.7.2'
+  version: '1.9.2'
 };
 
 const api = window[config.namespace];
@@ -38,7 +38,7 @@ class AssessFile extends api.core.Instance {
     fetch(this.href, { method: 'HEAD', mode: 'cors' }).then(response => {
       this.length = response.headers.get('content-length') || -1;
       if (this.length === -1) {
-        console.warn('Impossible de détecter le poids du fichier ' + this.href + '\nErreur de récupération de l\'en-tête HTTP : "content-length"');
+        api.inspector.warn('File size unknown: ' + this.href + '\nUnable to get HTTP header: "content-length"');
       }
       this.update();
     });

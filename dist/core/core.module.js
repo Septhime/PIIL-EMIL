@@ -1,4 +1,4 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 class State {
   constructor () {
@@ -59,7 +59,7 @@ const config = {
   prefix: 'fr',
   namespace: 'dsfr',
   organisation: '@gouvfr',
-  version: '1.7.2'
+  version: '1.9.2'
 };
 
 class LogLevel {
@@ -130,7 +130,7 @@ class Message {
 }
 
 const LEVELS = {
-  trace: new LogLevel(0, '#616161', '#989898'),
+  log: new LogLevel(0, '#616161', '#989898'),
   debug: new LogLevel(1, '#000091', '#8B8BFF'),
   info: new LogLevel(2, '#007c3b', '#00ed70'),
   warn: new LogLevel(3, '#ba4500', '#fa5c00', 'warn'),
@@ -153,7 +153,7 @@ class Inspector {
   state () {
     const message = new Message();
     message.add(state);
-    this.trace.print(message);
+    this.log.print(message);
   }
 
   tree () {
@@ -161,7 +161,7 @@ class Inspector {
     if (!stage) return;
     const message = new Message();
     this._branch(stage.root, 0, message);
-    this.trace.print(message);
+    this.log.print(message);
   }
 
   _branch (element, space, message) {
@@ -210,9 +210,27 @@ class Options {
     this.preventManipulation = false;
   }
 
-  configure (settings = {}, start) {
+  configure (settings = {}, start, query) {
     this.startCallback = start;
-    if (settings.verbose === true) inspector.level = 0;
+    const isProduction = settings.production && (!query || query.production !== 'false');
+    switch (true) {
+      case query && !isNaN(query.level):
+        inspector.level = Number(query.level);
+        break;
+
+      case query && query.verbose && (query.verbose === 'true' || query.verbose === 1):
+        inspector.level = 0;
+        break;
+
+      case isProduction:
+        inspector.level = 999;
+        break;
+
+      case settings.verbose:
+        inspector.level = 0;
+        break;
+    }
+    inspector.info(`version ${config.version}`);
     this.mode = settings.mode || Modes.AUTO;
   }
 
@@ -990,6 +1008,27 @@ class Engine {
 
 const engine = new Engine();
 
+class Colors {
+  getColor (context, use, tint, options = {}) {
+    const option = getOption(options);
+    const decision = `--${context}-${use}-${tint}${option}`;
+    return getComputedStyle(document.documentElement).getPropertyValue(decision).trim() || null;
+  }
+}
+
+const getOption = (options) => {
+  switch (true) {
+    case options.hover:
+      return '-hover';
+    case options.active:
+      return '-active';
+    default:
+      return '';
+  }
+};
+
+const colors = new Colors();
+
 const sanitize = (className) => className.charAt(0) === '.' ? className.substr(1) : className;
 
 const getClassNames = (element) => element.className ? element.className.split(' ') : [];
@@ -1010,6 +1049,27 @@ const removeClass = (element, className) => modifyClass(element, className, true
 
 const hasClass = (element, className) => getClassNames(element).indexOf(sanitize(className)) > -1;
 
+const ACTIONS = [
+  '[tabindex]:not([tabindex="-1"])',
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  'audio[controls]',
+  'video[controls]',
+  '[contenteditable]:not([contenteditable="false"])',
+  'details>summary:first-of-type',
+  'details',
+  'iframe'
+];
+
+const ACTIONS_SELECTOR = ACTIONS.join();
+
+const queryActions = (element) => {
+  return element.querySelectorAll(ACTIONS_SELECTOR);
+};
+
 const dom = {};
 
 dom.addClass = addClass;
@@ -1017,6 +1077,7 @@ dom.hasClass = hasClass;
 dom.removeClass = removeClass;
 dom.queryParentSelector = queryParentSelector;
 dom.querySelectorAllArray = querySelectorAllArray;
+dom.queryActions = queryActions;
 
 const supportLocalStorage = () => {
   try {
@@ -1090,6 +1151,24 @@ const property = {};
 
 property.completeAssign = completeAssign;
 
+/**
+ * Return an object of query params or null
+ *
+ * @method
+ * @name searchParams
+ * @param {string} url - an url
+ * @returns {Object} object of query params or null
+ */
+
+const searchParams = (url) => {
+  if (url && url.search) {
+    const params = new URLSearchParams(window.location.search);
+    const entries = params.entries();
+    return Object.fromEntries(entries);
+  }
+  return null;
+};
+
 const internals = {};
 const legacy = {};
 
@@ -1109,6 +1188,7 @@ internals.property = property;
 internals.ns = ns;
 internals.register = engine.register;
 internals.state = state;
+internals.query = searchParams(window.location);
 
 Object.defineProperty(internals, 'preventManipulation', {
   get: () => options.preventManipulation
@@ -1117,13 +1197,14 @@ Object.defineProperty(internals, 'stage', {
   get: () => state.getModule('stage')
 });
 
-inspector.info(`version ${config.version}`);
-
 const api$1 = (node) => {
   const stage = state.getModule('stage');
   return stage.getProxy(node);
 };
 
+api$1.version = config.version;
+api$1.prefix = config.prefix;
+api$1.organisation = config.organisation;
 api$1.Modes = Modes;
 
 Object.defineProperty(api$1, 'mode', {
@@ -1132,13 +1213,18 @@ Object.defineProperty(api$1, 'mode', {
 });
 
 api$1.internals = internals;
+api$1.version = config.version;
 
 api$1.start = engine.start;
 api$1.stop = engine.stop;
 
 api$1.inspector = inspector;
+api$1.colors = colors;
 
-options.configure(window[config.namespace], api$1.start);
+const configuration = window[config.namespace];
+api$1.internals.configuration = configuration;
+
+options.configure(configuration, api$1.start, api$1.internals.query);
 
 window[config.namespace] = api$1;
 
@@ -1229,10 +1315,16 @@ class Instance {
 
   get proxy () {
     const scope = this;
-    return {
+    const proxy = {
       render: () => scope.render(),
       resize: () => scope.resize()
     };
+    const proxyAccessors = {
+      get node () {
+        return this.node;
+      }
+    };
+    return completeAssign(proxy, proxyAccessors);
   }
 
   register (selector, InstanceClass) {
@@ -1483,6 +1575,10 @@ class Instance {
     return getClassNames(this.node);
   }
 
+  remove () {
+    this.node.parentNode.removeChild(this.node);
+  }
+
   setAttribute (attributeName, value) {
     this.node.setAttribute(attributeName, value);
   }
@@ -1509,6 +1605,22 @@ class Instance {
 
   focus () {
     this.node.focus();
+  }
+
+  focusClosest () {
+    const closest = this._focusClosest(this.node.parentNode);
+    if (closest) closest.focus();
+  }
+
+  _focusClosest (parent) {
+    if (!parent) return null;
+    const actions = [...queryActions(parent)];
+    if (actions.length <= 1) {
+      return this._focusClosest(parent.parentNode);
+    } else {
+      const index = actions.indexOf(this.node);
+      return actions[index + (index < actions.length - 1 ? 1 : -1)];
+    }
   }
 
   get hasFocus () {
@@ -1924,6 +2036,10 @@ const DisclosureType = {
   }
 };
 
+const DisclosureSelector = {
+  PREVENT_CONCEAL: ns.attr.selector('prevent-conceal')
+};
+
 class CollapseButton extends DisclosureButton {
   constructor () {
     super(DisclosureType.EXPAND);
@@ -2230,7 +2346,7 @@ class Artwork extends Instance {
   }
 
   fetch () {
-    this.xlink = this.node.getAttribute('xlink:href');
+    this.xlink = this.node.getAttribute('href');
     const splitUrl = this.xlink.split('#');
     this.svgUrl = splitUrl[0];
     this.svgName = splitUrl[1];
@@ -2320,6 +2436,7 @@ api$1.core = {
   DisclosuresGroup: DisclosuresGroup,
   DisclosureType: DisclosureType,
   DisclosureEvent: DisclosureEvent,
+  DisclosureSelector: DisclosureSelector,
   DisclosureEmission: DisclosureEmission,
   Collapse: Collapse,
   CollapseButton: CollapseButton,

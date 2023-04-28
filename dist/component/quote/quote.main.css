@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -201,6 +201,10 @@
 
 .fr-quote--beige-gris-galet::before {
   color: var(--artwork-minor-beige-gris-galet);
+}
+
+.fr-quote__source {
+  color: var(--text-mention-grey);
 }
 
 @media (min-width: 36em) {

@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -48,6 +48,10 @@
   --icon-size: 1rem;
   margin-right: -0.125rem;
   margin-left: 0.5rem;
+}
+
+.fr-btn[target=_blank]::before {
+  content: none;
 }
 
 .fr-btn--align-on-content {
@@ -166,6 +170,10 @@
   margin-left: 0.5rem;
 }
 
+.fr-btn--sm[target=_blank]::before {
+  content: none;
+}
+
 .fr-btn--sm.fr-btn--align-on-content {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
@@ -280,6 +288,10 @@
   --icon-size: 1.5rem;
   margin-right: -0.1875rem;
   margin-left: 0.5rem;
+}
+
+.fr-btn--lg[target=_blank]::before {
+  content: none;
 }
 
 .fr-btn--lg.fr-btn--align-on-content {
@@ -409,6 +421,10 @@
   */
 
   /**
+  * fr-btns-group--center : aligne les boutons au centre du conteneur
+  */
+
+  /**
   * fr-btns-group--equisized : Fixe la largeur des boutons à celle du plus grand. Géré en grande partie en JS.
   */
 
@@ -469,6 +485,12 @@
 .fr-btns-group--center,
 .fr-btns-group--center li {
   justify-content: center;
+  text-align: center;
+}
+
+.fr-btns-group--between,
+.fr-btns-group--between li {
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -739,6 +761,10 @@
   content: none;
 }
 
+.fr-fieldset__element > .fr-btns-group {
+  margin-bottom: -1rem;
+}
+
 .fr-btn--close {
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -771,6 +797,38 @@
 }
 
 .fr-btn--close::before {
+  content: none;
+}
+
+.fr-btn--fullscreen {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+  overflow: initial;
+  max-width: 100%;
+  max-height: none;
+}
+
+.fr-btn--fullscreen::after {
+
+  --icon-size: 1rem;
+  margin-right: -0.125rem;
+  margin-left: 0.5rem;
+  flex: 0 0 auto;
+  display: inline-block;
+  vertical-align: calc((0.75em - var(--icon-size)) * 0.5);
+  background-color: currentColor;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-image: url("../../icons/media/fullscreen-line.svg");
+  mask-image: url("../../icons/media/fullscreen-line.svg");
+  content: "";
+}
+
+.fr-btn--fullscreen::before {
   content: none;
 }
 
@@ -851,7 +909,8 @@ a.fr-btn--tertiary:not([href]) {
 
 .fr-btn--tertiary-no-outline,
 .fr-btn--close,
-.fr-btn--display {
+.fr-btn--display,
+.fr-btn--fullscreen {
   background-color: transparent;
 
   --hover: inherit;
@@ -863,8 +922,10 @@ a.fr-btn--tertiary:not([href]) {
 a.fr-btn--tertiary-no-outline:not([href]),
 a.fr-btn--close:not([href]),
 a.fr-btn--display:not([href]),
+a.fr-btn--fullscreen:not([href]),
 .fr-btn--close:disabled,
-.fr-btn--display:disabled {
+.fr-btn--display:disabled,
+.fr-btn--fullscreen:disabled {
   color: var(--text-disabled-grey);
   background-color: transparent;
 

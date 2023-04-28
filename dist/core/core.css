@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -18,6 +18,7 @@ a {
   --underline-hover-width: 0;
   --underline-idle-width: var(--underline-max-width);
   --underline-x: calc(var(--underline-max-width) * 0);
+  --underline-thickness: max(1px, 0.0625em);
   --underline-img: linear-gradient(0deg, currentColor, currentColor);
   --external-link-content: "";
   --ul-type: disc;
@@ -484,7 +485,62 @@ a {
   --border-plain-beige-gris-galet: var(--beige-gris-galet-sun-407-moon-821);
   --border-disabled-grey: var(--grey-925-125);
   --artwork-major-blue-france: var(--blue-france-sun-113-625);
+  --artwork-major-blue-france-hover: var(--blue-france-sun-113-625-hover);
+  --artwork-major-blue-france-active: var(--blue-france-sun-113-625-active);
   --artwork-major-red-marianne: var(--red-marianne-425-625);
+  --artwork-major-red-marianne-hover: var(--red-marianne-425-625-hover);
+  --artwork-major-red-marianne-active: var(--red-marianne-425-625-active);
+  --artwork-major-green-tilleul-verveine: var(--green-tilleul-verveine-sun-418-moon-817);
+  --artwork-major-green-tilleul-verveine-hover: var(--green-tilleul-verveine-sun-418-moon-817-hover);
+  --artwork-major-green-tilleul-verveine-active: var(--green-tilleul-verveine-sun-418-moon-817-active);
+  --artwork-major-green-bourgeon: var(--green-bourgeon-sun-425-moon-759);
+  --artwork-major-green-bourgeon-hover: var(--green-bourgeon-sun-425-moon-759-hover);
+  --artwork-major-green-bourgeon-active: var(--green-bourgeon-sun-425-moon-759-active);
+  --artwork-major-green-emeraude: var(--green-emeraude-sun-425-moon-753);
+  --artwork-major-green-emeraude-hover: var(--green-emeraude-sun-425-moon-753-hover);
+  --artwork-major-green-emeraude-active: var(--green-emeraude-sun-425-moon-753-active);
+  --artwork-major-green-menthe: var(--green-menthe-sun-373-moon-652);
+  --artwork-major-green-menthe-hover: var(--green-menthe-sun-373-moon-652-hover);
+  --artwork-major-green-menthe-active: var(--green-menthe-sun-373-moon-652-active);
+  --artwork-major-green-archipel: var(--green-archipel-sun-391-moon-716);
+  --artwork-major-green-archipel-hover: var(--green-archipel-sun-391-moon-716-hover);
+  --artwork-major-green-archipel-active: var(--green-archipel-sun-391-moon-716-active);
+  --artwork-major-blue-ecume: var(--blue-ecume-sun-247-moon-675);
+  --artwork-major-blue-ecume-hover: var(--blue-ecume-sun-247-moon-675-hover);
+  --artwork-major-blue-ecume-active: var(--blue-ecume-sun-247-moon-675-active);
+  --artwork-major-blue-cumulus: var(--blue-cumulus-sun-368-moon-732);
+  --artwork-major-blue-cumulus-hover: var(--blue-cumulus-sun-368-moon-732-hover);
+  --artwork-major-blue-cumulus-active: var(--blue-cumulus-sun-368-moon-732-active);
+  --artwork-major-purple-glycine: var(--purple-glycine-sun-319-moon-630);
+  --artwork-major-purple-glycine-hover: var(--purple-glycine-sun-319-moon-630-hover);
+  --artwork-major-purple-glycine-active: var(--purple-glycine-sun-319-moon-630-active);
+  --artwork-major-pink-macaron: var(--pink-macaron-sun-406-moon-833);
+  --artwork-major-pink-macaron-hover: var(--pink-macaron-sun-406-moon-833-hover);
+  --artwork-major-pink-macaron-active: var(--pink-macaron-sun-406-moon-833-active);
+  --artwork-major-pink-tuile: var(--pink-tuile-sun-425-moon-750);
+  --artwork-major-pink-tuile-hover: var(--pink-tuile-sun-425-moon-750-hover);
+  --artwork-major-pink-tuile-active: var(--pink-tuile-sun-425-moon-750-active);
+  --artwork-major-yellow-tournesol: var(--yellow-tournesol-sun-407-moon-922);
+  --artwork-major-yellow-tournesol-hover: var(--yellow-tournesol-sun-407-moon-922-hover);
+  --artwork-major-yellow-tournesol-active: var(--yellow-tournesol-sun-407-moon-922-active);
+  --artwork-major-yellow-moutarde: var(--yellow-moutarde-sun-348-moon-860);
+  --artwork-major-yellow-moutarde-hover: var(--yellow-moutarde-sun-348-moon-860-hover);
+  --artwork-major-yellow-moutarde-active: var(--yellow-moutarde-sun-348-moon-860-active);
+  --artwork-major-orange-terre-battue: var(--orange-terre-battue-sun-370-moon-672);
+  --artwork-major-orange-terre-battue-hover: var(--orange-terre-battue-sun-370-moon-672-hover);
+  --artwork-major-orange-terre-battue-active: var(--orange-terre-battue-sun-370-moon-672-active);
+  --artwork-major-brown-cafe-creme: var(--brown-cafe-creme-sun-383-moon-885);
+  --artwork-major-brown-cafe-creme-hover: var(--brown-cafe-creme-sun-383-moon-885-hover);
+  --artwork-major-brown-cafe-creme-active: var(--brown-cafe-creme-sun-383-moon-885-active);
+  --artwork-major-brown-caramel: var(--brown-caramel-sun-425-moon-901);
+  --artwork-major-brown-caramel-hover: var(--brown-caramel-sun-425-moon-901-hover);
+  --artwork-major-brown-caramel-active: var(--brown-caramel-sun-425-moon-901-active);
+  --artwork-major-brown-opera: var(--brown-opera-sun-395-moon-820);
+  --artwork-major-brown-opera-hover: var(--brown-opera-sun-395-moon-820-hover);
+  --artwork-major-brown-opera-active: var(--brown-opera-sun-395-moon-820-active);
+  --artwork-major-beige-gris-galet: var(--beige-gris-galet-sun-407-moon-821);
+  --artwork-major-beige-gris-galet-hover: var(--beige-gris-galet-sun-407-moon-821-hover);
+  --artwork-major-beige-gris-galet-active: var(--beige-gris-galet-sun-407-moon-821-active);
   --artwork-minor-blue-france: var(--blue-france-main-525);
   --artwork-minor-red-marianne: var(--red-marianne-main-472);
   --artwork-minor-green-tilleul-verveine: var(--green-tilleul-verveine-main-707);
@@ -504,10 +560,66 @@ a {
   --artwork-minor-brown-caramel: var(--brown-caramel-main-648);
   --artwork-minor-brown-opera: var(--brown-opera-main-680);
   --artwork-minor-beige-gris-galet: var(--beige-gris-galet-main-702);
+  --artwork-decorative-grey: var(--grey-950-100);
   --artwork-decorative-blue-france: var(--blue-france-950-100);
   --artwork-decorative-red-marianne: var(--red-marianne-950-100);
+  --artwork-decorative-green-tilleul-verveine: var(--green-tilleul-verveine-950-100);
+  --artwork-decorative-green-bourgeon: var(--green-bourgeon-950-100);
+  --artwork-decorative-green-emeraude: var(--green-emeraude-950-100);
+  --artwork-decorative-green-menthe: var(--green-menthe-950-100);
+  --artwork-decorative-green-archipel: var(--green-archipel-950-100);
+  --artwork-decorative-blue-ecume: var(--blue-ecume-950-100);
+  --artwork-decorative-blue-cumulus: var(--blue-cumulus-950-100);
+  --artwork-decorative-purple-glycine: var(--purple-glycine-950-100);
+  --artwork-decorative-pink-macaron: var(--pink-macaron-950-100);
+  --artwork-decorative-pink-tuile: var(--pink-tuile-950-100);
+  --artwork-decorative-yellow-tournesol: var(--yellow-tournesol-950-100);
+  --artwork-decorative-yellow-moutarde: var(--yellow-moutarde-950-100);
+  --artwork-decorative-orange-terre-battue: var(--orange-terre-battue-950-100);
+  --artwork-decorative-brown-cafe-creme: var(--brown-cafe-creme-950-100);
+  --artwork-decorative-brown-caramel: var(--brown-caramel-950-100);
+  --artwork-decorative-brown-opera: var(--brown-opera-950-100);
+  --artwork-decorative-beige-gris-galet: var(--beige-gris-galet-950-100);
   --artwork-background-grey: var(--grey-975-75);
+  --artwork-background-blue-france: var(--blue-france-975-75);
+  --artwork-background-red-marianne: var(--red-marianne-975-75);
+  --artwork-background-green-tilleul-verveine: var(--green-tilleul-verveine-975-75);
+  --artwork-background-green-bourgeon: var(--green-bourgeon-975-75);
+  --artwork-background-green-emeraude: var(--green-emeraude-975-75);
+  --artwork-background-green-menthe: var(--green-menthe-975-75);
+  --artwork-background-green-archipel: var(--green-archipel-975-75);
+  --artwork-background-blue-ecume: var(--blue-ecume-975-75);
+  --artwork-background-blue-cumulus: var(--blue-cumulus-975-75);
+  --artwork-background-purple-glycine: var(--purple-glycine-975-75);
+  --artwork-background-pink-macaron: var(--pink-macaron-975-75);
+  --artwork-background-pink-tuile: var(--pink-tuile-975-75);
+  --artwork-background-yellow-tournesol: var(--yellow-tournesol-975-75);
+  --artwork-background-yellow-moutarde: var(--yellow-moutarde-975-75);
+  --artwork-background-orange-terre-battue: var(--orange-terre-battue-975-75);
+  --artwork-background-brown-cafe-creme: var(--brown-cafe-creme-975-75);
+  --artwork-background-brown-caramel: var(--brown-caramel-975-75);
+  --artwork-background-brown-opera: var(--brown-opera-975-75);
+  --artwork-background-beige-gris-galet: var(--beige-gris-galet-975-75);
   --artwork-motif-grey: var(--grey-925-125);
+  --artwork-motif-blue-france: var(--blue-france-925-125);
+  --artwork-motif-red-marianne: var(--red-marianne-925-125);
+  --artwork-motif-green-tilleul-verveine: var(--green-tilleul-verveine-925-125);
+  --artwork-motif-green-bourgeon: var(--green-bourgeon-925-125);
+  --artwork-motif-green-emeraude: var(--green-emeraude-925-125);
+  --artwork-motif-green-menthe: var(--green-menthe-925-125);
+  --artwork-motif-green-archipel: var(--green-archipel-925-125);
+  --artwork-motif-blue-ecume: var(--blue-ecume-925-125);
+  --artwork-motif-blue-cumulus: var(--blue-cumulus-925-125);
+  --artwork-motif-purple-glycine: var(--purple-glycine-925-125);
+  --artwork-motif-pink-macaron: var(--pink-macaron-925-125);
+  --artwork-motif-pink-tuile: var(--pink-tuile-925-125);
+  --artwork-motif-yellow-tournesol: var(--yellow-tournesol-925-125);
+  --artwork-motif-yellow-moutarde: var(--yellow-moutarde-925-125);
+  --artwork-motif-orange-terre-battue: var(--orange-terre-battue-925-125);
+  --artwork-motif-brown-cafe-creme: var(--brown-cafe-creme-925-125);
+  --artwork-motif-brown-caramel: var(--brown-caramel-925-125);
+  --artwork-motif-brown-opera: var(--brown-opera-925-125);
+  --artwork-motif-beige-gris-galet: var(--beige-gris-galet-925-125);
   --grey-1000-50: #fff;
   --grey-1000-50-hover: #f6f6f6;
   --grey-1000-50-active: #ededed;
@@ -846,10 +958,10 @@ a {
 
 [href] {
   background-image: var(--underline-img), var(--underline-img);
-  background-position: var(--underline-x) 100%, var(--underline-x) calc(100% - 0.0625em);
+  background-position: var(--underline-x) 100%, var(--underline-x) calc(100% - var(--underline-thickness));
   background-repeat: no-repeat, no-repeat;
   transition: background-size 0s;
-  background-size: var(--underline-hover-width) 0.125em, var(--underline-idle-width) 0.0625em;
+  background-size: var(--underline-hover-width) calc(var(--underline-thickness) * 2), var(--underline-idle-width) var(--underline-thickness);
 }
 
 [target=_blank]::after {
@@ -1040,7 +1152,6 @@ input[type=image],
 input[type=reset],
 input[type=submit],
 select,
-textarea,
 video[controls],
 audio[controls],
 details,
@@ -1534,9 +1645,7 @@ body {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-
-  /* added line */
+  white-space: nowrap; /* added line */
   border: 0;
 }
 
@@ -1566,6 +1675,39 @@ hr {
   width: 10rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.fr-hr-or {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: no-wrap;
+}
+
+.fr-hr-or::before,
+.fr-hr-or::after {
+  content: "";
+  display: inline-flex;
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-default-grey);
+
+  --idle: transparent;
+  --hover: var(--border-default-grey-hover);
+  --active: var(--border-default-grey-active);
+}
+
+.fr-hr-or::before {
+  margin-right: 0.75rem;
+}
+
+.fr-hr-or::after {
+  margin-left: 0.75rem;
 }
 
 .fr-ellipsis {
@@ -1638,8 +1780,7 @@ iframe[class*=" fr-ratio"] {
   display: block;
 }
 
-.fr-responsive-vid__player,
-.fr-responsive-vid > .fr-consent-placeholder {
+.fr-responsive-vid__player {
   width: 100%;
   height: 100%;
   display: block;
@@ -1713,6 +1854,7 @@ iframe[class*=" fr-ratio"] {
   padding-left: 0;
   padding-right: 0;
   max-width: none;
+  overflow: hidden;
 }
 
 .fr-grid-row--gutters {
@@ -6526,8 +6668,14 @@ iframe[class*=" fr-ratio"] {
   padding-bottom: 8rem !important;
 }
 
-:root:where([data-fr-theme="dark"]) {
+:root:where([data-fr-theme=dark]) {
   --shadow-color: rgba(0, 0, 18, 0.32);
+}
+
+@-moz-document url-prefix() {
+  :root[data-fr-scrolling] body {
+    position: sticky;
+  }
 }
 
 .fr-displayed-lg {
@@ -6737,9 +6885,7 @@ h1 {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-
-    /* added line */
+    white-space: nowrap; /* added line */
     border: 0;
   }
 
@@ -6752,6 +6898,7 @@ h1 {
     padding-left: 0;
     padding-right: 0;
     max-width: none;
+    overflow: hidden;
   }
 
   .fr-grid-row-sm--gutters {
@@ -7052,9 +7199,7 @@ h1 {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-
-    /* added line */
+    white-space: nowrap; /* added line */
     border: 0;
   }
 
@@ -7067,6 +7212,7 @@ h1 {
     padding-left: 0;
     padding-right: 0;
     max-width: none;
+    overflow: hidden;
   }
 
   .fr-grid-row-md--gutters {
@@ -9574,9 +9720,7 @@ h1 {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-
-    /* added line */
+    white-space: nowrap; /* added line */
     border: 0;
   }
 
@@ -9596,6 +9740,7 @@ h1 {
     padding-left: 0;
     padding-right: 0;
     max-width: none;
+    overflow: hidden;
   }
 
   .fr-grid-row--gutters,
@@ -9833,9 +9978,7 @@ h1 {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-
-    /* added line */
+    white-space: nowrap; /* added line */
     border: 0;
   }
 
@@ -9856,6 +9999,7 @@ h1 {
     padding-left: 0;
     padding-right: 0;
     max-width: none;
+    overflow: hidden;
   }
 
   .fr-grid-row-xl--gutters {
@@ -10134,6 +10278,7 @@ h1 {
     background-image: url("../icons/system/external-link-line.svg");
     width: 1rem;
     height: 1rem;
+    content: "";
   }
 
   .fr-responsive-vid::before {
@@ -10319,6 +10464,11 @@ h1 {
 
   hr {
     background-image: linear-gradient(0deg, #ddd, #ddd);
+  }
+
+  .fr-hr-or::before,
+  .fr-hr-or::after {
+    background-color: #ddd;
   }
 
   .fr-hr {

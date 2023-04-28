@@ -1,6 +1,11 @@
 <?php
 include "../commun.php";
 
+$delegue = false;
+if ($_COOKIE["account"] < 3) {
+    $delegue = true;
+}
+
 ?>
 
 <!doctype html>
@@ -9,7 +14,7 @@ include "../commun.php";
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Applications - PREL</title>
+  <title>Applications - EMIL</title>
   <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
   <link rel="apple-touch-icon" href="../../dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
   <link rel="icon" href="../../dist/favicon/favicon.svg" type="image/svg+xml">
@@ -153,9 +158,9 @@ include "../commun.php";
                 </div>
               </div>
               <div class="fr-header__service">
-                <a href="../" title="Accueil - [À MODIFIER - Nom du site / service] - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <a href="#" title="Accueil - <?php echo $title ?>">
                   <p class="fr-header__service-title">
-                    Plateforme de mise en relation des élu.e.s lycéen.ne.s
+                    <?php echo $title ?>
                     <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
                   </p>
                 </a>
@@ -166,13 +171,13 @@ include "../commun.php";
               <div class="fr-header__tools-links">
                 <ul class="fr-btns-group">
                   <li>
-                    <a class="fr-btn fr-icon-account-circle-line" href="../compte/">
-                      <?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span>
+                    <a class="fr-btn fr-icon-account-circle-line" href="../compte">
+                      <b><?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span></b>
                     </a>
                   </li>
                   <li>
                     <a class="fr-btn fr-icon-close-circle-line" href="../../">
-                      Se déconnecter
+                      <b>Se déconnecter</b>
                     </a>
                   </li>
                 </ul>
@@ -224,116 +229,207 @@ include "../commun.php";
       </div>
     </header>
     <main role="main" id="content">
-      <div class="fr-container">
+      <div class="fr-container fr-px-3w">
         <!-- Tuiles verticales placées dans la grille -->
-        <div class="fr-my-7w fr-mt-md-12w fr-mb-md-10w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
+        <div class="fr-mt-md-12w fr-mb-5w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
             <h2>Applications</h2>
         </div>
-        <div class="fr-mb-7w fr-md-10w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
-            <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
-              <div class="fr-tile fr-enlarge-link">
-                <div class="fr-tile__body">
-                  <h4 class="fr-tile__title">
-                    <a class="fr-tile__link" href="#">Calendrier</a>
-                  </h4>
-                </div>
-                <div class="fr-tile__img">
-                  <span class="fr-icon-calendar-fill fr-icon--lg"></span>
-                </div>
+        <div class="fr-mb-10w fr-md-10w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
+          <?php
+          if ($delegue) {
+            echo '<div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="news">Actualités</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-newspaper-fill fr-icon--lg"></span>
               </div>
             </div>
-            <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
-              <div class="fr-tile fr-enlarge-link">
-                <div class="fr-tile__body">
-                  <h4 class="fr-tile__title">
-                    <a class="fr-tile__link" href="visio">Réunion Visioconférence</a>
-                  </h4>
-                </div>
-                <div class="fr-tile__img">
-                  <span class="fr-icon-customer-service-fill fr-icon--lg"></span>
-                </div>
-              </div>
-            </div>
-            <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
-              <div class="fr-tile fr-enlarge-link">
-                <div class="fr-tile__body">
-                  <h4 class="fr-tile__title">
-                    <a class="fr-tile__link" href>Lorem ipsum</a>
-                  </h4>
-                </div>
-                <div class="fr-tile__img">
-                  <img src="../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
-                  <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
+          </div>';}
+          ?>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+                <div class="fr-tile fr-enlarge-link">
+                  <div class="fr-tile__body">
+                    <h4 class="fr-tile__title">
+                      <a class="fr-tile__link" href="calendar">Calendrier</a>
+                    </h4>
+                  </div>
+                  <div class="fr-tile__img">
+                    <span class="fr-icon-calendar-fill fr-icon--lg"></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
-              <div class="fr-tile fr-enlarge-link">
-                <div class="fr-tile__body">
-                  <h4 class="fr-tile__title">
-                    <a class="fr-tile__link" href>Lorem ipsum</a>
-                  </h4>
-                </div>
-                <div class="fr-tile__img">
-                  <img src="../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
-                  <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
-                </div>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="files">Documents Partagés</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-file-fill fr-icon--lg"></span>
               </div>
             </div>
           </div>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="forum">Forum</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-question-answer-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>
+          <?php if($delegue OR $_COOKIE["account"] == 3) {
+            echo '<div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="permissions">Gestion des permissions</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-user-setting-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>';}
+          ?>
+          <?php if ($_COOKIE["account"] == 3) {
+            echo '<div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="presence">Présence des élu.e.s</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-group-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>';
+          }
+            echo '<div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="refund">'; if($_COOKIE["account"] > 0 AND $_COOKIE["account"] < 3) {echo 'Gestion des ';} echo'Remboursements</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-money-euro-box-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>';
+          ?>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="visio">Réunion Visioconférence</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-customer-service-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="survey">Sondage</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-chat-poll-line fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="postit">Tableau Collaboratif</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-slideshow-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>
+          <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+            <div class="fr-tile fr-enlarge-link">
+              <div class="fr-tile__body">
+                <h4 class="fr-tile__title">
+                  <a class="fr-tile__link" href="vote">Vote</a>
+                </h4>
+              </div>
+              <div class="fr-tile__img">
+                <span class="fr-icon-send-plane-fill fr-icon--lg"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="fr-footer" role="contentinfo" id="footer-1267">
       <div class="fr-container">
         <div class="fr-footer__body">
-          <!--<div class="fr-footer__brand fr-enlarge-link">
-              <a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                  <p class="fr-logo">
-                      Ministère
-                      <br>de l'éducation
-                      <br>nationale
-                      <br>et de la jeunesse
-                  </p>
-              </a>
-          </div>-->
+          <div class="fr-footer__brand fr-enlarge-link">
+            <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <p class="fr-logo">
+                    Ministère
+                    <br>de l'éducation
+                    <br>nationale
+                    <br>et de la jeunesse
+                </p>
+            </a>-->
+            <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+              <img class="fr-footer__logo" style="width:8rem;" src="../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
+            </a>
+          </div>
           <div class="fr-footer__content">
-            <p class="fr-footer__content-desc">Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.</p>
+            <p class="fr-footer__content-desc">Un espace collaboratif et utilitaire destiné aux membres des instances lycéennes afin de faire vivre la démocratie scolaire au mieux.</p>
             <!--<ul class="fr-footer__content-list">
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
-              </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
+                </li>
             </ul>-->
           </div>
         </div>
         <div class="fr-footer__bottom">
           <ul class="fr-footer__bottom-list">
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Plan du site</a>
+              <a class="fr-footer__bottom-link" href="../../accessibility.html">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+              <a class="fr-footer__bottom-link" href="../../legal.html">Mentions légales</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Mentions légales</a>
-            </li>
-            <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Données personnelles</a>
+              <a class="fr-footer__bottom-link" href="../../privacy.html">Données personnelles</a>
             </li>
             <li class="fr-footer__bottom-item">
               <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
             </li>
           </ul>
           <div class="fr-footer__bottom-copy">
-            <p>Sauf mention contraire, tous les contenus de ce site sont sous <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a>
+            <p>Sauf mention contraire, tous les contenus de ce site sont sous
+              <a class="fr-mr-2v" href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a> &bullet; <a class="fr-ml-2v" href="https://github.com/Septhime/PIIL-EMIL" target="_blank">Code source</a>
             </p>
           </div>
         </div>

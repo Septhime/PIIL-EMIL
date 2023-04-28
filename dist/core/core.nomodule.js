@@ -1,4 +1,4 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 (function () {
   'use strict';
@@ -70,7 +70,7 @@
     prefix: 'fr',
     namespace: 'dsfr',
     organisation: '@gouvfr',
-    version: '1.7.2'
+    version: '1.9.2'
   };
 
   var LogLevel = function LogLevel (level, light, dark, logger) {
@@ -148,7 +148,7 @@
   };
 
   var LEVELS = {
-    trace: new LogLevel(0, '#616161', '#989898'),
+    log: new LogLevel(0, '#616161', '#989898'),
     debug: new LogLevel(1, '#000091', '#8B8BFF'),
     info: new LogLevel(2, '#007c3b', '#00ed70'),
     warn: new LogLevel(3, '#ba4500', '#fa5c00', 'warn'),
@@ -177,7 +177,7 @@
   Inspector.prototype.state = function state$1 () {
     var message = new Message();
     message.add(state);
-    this.trace.print(message);
+    this.log.print(message);
   };
 
   Inspector.prototype.tree = function tree () {
@@ -185,7 +185,7 @@
     if (!stage) { return; }
     var message = new Message();
     this._branch(stage.root, 0, message);
-    this.trace.print(message);
+    this.log.print(message);
   };
 
   Inspector.prototype._branch = function _branch (element, space, message) {
@@ -238,11 +238,29 @@
 
   var prototypeAccessors$5 = { mode: { configurable: true } };
 
-  Options.prototype.configure = function configure (settings, start) {
+  Options.prototype.configure = function configure (settings, start, query) {
       if ( settings === void 0 ) settings = {};
 
     this.startCallback = start;
-    if (settings.verbose === true) { inspector.level = 0; }
+    var isProduction = settings.production && (!query || query.production !== 'false');
+    switch (true) {
+      case query && !isNaN(query.level):
+        inspector.level = Number(query.level);
+        break;
+
+      case query && query.verbose && (query.verbose === 'true' || query.verbose === 1):
+        inspector.level = 0;
+        break;
+
+      case isProduction:
+        inspector.level = 999;
+        break;
+
+      case settings.verbose:
+        inspector.level = 0;
+        break;
+    }
+    inspector.info(("version " + (config.version)));
     this.mode = settings.mode || Modes.AUTO;
   };
 
@@ -1176,6 +1194,29 @@
 
   var engine = new Engine();
 
+  var Colors = function Colors () {};
+
+  Colors.prototype.getColor = function getColor (context, use, tint, options) {
+      if ( options === void 0 ) options = {};
+
+    var option = getOption(options);
+    var decision = "--" + context + "-" + use + "-" + tint + option;
+    return getComputedStyle(document.documentElement).getPropertyValue(decision).trim() || null;
+  };
+
+  var getOption = function (options) {
+    switch (true) {
+      case options.hover:
+        return '-hover';
+      case options.active:
+        return '-active';
+      default:
+        return '';
+    }
+  };
+
+  var colors = new Colors();
+
   var sanitize = function (className) { return className.charAt(0) === '.' ? className.substr(1) : className; };
 
   var getClassNames = function (element) { return element.className ? element.className.split(' ') : []; };
@@ -1196,6 +1237,27 @@
 
   var hasClass = function (element, className) { return getClassNames(element).indexOf(sanitize(className)) > -1; };
 
+  var ACTIONS = [
+    '[tabindex]:not([tabindex="-1"])',
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    'audio[controls]',
+    'video[controls]',
+    '[contenteditable]:not([contenteditable="false"])',
+    'details>summary:first-of-type',
+    'details',
+    'iframe'
+  ];
+
+  var ACTIONS_SELECTOR = ACTIONS.join();
+
+  var queryActions = function (element) {
+    return element.querySelectorAll(ACTIONS_SELECTOR);
+  };
+
   var dom = {};
 
   dom.addClass = addClass;
@@ -1203,6 +1265,7 @@
   dom.removeClass = removeClass;
   dom.queryParentSelector = queryParentSelector;
   dom.querySelectorAllArray = querySelectorAllArray;
+  dom.queryActions = queryActions;
 
   var supportLocalStorage = function () {
     try {
@@ -1279,6 +1342,24 @@
 
   property.completeAssign = completeAssign;
 
+  /**
+   * Return an object of query params or null
+   *
+   * @method
+   * @name searchParams
+   * @param {string} url - an url
+   * @returns {Object} object of query params or null
+   */
+
+  var searchParams = function (url) {
+    if (url && url.search) {
+      var params = new URLSearchParams(window.location.search);
+      var entries = params.entries();
+      return Object.fromEntries(entries);
+    }
+    return null;
+  };
+
   var internals = {};
   var legacy = {};
 
@@ -1298,6 +1379,7 @@
   internals.ns = ns;
   internals.register = engine.register;
   internals.state = state;
+  internals.query = searchParams(window.location);
 
   Object.defineProperty(internals, 'preventManipulation', {
     get: function () { return options.preventManipulation; }
@@ -1306,13 +1388,14 @@
     get: function () { return state.getModule('stage'); }
   });
 
-  inspector.info(("version " + (config.version)));
-
   var api$1 = function (node) {
     var stage = state.getModule('stage');
     return stage.getProxy(node);
   };
 
+  api$1.version = config.version;
+  api$1.prefix = config.prefix;
+  api$1.organisation = config.organisation;
   api$1.Modes = Modes;
 
   Object.defineProperty(api$1, 'mode', {
@@ -1321,13 +1404,18 @@
   });
 
   api$1.internals = internals;
+  api$1.version = config.version;
 
   api$1.start = engine.start;
   api$1.stop = engine.stop;
 
   api$1.inspector = inspector;
+  api$1.colors = colors;
 
-  options.configure(window[config.namespace], api$1.start);
+  var configuration = window[config.namespace];
+  api$1.internals.configuration = configuration;
+
+  options.configure(configuration, api$1.start, api$1.internals.query);
 
   window[config.namespace] = api$1;
 
@@ -1422,10 +1510,16 @@
 
   prototypeAccessors.proxy.get = function () {
     var scope = this;
-    return {
+    var proxy = {
       render: function () { return scope.render(); },
       resize: function () { return scope.resize(); }
     };
+    var proxyAccessors = {
+      get node () {
+        return this.node;
+      }
+    };
+    return completeAssign(proxy, proxyAccessors);
   };
 
   Instance.prototype.register = function register (selector, InstanceClass) {
@@ -1702,6 +1796,10 @@
     return getClassNames(this.node);
   };
 
+  Instance.prototype.remove = function remove () {
+    this.node.parentNode.removeChild(this.node);
+  };
+
   Instance.prototype.setAttribute = function setAttribute (attributeName, value) {
     this.node.setAttribute(attributeName, value);
   };
@@ -1728,6 +1826,22 @@
 
   Instance.prototype.focus = function focus () {
     this.node.focus();
+  };
+
+  Instance.prototype.focusClosest = function focusClosest () {
+    var closest = this._focusClosest(this.node.parentNode);
+    if (closest) { closest.focus(); }
+  };
+
+  Instance.prototype._focusClosest = function _focusClosest (parent) {
+    if (!parent) { return null; }
+    var actions = [].concat( queryActions(parent) );
+    if (actions.length <= 1) {
+      return this._focusClosest(parent.parentNode);
+    } else {
+      var index = actions.indexOf(this.node);
+      return actions[index + (index < actions.length - 1 ? 1 : -1)];
+    }
   };
 
   prototypeAccessors.hasFocus.get = function () {
@@ -2179,6 +2293,10 @@
     }
   };
 
+  var DisclosureSelector = {
+    PREVENT_CONCEAL: ns.attr.selector('prevent-conceal')
+  };
+
   var CollapseButton = /*@__PURE__*/(function (DisclosureButton) {
     function CollapseButton () {
       DisclosureButton.call(this, DisclosureType.EXPAND);
@@ -2594,7 +2712,7 @@
     Artwork.prototype.fetch = function fetch () {
       var this$1$1 = this;
 
-      this.xlink = this.node.getAttribute('xlink:href');
+      this.xlink = this.node.getAttribute('href');
       var splitUrl = this.xlink.split('#');
       this.svgUrl = splitUrl[0];
       this.svgName = splitUrl[1];
@@ -2703,6 +2821,7 @@
     DisclosuresGroup: DisclosuresGroup,
     DisclosureType: DisclosureType,
     DisclosureEvent: DisclosureEvent,
+    DisclosureSelector: DisclosureSelector,
     DisclosureEmission: DisclosureEmission,
     Collapse: Collapse,
     CollapseButton: CollapseButton,

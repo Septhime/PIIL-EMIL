@@ -1,17 +1,9 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
 .fr-select {
-  /**
-  * Modificateur pour gérer l'état d'erreur
-  */
-
-  /**
-  * Modificateur pour gérer l'état de validation
-  */
-
   /**
   * Mixin pour gérer l'état disabled
   */
@@ -48,12 +40,14 @@
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 24 24' %3E%3Cpath fill='%23161616' d='M12,13.1l5-4.9l1.4,1.4L12,15.9L5.6,9.5l1.4-1.4L12,13.1z'/%3E%3C/svg%3E");
   }
 
-  .fr-select--error {
-    box-shadow: inset 0 -2px 0 0 #ce0500;
+  .fr-fieldset--valid .fr-select,
+  .fr-select-group--valid .fr-select {
+    box-shadow: inset 0 -2px 0 0 #18753c;
   }
 
-  .fr-select--valid {
-    box-shadow: inset 0 -2px 0 0 #18753c;
+  .fr-fieldset--error .fr-select,
+  .fr-select-group--error .fr-select {
+    box-shadow: inset 0 -2px 0 0 #ce0500;
   }
 
   .fr-select:disabled {

@@ -161,9 +161,9 @@ if (isset($_GET['s'])) {
                         </div>
                     </div>
                     <div class="fr-header__service">
-                        <a href="/" title="Accueil - [À MODIFIER - Nom du site / service] - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                        <a href="/" title="Accueil - Espace des membres d'instances lycéennes">
                             <p class="fr-header__service-title">
-                                Plateforme de mise en relation des élu.e.s lycéen.ne.s
+                                Espace des membres d'instances lycéennes
                                 <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
                             </p>
                         </a>
@@ -186,7 +186,7 @@ if (isset($_GET['s'])) {
     </div>
 </header>
 <main role="main" id="content" class="fr-pb-15w" style="background: #f2f2f9">
-    <div class="fr-container">
+    <div class="fr-container fr-px-3w">
         <div class="fr-py-10w fr-pt-md-12w fr-mb-md-10w">
             <!-- Tuiles verticales placées dans la grille -->
             <h2 class="fr-pt-5v" style="text-align: center">Se connecter</h2>
@@ -215,6 +215,20 @@ if (isset($_GET['s'])) {
                         </div>
                         <div class="fr-tile__img">
                             <span class="fr-icon-admin-line fr-icon--lg"></span>
+                            <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
+                        </div>
+                    </div>
+                </div>
+                <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
+                    <div class="fr-tile fr-enlarge-link">
+                        <div class="fr-tile__body">
+                            <h4 class="fr-tile__title">
+                                <a class="fr-tile__link">Autres membres</a>
+                            </h4>
+                            <p class="fr-tile__desc">Connexion impossible</p>
+                        </div>
+                        <div class="fr-tile__img">
+                            <span class="fr-icon-user-star-line fr-icon--lg"></span>
                             <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
                         </div>
                     </div>
@@ -302,7 +316,7 @@ if (isset($_GET['s'])) {
             </div>
         </div>
     </dialog>
-    <dialog aria-labelledby="fr-modal-2-title" id="fr-modal-3" class="fr-modal" role="dialog">
+    <dialog aria-labelledby="fr-modal-3-title" id="fr-modal-3" class="fr-modal" role="dialog">
         <div class="fr-container fr-container--fluid fr-container-md">
             <div class="fr-grid-row fr-grid-row--center">
                 <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
@@ -358,18 +372,21 @@ if (isset($_GET['s'])) {
 <footer class="fr-footer" role="contentinfo" id="footer-1267">
     <div class="fr-container">
         <div class="fr-footer__body">
-            <!--<div class="fr-footer__brand fr-enlarge-link">
-                <a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+            <div class="fr-footer__brand fr-enlarge-link">
+                <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
                     <p class="fr-logo">
                         Ministère
                         <br>de l'éducation
                         <br>nationale
                         <br>et de la jeunesse
                     </p>
+                </a>-->
+                <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Espace des membres d'instances lycéennes">
+                    <img class="fr-footer__logo" style="width:8rem;" src="../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
                 </a>
-            </div>-->
+            </div>
             <div class="fr-footer__content">
-                <p class="fr-footer__content-desc">Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.</p>
+                <p class="fr-footer__content-desc">Un espace collaboratif et utilitaire destiné aux membres des instances lycéennes afin de faire vivre la démocratie scolaire au mieux.</p>
                 <!--<ul class="fr-footer__content-list">
                     <li class="fr-footer__content-item">
                         <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
@@ -389,23 +406,21 @@ if (isset($_GET['s'])) {
         <div class="fr-footer__bottom">
             <ul class="fr-footer__bottom-list">
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="#">Plan du site</a>
+                    <a class="fr-footer__bottom-link" href="../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="#">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+                    <a class="fr-footer__bottom-link" href="../legal.html" target="_blank">Mentions légales</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="#">Mentions légales</a>
-                </li>
-                <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="#">Données personnelles</a>
+                    <a class="fr-footer__bottom-link" href="../privacy.html" target="_blank">Données personnelles</a>
                 </li>
                 <li class="fr-footer__bottom-item">
                     <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
                 </li>
             </ul>
             <div class="fr-footer__bottom-copy">
-                <p>Sauf mention contraire, tous les contenus de ce site sont sous <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a>
+                <p>Sauf mention contraire, tous les contenus de ce site sont sous
+                    <a class="fr-mr-2v" href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a> &bullet; <a class="fr-ml-2v" href="https://github.com/Septhime/PIIL-EMIL" target="_blank">Code source</a>
                 </p>
             </div>
         </div>

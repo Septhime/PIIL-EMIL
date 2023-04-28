@@ -1,10 +1,10 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 const config = {
   prefix: 'fr',
   namespace: 'dsfr',
   organisation: '@gouvfr',
-  version: '1.7.2'
+  version: '1.9.2'
 };
 
 const api = window[config.namespace];
@@ -148,7 +148,7 @@ class FocusTrap {
     if (!this.isTrapping) return;
     this.isTrapping = false;
     const focusables = this.focusables;
-    if (focusables.length) focusables[0].focus();
+    if (focusables.length && focusables.indexOf(document.activeElement) === -1) focusables[0].focus();
     this.element.setAttribute('aria-modal', true);
     window.addEventListener('keydown', this.handling);
     document.body.addEventListener('focus', this.focusing, true);

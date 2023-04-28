@@ -9,7 +9,7 @@ include "../commun.php";
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Votre compte - PREL</title>
+  <title>Votre compte - EMIL</title>
   <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
   <link rel="apple-touch-icon" href="../../dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
   <link rel="icon" href="../../dist/favicon/favicon.svg" type="image/svg+xml">
@@ -142,9 +142,9 @@ include "../commun.php";
                 </div>
               </div>
               <div class="fr-header__service">
-                <a href=".." title="Accueil - [À MODIFIER - Nom du site / service] - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <a href=".." title="Accueil - <?php echo $title ?>">
                   <p class="fr-header__service-title">
-                    Plateforme de mise en relation des élu.e.s lycéen.ne.s
+                    <?php echo $title ?>
                     <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
                   </p>
                 </a>
@@ -156,12 +156,12 @@ include "../commun.php";
                 <ul class="fr-btns-group">
                   <li>
                     <a class="fr-btn fr-icon-account-circle-line" href="#">
-                      <?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span>
+                      <b><?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span></b>
                     </a>
                   </li>
                   <li>
                     <a class="fr-btn fr-icon-close-circle-line" href="../../index.html">
-                      Se déconnecter
+                      <b>Se déconnecter</b>
                     </a>
                   </li>
                 </ul>
@@ -229,22 +229,22 @@ include "../commun.php";
       </div>
     </header>
     <main role="main" id="content">
-      <div class="fr-container fr-my-7w">
+      <div class="fr-container fr-my-7w fr-px-3w">
         <div class="fr-grid-row--center fr-grid-row fr-grid-row--gutters fr-grid-row fr-grid-row--gutters">
           <div class="fr-col-12 fr-mx-5v">
             <div>
               <div class="fr-grid-row">
-                <div class="fr-col">
+                <div class="fr-col-12">
                   <figure class="fr-content-media fr-content-media--sm" role="group">
-                    <div class="fr-content-media__img" style="text-align: right">
+                    <div class="fr-content-media__img" style="text-align: center">
                       <img class="fr-responsive-img fr-ratio-1x1" src="../../assets/img/placeholder.16x9.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" style="height: 200px;width: 200px;border-radius: 100%"/>
                       <!-- L’alternative de l’image (attribut alt) doit toujours être présente, sa valeur peut-être vide (image n’apportant pas de sens supplémentaire au contexte) ou non (porteuse de texte ou apportant du sens) selon votre contexte -->
                     </div>
                   </figure>
                 </div>
-                <div class="fr-col fr-py-15v" style="text-align: left">
+                <div class="fr-col-12" style="text-align: center">
                   <h4><?php echo $name[$_COOKIE["account"]] ?></h4>
-                  <p><?php if ($_COOKIE["account"] > 3 AND $_COOKIE["account"] < 7) {echo "Terminale Générale - LGT Pablo Neruda";} elseif ($_COOKIE["account"] == 2) {echo "Déléguée Académique de Normandie à la Vie Scolaire";} elseif ($_COOKIE["account"] == 1) { echo "Déléguée Nationale à la Vie Scolaire"; } else echo "Référent Vie Scolaire - LGT Pablo Neruda"; ?></p>
+                  <p><?php if ($_COOKIE["account"] > 3 AND $_COOKIE["account"] < 7) {echo "Terminale Générale - LGT Pablo Neruda";} elseif ($_COOKIE["account"] == 2) {echo "Délégué(e) Académique de Normandie à la Vie Scolaire";} elseif ($_COOKIE["account"] == 1) { echo "Délégué(e) National(e) à la Vie Scolaire"; } else echo "Référent(e) Vie Scolaire - LGT Pablo Neruda"; ?></p>
                 </div>
               </div>
 
@@ -255,7 +255,7 @@ include "../commun.php";
                   Adresse Mail
                 </label>
                 <a class="fr-input-wrap fr-icon-edit-box-line" data-fr-opened="false" aria-controls="modal-1033">
-                  <input class="fr-input" disabled type="search" id="text-input-search" name="text-input-search" placeholder="<?php if ($_COOKIE["account"] == 2 OR $_COOKIE["account"] == 3) {echo "...@ac-normandie.fr";} elseif ($_COOKIE["account"] == 1) {echo "...@education.gouv.fr";} else {echo "...@gmail.com";} ?>">
+                  <input class="fr-input" disabled type="search" id="text-input-search" name="text-input-search" placeholder="<?php if ($_COOKIE["account"] == 2 OR $_COOKIE["account"] == 3) {echo "...@ac-normandie.fr";} elseif ($_COOKIE["account"] == 1) {echo "...@education.gouv.fr";} else {echo "...@....com";} ?>">
                 </a>
               </div>
               <p>Groupe(s) de rattachement</p>
@@ -314,54 +314,55 @@ include "../commun.php";
     <footer class="fr-footer" role="contentinfo" id="footer-1267">
       <div class="fr-container">
         <div class="fr-footer__body">
-          <!--<div class="fr-footer__brand fr-enlarge-link">
-              <a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                  <p class="fr-logo">
-                      Ministère
-                      <br>de l'éducation
-                      <br>nationale
-                      <br>et de la jeunesse
-                  </p>
-              </a>
-          </div>-->
+          <div class="fr-footer__brand fr-enlarge-link">
+            <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <p class="fr-logo">
+                    Ministère
+                    <br>de l'éducation
+                    <br>nationale
+                    <br>et de la jeunesse
+                </p>
+            </a>-->
+            <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+              <img class="fr-footer__logo" style="width:8rem;" src="../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
+            </a>
+          </div>
           <div class="fr-footer__content">
-            <p class="fr-footer__content-desc">Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.</p>
+            <p class="fr-footer__content-desc">Un espace collaboratif et utilitaire destiné aux membres des instances lycéennes afin de faire vivre la démocratie scolaire au mieux.</p>
             <!--<ul class="fr-footer__content-list">
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
-              </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
+                </li>
             </ul>-->
           </div>
         </div>
         <div class="fr-footer__bottom">
           <ul class="fr-footer__bottom-list">
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Plan du site</a>
+              <a class="fr-footer__bottom-link" href="../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+              <a class="fr-footer__bottom-link" href="../../legal.html" target="_blank">Mentions légales</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Mentions légales</a>
-            </li>
-            <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Données personnelles</a>
+              <a class="fr-footer__bottom-link" href="../../privacy.html" target="_blank">Données personnelles</a>
             </li>
             <li class="fr-footer__bottom-item">
               <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
             </li>
           </ul>
           <div class="fr-footer__bottom-copy">
-            <p>Sauf mention contraire, tous les contenus de ce site sont sous <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a>
+            <p>Sauf mention contraire, tous les contenus de ce site sont sous
+              <a class="fr-mr-2v" href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a> &bullet; <a class="fr-ml-2v" href="https://github.com/Septhime/PIIL-EMIL" target="_blank">Code source</a>
             </p>
           </div>
         </div>
@@ -429,9 +430,9 @@ include "../commun.php";
                       </label>
                       <div class="fr-radio-rich__img">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fr-artwork" width="80px" height="80px" viewBox="0 0 80 80">
-                          <use class="fr-artwork-decorative" xlink:href="../dist/artwork/light.svg#artwork-decorative"></use>
-                          <use class="fr-artwork-minor" xlink:href="../dist/artwork/light.svg#artwork-minor"></use>
-                          <use class="fr-artwork-major" xlink:href="../dist/artwork/light.svg#artwork-major"></use>
+                          <use class="fr-artwork-decorative" xlink:href="../../dist/artwork/light.svg#artwork-decorative"></use>
+                          <use class="fr-artwork-minor" xlink:href="../../dist/artwork/light.svg#artwork-minor"></use>
+                          <use class="fr-artwork-major" xlink:href="../../dist/artwork/light.svg#artwork-major"></use>
                         </svg>
                       </div>
                     </div>
@@ -442,9 +443,9 @@ include "../commun.php";
                       </label>
                       <div class="fr-radio-rich__img">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fr-artwork" width="80px" height="80px" viewBox="0 0 80 80">
-                          <use class="fr-artwork-decorative" xlink:href="../dist/artwork/dark.svg#artwork-decorative"></use>
-                          <use class="fr-artwork-minor" xlink:href="../dist/artwork/dark.svg#artwork-minor"></use>
-                          <use class="fr-artwork-major" xlink:href="../dist/artwork/dark.svg#artwork-major"></use>
+                          <use class="fr-artwork-decorative" xlink:href="../../dist/artwork/dark.svg#artwork-decorative"></use>
+                          <use class="fr-artwork-minor" xlink:href="../../dist/artwork/dark.svg#artwork-minor"></use>
+                          <use class="fr-artwork-major" xlink:href="../../dist/artwork/dark.svg#artwork-major"></use>
                         </svg>
                       </div>
                     </div>
@@ -456,9 +457,9 @@ include "../commun.php";
                       </label>
                       <div class="fr-radio-rich__img">
                         <svg xmlns="http://www.w3.org/2000/svg" class="fr-artwork" width="80px" height="80px" viewBox="0 0 80 80">
-                          <use class="fr-artwork-decorative" xlink:href="../dist/artwork/system.svg#artwork-decorative"></use>
-                          <use class="fr-artwork-minor" xlink:href="../dist/artwork/system.svg#artwork-minor"></use>
-                          <use class="fr-artwork-major" xlink:href="../dist/artwork/system.svg#artwork-major"></use>
+                          <use class="fr-artwork-decorative" xlink:href="../../dist/artwork/system.svg#artwork-decorative"></use>
+                          <use class="fr-artwork-minor" xlink:href="../../dist/artwork/system.svg#artwork-minor"></use>
+                          <use class="fr-artwork-major" xlink:href="../../dist/artwork/system.svg#artwork-major"></use>
                         </svg>
                       </div>
                     </div>

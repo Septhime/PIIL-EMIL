@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -26,6 +26,10 @@
   --active: var(--background-alt-blue-france-active);
 }
 
+.fr-follow__newsletter .fr-input-group {
+  margin-bottom: 0;
+}
+
 .fr-follow__newsletter .fr-label {
   position: absolute;
   width: 1px;
@@ -34,9 +38,7 @@
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-
-  /* added line */
+  white-space: nowrap; /* added line */
   border: 0;
 }
 
@@ -56,18 +58,7 @@
   justify-content: center;
 }
 
-.fr-follow__newsletter .fr-hint-text {
-  margin-top: 1.5rem;
-  margin-bottom: 0;
-}
-
-.fr-follow__newsletter .fr-valid-text,
-.fr-follow__newsletter .fr-error-text {
-  margin-top: 1rem;
-}
-
-.fr-follow__newsletter .fr-valid-text + .fr-hint-text,
-.fr-follow__newsletter .fr-error-text + .fr-hint-text {
+.fr-follow__newsletter .fr-messages-group {
   margin-top: 1rem;
 }
 
@@ -247,6 +238,15 @@
   display: inline-flex;
   max-width: 100%;
   width: auto;
+}
+
+.fr-follow .fr-valid-text,
+.fr-follow .fr-error-text {
+  margin-top: 1rem;
+}
+
+.fr-follow .fr-hint-text {
+  margin-top: 1rem;
 }
 
 .fr-follow__social .fr-link {
@@ -432,13 +432,8 @@
     border-radius: 0.25rem 0 0 0;
   }
 
-  .fr-follow__newsletter .fr-hint-text {
-    margin-top: 0.5rem;
-  }
-
-  .fr-follow__newsletter .fr-valid-text,
-  .fr-follow__newsletter .fr-error-text {
-    margin-top: 1rem;
+  .fr-follow__newsletter .fr-messages-group {
+    margin-bottom: 0.5rem;
   }
 
   /*! media sm */
@@ -447,11 +442,6 @@
   /*! media md */
   .fr-follow {
     padding: 2rem 0;
-  }
-
-  .fr-follow__newsletter .fr-valid-text + .fr-hint-text,
-  .fr-follow__newsletter .fr-error-text + .fr-hint-text {
-    margin-top: 0.5rem;
   }
 
   .fr-follow .fr-grid-row > * > div {
@@ -502,6 +492,10 @@
 
   .fr-follow .fr-grid-row > *:first-child:last-child > .fr-follow__social {
     --title-spacing: 0;
+  }
+
+  .fr-follow .fr-hint-text {
+    margin-top: 0.5rem;
   }
 
   /*! media md */

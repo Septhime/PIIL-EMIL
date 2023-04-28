@@ -9,7 +9,7 @@ include "../commun.php";
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Messagerie - PREL</title>
+  <title>Messagerie - EMIL</title>
   <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
   <link rel="apple-touch-icon" href="../../dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
   <link rel="icon" href="../../dist/favicon/favicon.svg" type="image/svg+xml">
@@ -148,9 +148,9 @@ include "../commun.php";
                 </div>
               </div>
               <div class="fr-header__service">
-                <a href="../" title="Messagerie - Plateforme de mise en relation des élu.e.s lycéen.ne.s">
+                <a href="../" title="Messagerie - <?php echo $title ?>">
                   <p class="fr-header__service-title">
-                    Plateforme de mise en relation des élu.e.s lycéen.ne.s
+                    <?php echo $title ?>
                     <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
                   </p>
                 </a>
@@ -162,12 +162,12 @@ include "../commun.php";
                 <ul class="fr-btns-group">
                   <li>
                     <a class="fr-btn fr-icon-account-circle-line" href="../compte/">
-                      <?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span>
+                      <b><?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span></b>
                     </a>
                   </li>
                   <li>
                     <a class="fr-btn fr-icon-close-circle-line" href="../../">
-                      Se déconnecter
+                      <b>Se déconnecter</b>
                     </a>
                   </li>
                 </ul>
@@ -224,7 +224,7 @@ include "../commun.php";
           cursor: pointer;
         }
       </style>
-      <div class="fr-container">
+      <div class="fr-container fr-px-3w">
         <div class="fr-mt-7w fr-mt-md-10w fr-mb-1w fr-grid-row fr-grid-row--right">
           <button class="fr-btn fr-icon-draft-fill fr-btn--icon-left" href="#">
             Écrire un message
@@ -244,7 +244,7 @@ include "../commun.php";
               <tbody>
                 <tr onclick="window.location='#'" href="#" class="cursor-modify">
                   <td>12/12/2020 12:12</td>
-                  <td><a href="#" class="fr-tag fr-icon-user-fill fr-tag--icon-left" target="_self">Timothée Varin</a></td>
+                  <td><a href="../personne" class="fr-tag fr-icon-user-fill fr-tag--icon-left" target="_self">Timothée Varin</a></td>
                   <td>Lorem ipsum</td>
                   <td>Lorem ipsum dolor sit amet, ...</td>
                 </tr>
@@ -284,60 +284,61 @@ include "../commun.php";
     <footer class="fr-footer" role="contentinfo" id="footer-1267">
       <div class="fr-container">
         <div class="fr-footer__body">
-          <!--<div class="fr-footer__brand fr-enlarge-link">
-              <a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                  <p class="fr-logo">
-                      Ministère
-                      <br>de l'éducation
-                      <br>nationale
-                      <br>et de la jeunesse
-                  </p>
-              </a>
-          </div>-->
+          <div class="fr-footer__brand fr-enlarge-link">
+            <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <p class="fr-logo">
+                    Ministère
+                    <br>de l'éducation
+                    <br>nationale
+                    <br>et de la jeunesse
+                </p>
+            </a>-->
+            <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+              <img class="fr-footer__logo" style="width:8rem;" src="../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
+            </a>
+          </div>
           <div class="fr-footer__content">
-            <p class="fr-footer__content-desc">Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.</p>
+            <p class="fr-footer__content-desc">Un espace collaboratif et utilitaire destiné aux membres des instances lycéennes afin de faire vivre la démocratie scolaire au mieux.</p>
             <!--<ul class="fr-footer__content-list">
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
-              </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
+                </li>
             </ul>-->
           </div>
         </div>
         <div class="fr-footer__bottom">
           <ul class="fr-footer__bottom-list">
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Plan du site</a>
+              <a class="fr-footer__bottom-link" href="../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+              <a class="fr-footer__bottom-link" href="../../legal.html" target="_blank">Mentions légales</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Mentions légales</a>
-            </li>
-            <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Données personnelles</a>
+              <a class="fr-footer__bottom-link" href="../../privacy.html" target="_blank">Données personnelles</a>
             </li>
             <li class="fr-footer__bottom-item">
               <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
             </li>
           </ul>
           <div class="fr-footer__bottom-copy">
-            <p>Sauf mention contraire, tous les contenus de ce site sont sous <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a>
+            <p>Sauf mention contraire, tous les contenus de ce site sont sous
+              <a class="fr-mr-2v" href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a> &bullet; <a class="fr-ml-2v" href="https://github.com/Septhime/PIIL-EMIL" target="_blank">Code source</a>
             </p>
           </div>
         </div>
       </div>
     </footer>
-<button class="fr-display-button fr-background-default--grey fr-btn fr-btn--lg fr-icon-theme-fill fr-btn--secondary" aria-controls="fr-theme-modal" data-fr-opened="false" style="z-index: 1600">
+    <button class="fr-display-button fr-background-default--grey fr-btn fr-btn--lg fr-icon-theme-fill fr-btn--secondary" aria-controls="fr-theme-modal" data-fr-opened="false" style="z-index: 1600">
   Label bouton
 </button>
 <dialog id="fr-theme-modal" class="fr-modal" role="dialog" aria-labelledby="fr-theme-modal-title">

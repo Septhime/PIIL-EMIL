@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -12,6 +12,10 @@
 
 .fr-upload-group .fr-label + .fr-upload {
   margin-top: 1rem;
+}
+
+.fr-upload-group .fr-message:first-child {
+  margin-top: 0.5rem;
 }
 
 .fr-upload {

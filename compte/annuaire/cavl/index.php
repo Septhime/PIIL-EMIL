@@ -9,7 +9,7 @@ include "../../commun.php";
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Annuaire des CAVL - PREL</title>
+  <title>Annuaire des CAVL - EMIL</title>
   <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
   <link rel="apple-touch-icon" href="../../../dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
   <link rel="icon" href="../../../dist/favicon/favicon.svg" type="image/svg+xml">
@@ -33,11 +33,13 @@ include "../../commun.php";
   <link href="../../../dist/component/input/input.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/component/footer/footer.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/component/card/card.main.css" rel="stylesheet" file="main">
+  <link href="../../../dist/component/tile/tile.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/component/tag/tag.main.css" rel="stylesheet" file="legacy">
   <link href="../../../dist/utility/utility.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/component/search/search.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/component/translate/translate.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/component/header/header.main.css" rel="stylesheet" file="main">
+  <link href="../../../dist/component/select/select.main.css" rel="stylesheet" file="main">
   <link href="../../../dist/core/core.legacy.css" rel="stylesheet" file="legacy">
   <link href="../../../dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
   <link href="../../../dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
@@ -57,6 +59,8 @@ include "../../commun.php";
   <link href="../../../dist/component/search/search.legacy.css" rel="stylesheet" file="legacy">
   <link href="../../../dist/component/translate/translate.legacy.css" rel="stylesheet" file="legacy">
   <link href="../../../dist/component/header/header.legacy.css" rel="stylesheet" file="legacy">
+  <link href="../../../dist/component/tile/tile.legacy.css" rel="stylesheet" file="legacy">
+  <link href="../../../dist/component/select/select.legacy.css" rel="stylesheet" file="legacy">
   <style>
     code[class*="language-"],
     pre[class*="language-"] {
@@ -144,9 +148,9 @@ include "../../commun.php";
                 </div>
               </div>
               <div class="fr-header__service">
-                <a href="/" title="Accueil - [À MODIFIER - Nom du site / service] - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <a href="../../" title="Accueil - <?php echo $title ?>">
                   <p class="fr-header__service-title">
-                    Plateforme de mise en relation des élu.e.s lycéen.ne.s
+                    <?php echo $title ?>
                     <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
                   </p>
                 </a>
@@ -158,12 +162,12 @@ include "../../commun.php";
                 <ul class="fr-btns-group">
                   <li>
                     <a class="fr-btn fr-icon-account-circle-line" href="../../compte">
-                      <?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span>
+                      <b><?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span></b>
                     </a>
                   </li>
                   <li>
                     <a class="fr-btn fr-icon-close-circle-line" href="../../../">
-                      Se déconnecter
+                      <b>Se déconnecter</b>
                     </a>
                   </li>
                 </ul>
@@ -215,7 +219,7 @@ include "../../commun.php";
       </div>
     </header>
     <main role="main" id="content">
-      <div class="fr-container">
+      <div class="fr-container fr-px-3w">
         <div class="fr-mt-md-2w fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
           <nav role="navigation" class="fr-breadcrumb" aria-label="vous êtes ici :">
             <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="breadcrumb-1">Voir le fil d’Ariane</button>
@@ -234,59 +238,913 @@ include "../../commun.php";
             </div>
           </nav>
         </div>
+        <?php if (!isset($_GET['select-hint'])) {
+          echo '<h1>Membres lycéen au Conseil Académique de Vie Lycéenne</h1>
+        <figure class="fr-content-media fr-content-media--sm fr-my-10v" role="group" aria-label="© Légende de l‘image">
+            <div class="fr-content-media__img">
+              <img class="fr-responsive-img fr-ratio-1x1" src="../../../assets/img/placeholder.1x1.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" />
+            </div>
+            <figcaption style="text-align: center" class="fr-content-media__caption">Placeholder pour carte de la france cliquable</figcaption>
+          </figure>
+          <form action="#">
+            <div class="fr-grid-row--bottom fr-grid-row fr-grid-row--gutters fr-grid-row fr-grid-row--gutter fr-my-10v">
+              <div class="fr-col-11">
+                <div class="fr-select-group">
+                  <select class="fr-select" id="select-hint" name="select-hint">
+                    <option value="" selected disabled hidden>Choisir une académie</option>
+                    <option value="1">Aix-Marseille</option>
+                    <option value="2">Amiens</option>
+                    <option value="3">Besançon</option>
+                    <option value="4">Bordeaux</option>
+                    <option value="5">Clermont-Ferrand</option>
+                    <option value="6">Corse</option>
+                    <option value="7">Créteil</option>
+                    <option value="8">Dijon</option>
+                    <option value="9">Grenoble</option>
+                    <option value="10">Guadeloupe</option>
+                    <option value="11">Guyane</option>
+                    <option value="12">La Réunion</option>
+                    <option value="13">Lille</option>
+                    <option value="14">Limoges</option>
+                    <option value="15">Lyon</option>
+                    <option value="16">Martinique</option>
+                    <option value="17">Mayotte</option>
+                    <option value="18">Montpellier</option>
+                    <option value="19">Nancy-Metz</option>
+                    <option value="20">Nantes</option>
+                    <option value="21">Nice</option>
+                    <option value="22">Normandie</option>
+                    <option value="23">Nouvelle-Calédonie</option>
+                    <option value="24">Orléans-Tours</option>
+                    <option value="25">Paris</option>
+                    <option value="26">Poitiers</option>
+                    <option value="27">Polynésie française</option>
+                    <option value="28">Reims</option>
+                    <option value="29">Rennes</option>
+                    <option value="30">Saint-Pierre-et-Miquelon</option>
+                    <option value="31">Strasbourg</option>
+                    <option value="32">Toulouse</option>
+                    <option value="33">Versailles</option>
+                    <option value="34">Wallis-et-Futuna</option>
+                  </select>
+                </div>
+              </div>
+              <div class="fr-col-1">
+                <button class="fr-btn">OK</button>
+              </div>
+            </div>
+          </form>';
+        } elseif ($_GET['select-hint'] == 22) {
+          echo '<a class="fr-link fr-icon-arrow-left-line fr-link--icon-left" href="../cavl">
+                    Changer d\'académie
+                </a>
+                    <div class="fr-my-5v">
+                        <h1 class="fr-my-5w fr-mb-md-5w">Membres lycéen au Conseil Académique de Vie Lycéenne</h1>
+                        <h4 class="fr-mb-0">1ère circonscription</h4>
+                        <p class="fr-mb-5v">LGT et LPO de la Seine-Maritime</p>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                        <p style="font-size: smaller"></p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                        <p style="font-size: smaller">Vice Président</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="fr-mb-0">2ème circonscription</h4>
+                        <p class="fr-mb-5v">LGT et LPO du Calvados et de l\'Orne</p>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                        <p style="font-size: smaller">Vice Présidente</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="fr-mb-0">3ème circonscription</h4>
+                        <p class="fr-mb-5v">LGT et LPO de l\'Eure et de la Manche</p>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="fr-mb-0">4ème circonscription</h4>
+                        <p class="fr-mt-0 fr-mb-5v">LP de la Seine-Maritime</p>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="fr-mb-0">5ème circonscription</h4>
+                        <p class="fr-mb-5v">LP du Calvados, de l\'Eure, de la Manche et de l\'Orne</p>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="fr-mb-0">6ème circonscription</h4>
+                        <p class="fr-mb-5v">EREA de l\'académie</p>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fr-grid-row">
+              <div class="fr-col-12">
+                <h4>Délégué.e en charge du CAVL</h4>
+              </div>
+              <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                <div class="fr-tile fr-enlarge-link">
+                  <div class="fr-tile__body">
+                    <h4 class="fr-tile__title">
+                      <a class="fr-tile__link" href="../../personne">M. ...</a>
+                    </h4>
+                    <p class="fr-tile__desc">DAVLC</p>
+                  </div>
+                  <div class="fr-tile__img">
+                    <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="fr-grid-row fr-grid-row--center fr-my-5w">
+            <button class="fr-btn">Envoyer un message à l\'ensemble des élus</button>
+          </div>';
+        } else {
+          echo '<a class="fr-link fr-icon-arrow-left-line fr-link--icon-left" href="../cavl">
+      Changer d\'académie
+                </a>
+                    <div class="fr-my-10v">
+                        <h1 class="fr-my-5w fr-mb-md-5w">Membres lycéen au Conseil Académique de Vie Lycéenne</h1>
+                        <div class="fr-grid-row fr-grid-row--gutters fr-mb-5v">
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                        <p style="font-size: smaller"></p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                        <p style="font-size: smaller">Vice Président</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                        <p style="font-size: smaller">Vice Présidente</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LGT ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LPO ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">LP ...</p>
+
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">Mme. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                                <div class="fr-tile fr-enlarge-link">
+                                    <div class="fr-tile__body">
+                                        <h4 class="fr-tile__title">
+                                            <a class="fr-tile__link" href="../../personne">M. ...</a>
+                                        </h4>
+                                        <p class="fr-tile__desc">...</p>
+                                    </div>
+                                    <div class="fr-tile__img">
+                                        <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fr-col-12">
+                <h4>Délégué.e en charge du CAVL</h4>
+              </div>
+              <div class="fr-col-6 fr-col-md-4 fr-col-lg-2">
+                <div class="fr-tile fr-enlarge-link">
+                  <div class="fr-tile__body">
+                    <h4 class="fr-tile__title">
+                      <a class="fr-tile__link" href="../../personne">M. ...</a>
+                    </h4>
+                    <p class="fr-tile__desc">DAVLC</p>
+                  </div>
+                  <div class="fr-tile__img">
+                    <img src="../../../assets/img/placeholder.1x1.png" class="fr-responsive-img" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="fr-grid-row fr-grid-row--center fr-my-5w">
+            <button class="fr-btn">Envoyer un message à l\'ensemble des élus</button>
+          </div>';
+        }
+        ?>
       </div>
     </main>
     <footer class="fr-footer" role="contentinfo" id="footer-1267">
       <div class="fr-container">
         <div class="fr-footer__body">
-          <!--<div class="fr-footer__brand fr-enlarge-link">
-              <a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                  <p class="fr-logo">
-                      Ministère
-                      <br>de l'éducation
-                      <br>nationale
-                      <br>et de la jeunesse
-                  </p>
-              </a>
-          </div>-->
+          <div class="fr-footer__brand fr-enlarge-link">
+            <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+                <p class="fr-logo">
+                    Ministère
+                    <br>de l'éducation
+                    <br>nationale
+                    <br>et de la jeunesse
+                </p>
+            </a>-->
+            <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+              <img class="fr-footer__logo" style="width:8rem;" src="../../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
+            </a>
+          </div>
           <div class="fr-footer__content">
-            <p class="fr-footer__content-desc">Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.</p>
+            <p class="fr-footer__content-desc">Un espace collaboratif et utilitaire destiné aux membres des instances lycéennes afin de faire vivre la démocratie scolaire au mieux.</p>
             <!--<ul class="fr-footer__content-list">
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
-              </li>
-              <li class="fr-footer__content-item">
-                <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
-              </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
+                </li>
+                <li class="fr-footer__content-item">
+                    <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
+                </li>
             </ul>-->
           </div>
         </div>
         <div class="fr-footer__bottom">
           <ul class="fr-footer__bottom-list">
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Plan du site</a>
+              <a class="fr-footer__bottom-link" href="../../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+              <a class="fr-footer__bottom-link" href="../../../legal.html" target="_blank">Mentions légales</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Mentions légales</a>
-            </li>
-            <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="#">Données personnelles</a>
+              <a class="fr-footer__bottom-link" href="../../../privacy.html" target="_blank">Données personnelles</a>
             </li>
             <li class="fr-footer__bottom-item">
               <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
             </li>
           </ul>
           <div class="fr-footer__bottom-copy">
-            <p>Sauf mention contraire, tous les contenus de ce site sont sous <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a>
+            <p>Sauf mention contraire, tous les contenus de ce site sont sous
+              <a class="fr-mr-2v" href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a> &bullet; <a class="fr-ml-2v" href="https://github.com/Septhime/PIIL-EMIL" target="_blank">Code source</a>
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -65,7 +65,7 @@
   /**
   * Container des logos partenaires secondaires
   */
-  box-shadow: 0 -2px 0 0 var(--border-plain-blue-france), inset 0 -1px 0 0 var(--border-default-grey);
+  box-shadow: inset 0 2px 0 0 var(--border-plain-blue-france), inset 0 -1px 0 0 var(--border-default-grey);
 }
 
 .fr-footer__body {
@@ -194,7 +194,7 @@
 
 .fr-footer__top {
   display: flex;
-  margin: -2.5rem 0 1rem;
+  margin: -2.375rem 0 1rem;
   padding: 2rem 0 1rem;
   background-color: var(--background-alt-grey);
 
@@ -494,6 +494,7 @@
   .fr-footer__brand.fr-enlarge-link {
     margin: -1rem 0 -1rem -1rem;
     padding: 1rem;
+    align-self: flex-start;
   }
 
   .fr-footer__content {
@@ -501,7 +502,7 @@
   }
 
   .fr-footer__top {
-    margin: -2.5rem 0 2.5rem;
+    margin: -2.375rem 0 2.5rem;
   }
 
   .fr-footer__bottom-item {
@@ -572,7 +573,7 @@
   }
 
   .fr-footer {
-    box-shadow: 0 -2px 0 0 #000091, inset 0 -1px 0 0 #ddd;
+    box-shadow: inset 0 2px 0 0 #000091, inset 0 -1px 0 0 #ddd;
   }
 
   .fr-footer__content-link,

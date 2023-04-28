@@ -1,4 +1,4 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 (function () {
   'use strict';
@@ -7,7 +7,7 @@
     prefix: 'fr',
     namespace: 'dsfr',
     organisation: '@gouvfr',
-    version: '1.7.2'
+    version: '1.9.2'
   };
 
   var api = window[config.namespace];
@@ -39,13 +39,13 @@
       var header = this.queryParentSelector(HeaderSelector.HEADER);
       this.toolsLinks = header.querySelector(HeaderSelector.TOOLS_LINKS);
       this.menuLinks = header.querySelector(HeaderSelector.MENU_LINKS);
-      var copySuffix = '_copy';
+      var copySuffix = '-mobile';
 
       var toolsHtml = this.toolsLinks.innerHTML.replace(/  +/g, ' ');
       var menuHtml = this.menuLinks.innerHTML.replace(/  +/g, ' ');
       // Pour éviter de dupliquer des id, on ajoute un suffixe aux id et aria-controls duppliqués.
-      var toolsHtmlDuplicateId = toolsHtml.replace(/ id="(.*?)"/gm, ' id="$1' + copySuffix + '"');
-      toolsHtmlDuplicateId = toolsHtmlDuplicateId.replace(/ aria-controls="(.*?)"/gm, ' aria-controls="$1' + copySuffix + '"');
+      var toolsHtmlDuplicateId = toolsHtml.replace(/(<nav[.\s\S]*-translate [.\s\S]*) id="(.*?)"([.\s\S]*<\/nav>)/gm, '$1 id="$2' + copySuffix + '"$3');
+      toolsHtmlDuplicateId = toolsHtmlDuplicateId.replace(/(<nav[.\s\S]*-translate [.\s\S]*) aria-controls="(.*?)"([.\s\S]*<\/nav>)/gm, '$1 aria-controls="$2' + copySuffix + '"$3');
 
       if (toolsHtmlDuplicateId === menuHtml) { return; }
 
@@ -68,7 +68,8 @@
 
   var HeaderModal = /*@__PURE__*/(function (superclass) {
     function HeaderModal () {
-      superclass.apply(this, arguments);
+      superclass.call(this);
+      this._clickHandling = this.clickHandler.bind(this);
     }
 
     if ( superclass ) HeaderModal.__proto__ = superclass;
@@ -103,6 +104,7 @@
         if (button.isPrimary && id) { break; }
       }
       this.setAttribute('aria-labelledby', id);
+      this.listen('click', this._clickHandling, { capture: true });
     };
 
     HeaderModal.prototype.unqualify = function unqualify () {
@@ -110,6 +112,14 @@
       if (modal) { modal.conceal(); }
       this.removeAttribute('role');
       this.removeAttribute('aria-labelledby');
+      this.unlisten('click', this._clickHandling, { capture: true });
+    };
+
+    HeaderModal.prototype.clickHandler = function clickHandler (e) {
+      if (e.target.matches('a, button') && !e.target.matches('[aria-controls]') && !e.target.matches(api.core.DisclosureSelector.PREVENT_CONCEAL)) {
+        var modal = this.element.getInstance('Modal');
+        modal.conceal();
+      }
     };
 
     Object.defineProperties( HeaderModal, staticAccessors );
@@ -121,10 +131,10 @@
     HeaderLinks: HeaderLinks,
     HeaderModal: HeaderModal,
     HeaderSelector: HeaderSelector,
-    doc: 'https://gouvfr.atlassian.net/wiki/spaces/DB/pages/222789846/En-t+te+-+Header'
+    doc: 'https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/en-tete'
   };
 
-  api.internals.register(api.header.HeaderSelector.BUTTONS, api.header.HeaderLinks);
+  api.internals.register(api.header.HeaderSelector.TOOLS_LINKS, api.header.HeaderLinks);
   api.internals.register(api.header.HeaderSelector.MODALS, api.header.HeaderModal);
 
 })();

@@ -1,12 +1,22 @@
 <?php
 
+echo '<!-- Conçu par Timothée Varin grâce au DSFR - CAVL de Normandie -->
+<!-- La police "Marianne" utilisé dans ce projet est la police "Open Sans" de Steve Matteson renommée en celui-ci -->
+<!-- La police "Spectral" utilisé dans ce projet est la police "EB Garamond" de Georg Duffner & Octavio Pardo renommée en celui-ci -->
+<!-- Le DSFR n\'est en aucun cas une création de Timothée Varin et nous ne l\'approprions pas. -->
+<!-- En aucun cas, la création de ce site est à but trompeur ou frauduleux et elle n\'est pas à usage commercial. -->';
+
+$title = "Espace des membres d'instances lycéennes";
+
+$footer = "";
+
 if (isset($_COOKIE["account"])) {
     if ($_COOKIE["account"] > 7 or $_COOKIE["account"] < 0) {
-        header("Location: ../login.php");
+        header("Location: https://cavl.septhime.fr/platform/compte/login.php");
         exit();
     }
 } else {
-    header("Location: ../login.php");
+    header("Location: https://cavl.septhime.fr/platform/compte/login.php");
     exit();
 }
 
@@ -20,12 +30,12 @@ $r = [
 ];
 
 $name = [
-    1 => 'M. ...',
-    2 => 'M. ...',
-    3 => 'M. ...',
-    4 => 'Timothée',
-    5 => 'Timothée',
-    6 => 'Timothée',
+    1 => 'M./Mme. ...',
+    2 => 'M./Mme. ...',
+    3 => 'M./Mme. ...',
+    4 => '... ...',
+    5 => 'Timothée Varin',
+    6 => 'Timothée Varin',
 ];
 
 ?>

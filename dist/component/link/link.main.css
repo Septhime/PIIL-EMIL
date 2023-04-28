@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -29,6 +29,10 @@
   --icon-size: 1rem;
   margin-right: -0.125rem;
   margin-left: 0.5rem;
+}
+
+.fr-link[target=_blank]::before {
+  content: none;
 }
 
 .fr-link--icon-left[class^=fr-icon-],
@@ -83,6 +87,82 @@
   content: none;
 }
 
+.fr-link--xs {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  padding: 0 0;
+}
+
+.fr-link--xs[target=_blank] {
+  overflow: initial;
+  max-width: 100%;
+  max-height: none;
+}
+
+.fr-link--xs[target=_blank]::after {
+  content: "";
+
+  --icon-size: 0.75rem;
+  margin-right: -0.09375rem;
+  margin-left: 0.5rem;
+}
+
+.fr-link--xs[target=_blank]::before {
+  content: none;
+}
+
+.fr-link--xs.fr-link--icon-left[class^=fr-icon-],
+.fr-link--xs.fr-link--icon-left[class*=" fr-icon-"],
+.fr-link--xs.fr-link--icon-left[class^=fr-fi-],
+.fr-link--xs.fr-link--icon-left[class*=" fr-fi-"] {
+  overflow: initial;
+  max-width: 100%;
+  max-height: none;
+}
+
+.fr-link--xs.fr-link--icon-left[class^=fr-icon-]::before,
+.fr-link--xs.fr-link--icon-left[class*=" fr-icon-"]::before,
+.fr-link--xs.fr-link--icon-left[class^=fr-fi-]::before,
+.fr-link--xs.fr-link--icon-left[class*=" fr-fi-"]::before {
+  --icon-size: 0.75rem;
+  margin-left: -0.09375rem;
+  margin-right: 0.5rem;
+}
+
+.fr-link--xs.fr-link--icon-right[class^=fr-icon-],
+.fr-link--xs.fr-link--icon-right[class*=" fr-icon-"],
+.fr-link--xs.fr-link--icon-right[class^=fr-fi-],
+.fr-link--xs.fr-link--icon-right[class*=" fr-fi-"] {
+  overflow: initial;
+  max-width: 100%;
+  max-height: none;
+}
+
+.fr-link--xs.fr-link--icon-right[class^=fr-icon-]::after,
+.fr-link--xs.fr-link--icon-right[class*=" fr-icon-"]::after,
+.fr-link--xs.fr-link--icon-right[class^=fr-fi-]::after,
+.fr-link--xs.fr-link--icon-right[class*=" fr-fi-"]::after {
+  content: "";
+
+  --icon-size: 0.75rem;
+  margin-right: -0.09375rem;
+  margin-left: 0.5rem;
+}
+
+.fr-link--xs.fr-link--icon-right[class^=fr-icon-]::before,
+.fr-link--xs.fr-link--icon-right[class*=" fr-icon-"]::before,
+.fr-link--xs.fr-link--icon-right[class^=fr-fi-]::before,
+.fr-link--xs.fr-link--icon-right[class*=" fr-fi-"]::before {
+  content: none;
+}
+
+.fr-link--xs[class^=fr-icon-]:not([class*=fr-link--icon-])::before,
+.fr-link--xs[class*=" fr-icon-"]:not([class*=fr-link--icon-])::before,
+.fr-link--xs[class^=fr-fi-]:not([class*=fr-link--icon-])::before,
+.fr-link--xs[class*=" fr-fi-"]:not([class*=fr-link--icon-])::before {
+  content: none;
+}
+
 .fr-link--sm {
   font-size: 0.875rem;
   line-height: 1.5rem;
@@ -101,6 +181,10 @@
   --icon-size: 1rem;
   margin-right: -0.125rem;
   margin-left: 0.5rem;
+}
+
+.fr-link--sm[target=_blank]::before {
+  content: none;
 }
 
 .fr-link--sm.fr-link--icon-left[class^=fr-icon-],
@@ -173,6 +257,10 @@
   --icon-size: 1.5rem;
   margin-right: -0.1875rem;
   margin-left: 0.5rem;
+}
+
+.fr-link--lg[target=_blank]::before {
+  content: none;
 }
 
 .fr-link--lg.fr-link--icon-left[class^=fr-icon-],

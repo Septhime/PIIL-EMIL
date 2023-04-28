@@ -1,46 +1,13 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
 /* ¯¯¯¯¯¯¯¯¯ *\
   CHECKBOX
 \* ˍˍˍˍˍˍˍˍˍ */
-
-/**
- * L'input de type checkbox avec son label est contenu dans un groupe
- * Ce groupe contient également les textes de validation, d'erreur et d'aide (optionnels)
- */
 .fr-checkbox-group {
   position: relative;
-
-  /**
-   * On cache l'input de type checkbox pour le styler via le label
-   */
-
-  /**
-   * Dans le cas d'un fieldset, on supprime l'espacement du premier groupe
-   */
-
-  /**
-   * Dans le cas d'un fieldset, on supprime l'espacement du dernier groupe
-   */
-
-  /**
-   * Texte de validation et d'erreur
-   */
-
-  /**
-   * Modificateur de taille sm
-   */
-
-  /**
-   * Modificateur pour gérer l'état erreur
-   */
-
-  /**
-   * Modificateur pour gérer l'état validé
-   */
   /**
   * On cache l'input de type checkbox pour le styler via le label
   */
@@ -57,13 +24,9 @@
 .fr-checkbox-group input[type=checkbox] {
   position: absolute;
   margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
   opacity: 0;
-  top: 50%;
-  transform: translateY(-50%);
-
-  /**
-   * On applique un display grid sur le label afin de gérer le positionnement des élements
-   */
   /**
   * On applique les styles au pseudo élément before du label quand l'input présente
   * un état check ou active
@@ -76,7 +39,6 @@
 
 .fr-checkbox-group input[type=checkbox] + label {
   position: relative;
-  padding: 0.75rem 0;
   -webkit-tap-highlight-color: transparent;
   display: flex;
   flex-direction: row;
@@ -84,10 +46,6 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   margin-left: 2rem;
-
-  /**
-  * Style du texte d'aide dans le label
-  */
 
   /**
   * On ajoute l'icône check-line en taille sm via un pseudo element before
@@ -105,7 +63,6 @@
   position: absolute;
   top: 0;
   left: -2rem;
-  margin-top: 0.75rem;
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 0.5rem;
@@ -116,44 +73,45 @@
   box-shadow: inset 0 0 0 1px var(--border-action-high-grey);
 }
 
-.fr-checkbox-group:first-child {
-  margin-top: -0.75rem;
+.fr-checkbox-group--sm input[type=checkbox] {
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
 }
 
-.fr-checkbox-group:last-child {
-  margin-bottom: -0.75rem;
-}
-
-.fr-checkbox-group .fr-error-text,
-.fr-checkbox-group .fr-valid-text {
-  margin-top: 0.25rem;
+.fr-checkbox-group--sm input[type=checkbox] + label {
+  margin-left: 1.5rem;
 }
 
 .fr-checkbox-group--sm input[type=checkbox] + label::before {
   width: 1rem;
   height: 1rem;
-  margin-top: 1rem;
-  left: -1.75rem;
+  margin-top: 0.25rem;
+  left: -1.5rem;
 }
 
 .fr-checkbox-group--error::before {
   content: "";
   position: absolute;
-  top: 0.75rem;
-  left: -0.5rem;
+  top: 0;
+  left: -0.75rem;
   width: 2px;
-  height: 1.5rem;
+  height: 100%;
   box-shadow: inset 2px 0 0 0 var(--border-plain-error);
 }
 
 .fr-checkbox-group--valid::before {
   content: "";
   position: absolute;
-  top: 0.75rem;
-  left: -0.5rem;
+  top: 0;
+  left: -0.75rem;
   width: 2px;
-  height: 1.5rem;
+  height: 100%;
   box-shadow: inset 2px 0 0 0 var(--border-plain-success);
+}
+
+.fr-checkbox-group .fr-message:first-child {
+  margin-top: 0.5rem;
 }
 
 /**
@@ -172,8 +130,8 @@
   background-image: var(--data-uri-svg);
 }
 
-:root:where([data-fr-theme="dark"]) .fr-checkbox-group input[type=checkbox]:checked + label::before,
-:root:where([data-fr-theme="dark"]) .fr-checkbox-group input[type=checkbox]:active:not(:disabled) + label::before {
+:root:where([data-fr-theme=dark]) .fr-checkbox-group input[type=checkbox]:checked + label::before,
+:root:where([data-fr-theme=dark]) .fr-checkbox-group input[type=checkbox]:active:not(:disabled) + label::before {
   --data-uri-svg: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23161616' d='M10 15.17l9.2-9.2 1.4 1.42L10 18l-6.36-6.36 1.4-1.42z'/></svg>");
 }
 
@@ -192,7 +150,7 @@
   background-image: var(--data-uri-svg);
 }
 
-:root:where([data-fr-theme="dark"]) .fr-checkbox-group input[type=checkbox]:disabled:checked + label::before {
+:root:where([data-fr-theme=dark]) .fr-checkbox-group input[type=checkbox]:disabled:checked + label::before {
   --data-uri-svg: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23666' d='M10 15.17l9.2-9.2 1.4 1.42L10 18l-6.36-6.36 1.4-1.42z'/></svg>");
 }
 
@@ -203,15 +161,23 @@
 .fr-checkbox-group--valid input[type=checkbox] + label {
   color: var(--text-default-success);
 }
+
+.fr-fieldset .fr-fieldset__content .fr-checkbox-group--sm label::before {
+  margin-top: 1rem;
+}
+
 @media (min-width: 36em) {
   /*! media sm */
 }
+
 @media (min-width: 48em) {
   /*! media md */
 }
+
 @media (min-width: 62em) {
   /*! media lg */
 }
+
 @media (min-width: 78em) {
   /*! media xl */
 }

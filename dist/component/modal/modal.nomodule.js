@@ -1,4 +1,4 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 (function () {
   'use strict';
@@ -7,7 +7,7 @@
     prefix: 'fr',
     namespace: 'dsfr',
     organisation: '@gouvfr',
-    version: '1.7.2'
+    version: '1.9.2'
   };
 
   var api = window[config.namespace];
@@ -174,7 +174,7 @@
     if (!this.isTrapping) { return; }
     this.isTrapping = false;
     var focusables = this.focusables;
-    if (focusables.length) { focusables[0].focus(); }
+    if (focusables.length && focusables.indexOf(document.activeElement) === -1) { focusables[0].focus(); }
     this.element.setAttribute('aria-modal', true);
     window.addEventListener('keydown', this.handling);
     document.body.addEventListener('focus', this.focusing, true);

@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -2844,6 +2844,12 @@
 /* ¯¯¯¯¯¯¯¯¯ *\
   ICON COMMUNICATION
 \* ˍˍˍˍˍˍˍˍˍ */
+.fr-icon-align-left::before,
+.fr-icon-align-left::after {
+  -webkit-mask-image: url("../../icons/media/align-left.svg");
+  mask-image: url("../../icons/media/align-left.svg");
+}
+
 .fr-icon-camera-fill::before,
 .fr-icon-camera-fill::after {
   -webkit-mask-image: url("../../icons/media/camera-fill.svg");
@@ -2890,6 +2896,12 @@
 .fr-icon-film-line::after {
   -webkit-mask-image: url("../../icons/media/film-line.svg");
   mask-image: url("../../icons/media/film-line.svg");
+}
+
+.fr-icon-fullscreen-line::before,
+.fr-icon-fullscreen-line::after {
+  -webkit-mask-image: url("../../icons/media/fullscreen-line.svg");
+  mask-image: url("../../icons/media/fullscreen-line.svg");
 }
 
 .fr-icon-gallery-fill::before,
@@ -3034,12 +3046,6 @@
 .fr-icon-stop-circle-line::after {
   -webkit-mask-image: url("../../icons/media/stop-circle-line.svg");
   mask-image: url("../../icons/media/stop-circle-line.svg");
-}
-
-.fr-icon-transcription::before,
-.fr-icon-transcription::after {
-  -webkit-mask-image: url("../../icons/media/transcription.svg");
-  mask-image: url("../../icons/media/transcription.svg");
 }
 
 .fr-icon-volume-down-fill::before,
@@ -3576,6 +3582,12 @@
   mask-image: url("../../icons/system/fr--arrow-left-s-line-double.svg");
 }
 
+.fr-icon-arrow-right-down-circle-fill::before,
+.fr-icon-arrow-right-down-circle-fill::after {
+  -webkit-mask-image: url("../../icons/system/fr--arrow-right-down-circle-fill.svg");
+  mask-image: url("../../icons/system/fr--arrow-right-down-circle-fill.svg");
+}
+
 .fr-icon-arrow-right-s-last-line::before,
 .fr-icon-arrow-right-s-last-line::after {
   -webkit-mask-image: url("../../icons/system/fr--arrow-right-s-last-line.svg");
@@ -3586,6 +3598,24 @@
 .fr-icon-arrow-right-s-line-double::after {
   -webkit-mask-image: url("../../icons/system/fr--arrow-right-s-line-double.svg");
   mask-image: url("../../icons/system/fr--arrow-right-s-line-double.svg");
+}
+
+.fr-icon-arrow-right-up-circle-fill::before,
+.fr-icon-arrow-right-up-circle-fill::after {
+  -webkit-mask-image: url("../../icons/system/fr--arrow-right-up-circle-fill.svg");
+  mask-image: url("../../icons/system/fr--arrow-right-up-circle-fill.svg");
+}
+
+.fr-icon-capslock-line::before,
+.fr-icon-capslock-line::after {
+  -webkit-mask-image: url("../../icons/system/fr--capslock-line.svg");
+  mask-image: url("../../icons/system/fr--capslock-line.svg");
+}
+
+.fr-icon-equal-circle-fill::before,
+.fr-icon-equal-circle-fill::after {
+  -webkit-mask-image: url("../../icons/system/fr--equal-circle-fill.svg");
+  mask-image: url("../../icons/system/fr--equal-circle-fill.svg");
 }
 
 .fr-icon-error-fill::before,

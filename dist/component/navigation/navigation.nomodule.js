@@ -1,4 +1,4 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 (function () {
   'use strict';
@@ -7,7 +7,7 @@
     prefix: 'fr',
     namespace: 'dsfr',
     organisation: '@gouvfr',
-    version: '1.7.2'
+    version: '1.9.2'
   };
 
   var api = window[config.namespace];
@@ -101,21 +101,26 @@
       superclass.prototype.init.call(this);
       this.clicked = false;
       this.out = false;
-      this.listen('focusout', this.focusOut.bind(this));
-      this.listen('mousedown', this.down.bind(this));
+      this.listen('focusout', this.focusOutHandler.bind(this));
+      this.listen('mousedown', this.mouseDownHandler.bind(this));
+      this.listen('click', this.clickHandler.bind(this), { capture: true });
     };
 
     Navigation.prototype.validate = function validate (member) {
       return member.element.node.matches(NavigationSelector.COLLAPSE);
     };
 
-    Navigation.prototype.down = function down (e) {
+    Navigation.prototype.mouseDownHandler = function mouseDownHandler (e) {
       if (!this.isBreakpoint(api.core.Breakpoints.LG) || this.index === -1 || !this.current) { return; }
       this.position = this.current.node.contains(e.target) ? NavigationMousePosition.INSIDE : NavigationMousePosition.OUTSIDE;
       this.requestPosition();
     };
 
-    Navigation.prototype.focusOut = function focusOut (e) {
+    Navigation.prototype.clickHandler = function clickHandler (e) {
+      if (e.target.matches('a, button') && !e.target.matches('[aria-controls]') && !e.target.matches(api.core.DisclosureSelector.PREVENT_CONCEAL)) { this.index = -1; }
+    };
+
+    Navigation.prototype.focusOutHandler = function focusOutHandler (e) {
       if (!this.isBreakpoint(api.core.Breakpoints.LG)) { return; }
       this.out = true;
       this.requestPosition();

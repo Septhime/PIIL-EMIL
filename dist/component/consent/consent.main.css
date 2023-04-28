@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -56,35 +56,14 @@
   margin-bottom: -1rem;
 }
 
-/**
-* Consent service correspond à un bloc de finalité (titre, radios, description)
-**/
 .fr-consent-service {
   position: relative;
-
-  /**
-  * Nom du service
-  **/
-
-  /**
-  * Description du service
-  **/
-
-  /**
-  * Bloc dépliable, contient des sous services
-  **/
-
-  /**
-  * Conteneur des radio-group
-  **/
-
-  /**
-  * Groupe de radios avec séparateur
-  **/
 }
 
 .fr-consent-service > .fr-fieldset {
   padding: 0 0 1.25rem;
+  margin: 0;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -152,6 +131,8 @@
 }
 
 .fr-consent-service__radios {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -171,8 +152,8 @@
   width: 1px;
   height: 1.5rem;
   position: absolute;
+  top: 0;
   left: calc(-1.5rem - 1px);
-  top: 0.75rem;
 }
 
 .fr-consent-service .fr-consent-service__collapse-btn {
@@ -191,15 +172,20 @@
   --hover-tint: var(--idle);
   --active-tint: var(--idle);
   background-image: var(--underline-img), var(--underline-img);
-  background-position: var(--underline-x) 100%, var(--underline-x) calc(100% - 0.0625em);
+  background-position: var(--underline-x) 100%, var(--underline-x) calc(100% - var(--underline-thickness));
   background-repeat: no-repeat, no-repeat;
   transition: background-size 0s;
-  background-size: var(--underline-hover-width) 0.125em, var(--underline-idle-width) 0.0625em;
+  background-size: var(--underline-hover-width) calc(var(--underline-thickness) * 2), var(--underline-idle-width) var(--underline-thickness);
 }
 
 .fr-consent-service .fr-consent-service__collapse-btn::before,
 .fr-consent-service .fr-consent-service__collapse-btn::after {
   display: block;
+}
+
+.fr-consent-service .fr-consent-service__collapse-btn:hover,
+.fr-consent-service .fr-consent-service__collapse-btn:active {
+  --underline-hover-width: var(--underline-max-width);
 }
 
 .fr-consent-service .fr-consent-service__collapse-btn::after {
@@ -211,9 +197,6 @@
   transform: rotate(-180deg);
 }
 
-/**
-* fr-consent-services contient les sous services
-**/
 .fr-consent-services {
   margin-top: 0.5rem;
   margin-bottom: -0.5rem;
@@ -331,7 +314,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 0;
     position: absolute;
     top: 1.25rem;
     right: 0;
@@ -343,7 +325,7 @@
   }
 
   .fr-consent-services .fr-consent-service__desc {
-    --text-spacing: 0.25rem 0 0.25rem 0;
+    --text-spacing: 0.25rem 0 0.5rem 0;
   }
 }
 

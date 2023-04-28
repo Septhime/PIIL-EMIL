@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -178,11 +178,10 @@
   display: block;
   order: 3;
   position: relative;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: auto;
   padding: 1rem;
-  transform: translate(-100%);
   margin-right: -100%;
   flex: 0 0 100%;
   transition: visibility 0.3s, transform 0.3s;
@@ -207,11 +206,11 @@
 }
 
 .fr-tabs__panel--direction-end {
-  transform: translate(0%);
+  transform: translate(100%);
 }
 
 .fr-tabs__panel--direction-start {
-  transform: translate(-200%);
+  transform: translate(-100%);
 }
 
 .fr-tabs__panel:not(.fr-tabs__panel--selected) {
@@ -264,7 +263,7 @@
   box-shadow: inset 2rem 0 1.5rem -2rem #161616, inset -2rem 0 1.5rem -2rem #161616;
 }
 
-:root:where([data-fr-theme="dark"]) .fr-tabs__shadow > .fr-tabs__list::before {
+:root:where([data-fr-theme=dark]) .fr-tabs__shadow > .fr-tabs__list::before {
   opacity: 1;
 }
 

@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -47,10 +47,6 @@
   -webkit-mask-image: url("../../icons/system/download-line.svg");
   mask-image: url("../../icons/system/download-line.svg");
   content: "";
-}
-
-.fr-download .fr-download__link::before {
-  content: none;
 }
 
 .fr-download__desc {

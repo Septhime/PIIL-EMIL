@@ -1,10 +1,10 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 const config = {
   prefix: 'fr',
   namespace: 'dsfr',
   organisation: '@gouvfr',
-  version: '1.7.2'
+  version: '1.9.2'
 };
 
 const api = window[config.namespace];
@@ -30,6 +30,11 @@ const SchemeEmission = {
   SCHEME: api.internals.ns.emission('scheme', 'scheme'),
   THEME: api.internals.ns.emission('scheme', 'theme'),
   ASK: api.internals.ns.emission('scheme', 'ask')
+};
+
+const SchemeEvent = {
+  SCHEME: api.internals.ns.event('scheme'),
+  THEME: api.internals.ns.event('theme')
 };
 
 class Scheme extends api.core.Instance {
@@ -137,6 +142,7 @@ class Scheme extends api.core.Instance {
       localStorage.setItem('scheme', value);
     }
     this.setAttribute(SchemeAttribute.SCHEME, value);
+    this.dispatch(SchemeEvent.SCHEME, { scheme: this._scheme });
   }
 
   get theme () {
@@ -151,6 +157,8 @@ class Scheme extends api.core.Instance {
         this._theme = value;
         this.setAttribute(SchemeAttribute.THEME, value);
         this.descend(SchemeEmission.THEME, value);
+        this.dispatch(SchemeEvent.THEME, { theme: this._theme });
+        document.documentElement.style.colorScheme = value === SchemeTheme.DARK ? 'dark' : '';
         break;
     }
   }
@@ -196,7 +204,8 @@ api.scheme = {
   SchemeValue: SchemeValue,
   SchemeSelector: SchemeSelector,
   SchemeEmission: SchemeEmission,
-  SchemeTheme: SchemeTheme
+  SchemeTheme: SchemeTheme,
+  SchemeEvent: SchemeEvent
 };
 
 api.internals.register(api.scheme.SchemeSelector.SCHEME, api.scheme.Scheme);

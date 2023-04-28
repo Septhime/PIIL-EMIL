@@ -1,10 +1,10 @@
-/*! DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
+/*! DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions) */
 
 const config = {
   prefix: 'fr',
   namespace: 'dsfr',
   organisation: '@gouvfr',
-  version: '1.7.2'
+  version: '1.9.2'
 };
 
 const api = window[config.namespace];
@@ -134,7 +134,7 @@ class ToggleInput extends api.core.Instance {
   }
 
   get isChecked () {
-    return this.hasAttribute('checked');
+    return this.node.checked;
   }
 }
 
@@ -355,7 +355,7 @@ class FocusTrap {
     if (!this.isTrapping) return;
     this.isTrapping = false;
     const focusables = this.focusables;
-    if (focusables.length) focusables[0].focus();
+    if (focusables.length && focusables.indexOf(document.activeElement) === -1) focusables[0].focus();
     this.element.setAttribute('aria-modal', true);
     window.addEventListener('keydown', this.handling);
     document.body.addEventListener('focus', this.focusing, true);
@@ -574,6 +574,137 @@ api.internals.register(api.modal.ModalSelector.MODAL, api.modal.Modal);
 api.internals.register(api.modal.ModalSelector.BODY, api.modal.ModalBody);
 api.internals.register(api.core.RootSelector.ROOT, api.modal.ModalsGroup);
 
+const PasswordEmission = {
+  TOGGLE: api.internals.ns.emission('password', 'toggle'),
+  ADJUST: api.internals.ns.emission('password', 'adjust')
+};
+
+class PasswordToggle extends api.core.Instance {
+  static get instanceClassName () {
+    return 'PasswordToggle';
+  }
+
+  init () {
+    this.listen('click', this.toggle.bind(this));
+    this.ascend(PasswordEmission.ADJUST, this.width);
+    this.isSwappingFont = true;
+    this._isChecked = this.isChecked;
+  }
+
+  get width () {
+    const style = getComputedStyle(this.node.parentNode);
+    return parseInt(style.width);
+  }
+
+  get isChecked () {
+    return this.node.checked;
+  }
+
+  set isChecked (value) {
+    this._isChecked = value;
+    this.ascend(PasswordEmission.TOGGLE, value);
+  }
+
+  toggle () {
+    this.isChecked = !this._isChecked;
+    // this.node.checked = this.isChecked;
+  }
+
+  swapFont (families) {
+    this.ascend(PasswordEmission.ADJUST, this.width);
+  }
+}
+
+class Password extends api.core.Instance {
+  static get instanceClassName () {
+    return 'Password';
+  }
+
+  init () {
+    this.addAscent(PasswordEmission.TOGGLE, this.toggle.bind(this));
+    this.addAscent(PasswordEmission.ADJUST, this.adjust.bind(this));
+  }
+
+  toggle (value) {
+    this.descend(PasswordEmission.TOGGLE, value);
+  }
+
+  adjust (value) {
+    this.descend(PasswordEmission.ADJUST, value);
+  }
+}
+
+const PasswordSelector = {
+  PASSWORD: api.internals.ns.selector('password'),
+  INPUT: api.internals.ns.selector('password__input'),
+  LABEL: api.internals.ns.selector('password__label'),
+  TOOGLE: `${api.internals.ns.selector('password__checkbox')} input[type="checkbox"]`
+};
+
+class PasswordInput extends api.core.Instance {
+  static get instanceClassName () {
+    return 'PasswordInput';
+  }
+
+  init () {
+    this.addDescent(PasswordEmission.TOGGLE, this.toggle.bind(this));
+    this._isRevealed = this.hasAttribute('type') === 'password';
+    this.listen('keydown', this.capslock.bind(this)); // for capslock enabled
+    this.listen('keyup', this.capslock.bind(this)); // for capslock desabled
+  }
+
+  toggle (value) {
+    this.isRevealed = value;
+    this.setAttribute('type', value ? 'text' : 'password');
+  }
+
+  get isRevealed () {
+    return this._isRevealed;
+  }
+
+  capslock (event) {
+    if (event && typeof event.getModifierState !== 'function') return;
+    if (event.getModifierState('CapsLock')) {
+      this.node.parentNode.setAttribute(api.internals.ns.attr('capslock'), '');
+    } else {
+      this.node.parentNode.removeAttribute(api.internals.ns.attr('capslock'));
+    }
+  }
+
+  set isRevealed (value) {
+    this._isRevealed = value;
+    this.setAttribute('type', value ? 'text' : 'password');
+  }
+}
+
+class PasswordLabel extends api.core.Instance {
+  static get instanceClassName () {
+    return 'PasswordLabel';
+  }
+
+  init () {
+    this.addDescent(PasswordEmission.ADJUST, this.adjust.bind(this));
+  }
+
+  adjust (value) {
+    const valueREM = Math.ceil(value / 16);
+    this.node.style.paddingRight = valueREM + 'rem';
+  }
+}
+
+api.password = {
+  Password: Password,
+  PasswordToggle: PasswordToggle,
+  PasswordSelector: PasswordSelector,
+  PasswordInput: PasswordInput,
+  PasswordLabel: PasswordLabel
+};
+
+api.internals.register(api.password.PasswordSelector.INPUT, api.password.PasswordInput);
+api.internals.register(api.password.PasswordSelector.PASSWORD, api.password.Password);
+api.internals.register(api.password.PasswordSelector.TOOGLE, api.password.PasswordToggle);
+api.internals.register(api.password.PasswordSelector.LABEL, api.password.PasswordLabel);
+
 const NavigationSelector = {
   NAVIGATION: api.internals.ns.selector('nav'),
   COLLAPSE: `${api.internals.ns.selector('nav__item')} > ${api.internals.ns.selector('collapse')}`,
@@ -640,21 +771,26 @@ class Navigation extends api.core.CollapsesGroup {
     super.init();
     this.clicked = false;
     this.out = false;
-    this.listen('focusout', this.focusOut.bind(this));
-    this.listen('mousedown', this.down.bind(this));
+    this.listen('focusout', this.focusOutHandler.bind(this));
+    this.listen('mousedown', this.mouseDownHandler.bind(this));
+    this.listen('click', this.clickHandler.bind(this), { capture: true });
   }
 
   validate (member) {
     return member.element.node.matches(NavigationSelector.COLLAPSE);
   }
 
-  down (e) {
+  mouseDownHandler (e) {
     if (!this.isBreakpoint(api.core.Breakpoints.LG) || this.index === -1 || !this.current) return;
     this.position = this.current.node.contains(e.target) ? NavigationMousePosition.INSIDE : NavigationMousePosition.OUTSIDE;
     this.requestPosition();
   }
 
-  focusOut (e) {
+  clickHandler (e) {
+    if (e.target.matches('a, button') && !e.target.matches('[aria-controls]') && !e.target.matches(api.core.DisclosureSelector.PREVENT_CONCEAL)) this.index = -1;
+  }
+
+  focusOutHandler (e) {
     if (!this.isBreakpoint(api.core.Breakpoints.LG)) return;
     this.out = true;
     this.requestPosition();
@@ -1168,15 +1304,54 @@ api.internals.register(api.table.TableSelector.TABLE, api.table.Table);
 api.internals.register(api.table.TableSelector.ELEMENT, api.table.TableElement);
 api.internals.register(api.table.TableSelector.CAPTION, api.table.TableCaption);
 
+const TagEvent = {
+  DISMISS: api.internals.ns.event('dismiss')
+};
+
+class TagDismissible extends api.core.Instance {
+  static get instanceClassName () {
+    return 'TagDismissible';
+  }
+
+  init () {
+    this.listen('click', this.click.bind(this));
+  }
+
+  click () {
+    this.focusClosest();
+
+    switch (api.mode) {
+      case api.Modes.ANGULAR:
+      case api.Modes.REACT:
+      case api.Modes.VUE:
+        this.request(this.verify.bind(this));
+        break;
+
+      default:
+        this.remove();
+    }
+
+    this.dispatch(TagEvent.DISMISS);
+  }
+
+  verify () {
+    if (document.body.contains(this.node)) api.inspector.warn(`a TagDismissible has just been dismissed and should be removed from the dom. In ${api.mode} mode, the api doesn't handle dom modification. An event ${TagEvent.DISMISS} is dispatched by the element to trigger the removal`);
+  }
+}
+
 const TagSelector = {
-  TAG_PRESSABLE: `${api.internals.ns.selector('tag')}[aria-pressed]`
+  PRESSABLE: `${api.internals.ns.selector('tag')}[aria-pressed]`,
+  DISMISSIBLE: `${api.internals.ns.selector('tag--dismiss')}`
 };
 
 api.tag = {
-  TagSelector: TagSelector
+  TagDismissible: TagDismissible,
+  TagSelector: TagSelector,
+  TagEvent: TagEvent
 };
 
-api.internals.register(api.tag.TagSelector.TAG_PRESSABLE, api.core.Toggle);
+api.internals.register(api.tag.TagSelector.PRESSABLE, api.core.Toggle);
+api.internals.register(api.tag.TagSelector.DISMISSIBLE, api.tag.TagDismissible);
 
 const DownloadSelector = {
   DOWNLOAD_ASSESS_FILE: `${api.internals.ns.attr.selector('assess-file')}`,
@@ -1207,7 +1382,7 @@ class AssessFile extends api.core.Instance {
     fetch(this.href, { method: 'HEAD', mode: 'cors' }).then(response => {
       this.length = response.headers.get('content-length') || -1;
       if (this.length === -1) {
-        console.warn('Impossible de détecter le poids du fichier ' + this.href + '\nErreur de récupération de l\'en-tête HTTP : "content-length"');
+        api.inspector.warn('File size unknown: ' + this.href + '\nUnable to get HTTP header: "content-length"');
       }
       this.update();
     });
@@ -1303,13 +1478,13 @@ class HeaderLinks extends api.core.Instance {
     const header = this.queryParentSelector(HeaderSelector.HEADER);
     this.toolsLinks = header.querySelector(HeaderSelector.TOOLS_LINKS);
     this.menuLinks = header.querySelector(HeaderSelector.MENU_LINKS);
-    const copySuffix = '_copy';
+    const copySuffix = '-mobile';
 
     const toolsHtml = this.toolsLinks.innerHTML.replace(/  +/g, ' ');
     const menuHtml = this.menuLinks.innerHTML.replace(/  +/g, ' ');
     // Pour éviter de dupliquer des id, on ajoute un suffixe aux id et aria-controls duppliqués.
-    let toolsHtmlDuplicateId = toolsHtml.replace(/ id="(.*?)"/gm, ' id="$1' + copySuffix + '"');
-    toolsHtmlDuplicateId = toolsHtmlDuplicateId.replace(/ aria-controls="(.*?)"/gm, ' aria-controls="$1' + copySuffix + '"');
+    let toolsHtmlDuplicateId = toolsHtml.replace(/(<nav[.\s\S]*-translate [.\s\S]*) id="(.*?)"([.\s\S]*<\/nav>)/gm, '$1 id="$2' + copySuffix + '"$3');
+    toolsHtmlDuplicateId = toolsHtmlDuplicateId.replace(/(<nav[.\s\S]*-translate [.\s\S]*) aria-controls="(.*?)"([.\s\S]*<\/nav>)/gm, '$1 aria-controls="$2' + copySuffix + '"$3');
 
     if (toolsHtmlDuplicateId === menuHtml) return;
 
@@ -1329,6 +1504,11 @@ ${api.header.doc}`);
 }
 
 class HeaderModal extends api.core.Instance {
+  constructor () {
+    super();
+    this._clickHandling = this.clickHandler.bind(this);
+  }
+
   static get instanceClassName () {
     return 'HeaderModal';
   }
@@ -1353,6 +1533,7 @@ class HeaderModal extends api.core.Instance {
       if (button.isPrimary && id) break;
     }
     this.setAttribute('aria-labelledby', id);
+    this.listen('click', this._clickHandling, { capture: true });
   }
 
   unqualify () {
@@ -1360,6 +1541,14 @@ class HeaderModal extends api.core.Instance {
     if (modal) modal.conceal();
     this.removeAttribute('role');
     this.removeAttribute('aria-labelledby');
+    this.unlisten('click', this._clickHandling, { capture: true });
+  }
+
+  clickHandler (e) {
+    if (e.target.matches('a, button') && !e.target.matches('[aria-controls]') && !e.target.matches(api.core.DisclosureSelector.PREVENT_CONCEAL)) {
+      const modal = this.element.getInstance('Modal');
+      modal.conceal();
+    }
   }
 }
 
@@ -1367,10 +1556,10 @@ api.header = {
   HeaderLinks: HeaderLinks,
   HeaderModal: HeaderModal,
   HeaderSelector: HeaderSelector,
-  doc: 'https://gouvfr.atlassian.net/wiki/spaces/DB/pages/222789846/En-t+te+-+Header'
+  doc: 'https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/en-tete'
 };
 
-api.internals.register(api.header.HeaderSelector.BUTTONS, api.header.HeaderLinks);
+api.internals.register(api.header.HeaderSelector.TOOLS_LINKS, api.header.HeaderLinks);
 api.internals.register(api.header.HeaderSelector.MODALS, api.header.HeaderModal);
 
 const DisplaySelector = {

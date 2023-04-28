@@ -19,7 +19,7 @@ if (isset($_COOKIE["account"])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title> - PREL</title>
+  <title>Fiche membre - EMIL</title>
   <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
   <link rel="apple-touch-icon" href="../../dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
   <link rel="icon" href="../../dist/favicon/favicon.svg" type="image/svg+xml">
@@ -152,9 +152,9 @@ if (isset($_COOKIE["account"])) {
             </div>
           </div>
           <div class="fr-header__service">
-            <a href="../" title="Accueil - PREL">
+            <a href="../" title="Accueil - <?php echo $title ?>">
               <p class="fr-header__service-title">
-                Plateforme de mise en relation des élu.e.s lycéen.ne.s
+                <?php echo $title ?>
                 <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
               </p>
             </a>
@@ -239,52 +239,82 @@ if (isset($_COOKIE["account"])) {
   </div>
 </header>
 <main role="main" id="content">
-  <div class="fr-container fr-my-7w">
+  <div class="fr-container fr-my-7w fr-px-3w">
     <div class="fr-grid-row--center fr-grid-row fr-grid-row--gutters fr-grid-row fr-grid-row--gutters">
       <div class="fr-col-12 fr-mx-5v">
-        <div>
-          <div class="fr-grid-row">
-            <div class="fr-col">
-              <figure class="fr-content-media fr-content-media--sm" role="group">
-                <div class="fr-content-media__img" style="text-align: right">
-                  <img class="fr-responsive-img fr-ratio-1x1" src="../../assets/img/placeholder.1x1.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" style="height: 200px;width: 200px;border-radius: 100%"/>
-                  <!-- L’alternative de l’image (attribut alt) doit toujours être présente, sa valeur peut-être vide (image n’apportant pas de sens supplémentaire au contexte) ou non (porteuse de texte ou apportant du sens) selon votre contexte -->
+        <div class="fr-grid-row fr-grid-row--center" style="text-align: center">
+          <div class="fr-col-12">
+            <figure class="fr-content-media fr-content-media--sm" role="group">
+              <div class="fr-content-media__img">
+                <img class="fr-responsive-img fr-ratio-1x1" src="../../assets/img/placeholder.1x1.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" style="height: 200px;width: 200px;border-radius: 100%"/>
+              </div>
+            </figure>
+          </div>
+          <div class="fr-col-12">
+            <h4>M./Mme. ... ...</h4>
+            <p>Seconde/Première/Terminale Générale/Technologique/Professionnel - LGT/LPO/LP/EREA ...</p>
+          </div>
+          <button class="fr-btn fr-icon-send-plane-fill fr-btn--icon-left fr-m-2v" id="button-767">
+            Envoyer un message
+          </button>
+          <button class="fr-btn fr-icon-eye-fill fr-btn--icon-left fr-m-2v" id="button-875">
+            Voir ses contributions
+          </button>
+          <div class="fr-col-12 fr-my-5v">
+            <hr class="fr-hr fr-hr--sm">
+          </div>
+          <div class="fr-grid-row fr-grid-row--gutters">
+            <div class="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-lg-3">
+              <div id="card-cse" class="fr-card fr-card--sm fr-card--shadow">
+                <div class="fr-card__body">
+                  <div class="fr-card__content">
+                    <h3>CSE</h3>
+                    <p class="fr-card__desc">Membre du CSE depuis ... 20..</p>
+                  </div>
                 </div>
-              </figure>
+              </div>
             </div>
-            <div class="fr-col fr-py-15v" style="text-align: left">
-              <h4>Timothée Varin</h4>
-              <p>Terminale Générale - LGT Pablo Neruda</p>
+            <div class="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-lg-3">
+              <div id="card-cnvl" class="fr-card fr-card--sm fr-card--shadow">
+                <div class="fr-card__body">
+                  <div class="fr-card__content">
+                    <h3>CNVL</h3>
+                    <p class="fr-card__desc">Membre du CNVL depuis ... 20..</p>
+                    <h4 class="fr-card__desc">Commissions:</h4>
+                    <p class="fr-card__desc">Inconnu</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-lg-3">
+              <div id="card-cavl" class="fr-card fr-card--sm fr-card--shadow">
+                <div class="fr-card__body">
+                  <div class="fr-card__content">
+                    <h3>CAVL</h3>
+                    <p class="fr-card__desc">Membre du CAVL de ...<br>depuis ... 20..</p>
+                    <h4 class="fr-card__desc">Commissions:</h4>
+                    <p class="fr-card__desc fr-m-0">Commissions Culture</p>
+                    <p class="fr-card__desc fr-m-0">Commissions Développement Durable</p>
+                    <p class="fr-card__desc fr-m-0">Commissions &Eacute;galité</p>
+                    <p class="fr-card__desc fr-m-0">Commissions Engagement</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fr-col-12 fr-col-sm-6 fr-col-md-4 fr-col-lg-3">
+              <div id="card-cvl" class="fr-card fr-card--sm fr-card--shadow">
+                <div class="fr-card__body">
+                  <div class="fr-card__content">
+                    <h3>CVL</h3>
+                    <p class="fr-card__desc">Membre du CVL<br>de LGT/LPO/EREA ...<br>depuis ... 20...</p>
+                    <h4 class="fr-card__desc">Autres Instances:</h4>
+                    <p class="fr-card__desc fr-m-0">Conseil d'Administration</p>
+                    <p class="fr-card__desc fr-m-0">Commission permanente</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <hr>
-          <h5>Vos informations</h5>
-          <div class="fr-input-group">
-            <label class="fr-label" for="text-input-search">
-              Adresse Mail
-            </label>
-            <a class="fr-input-wrap fr-icon-edit-box-line" data-fr-opened="false" aria-controls="modal-1033">
-              <input class="fr-input" disabled type="search" id="text-input-search" name="text-input-search" placeholder="varintimo@gmail.com">
-            </a>
-          </div>
-          <p>Groupe(s) de rattachement</p>
-          <ul>
-            <li>
-              <p style="margin: 0"><b>CAVL</b> (Normandie)</p>
-              <ul>
-                <li>
-                  <p style="margin: 0">Commission égalité</p>
-                </li>
-                <li>
-                  <p>Commission vie scolaire</p>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <p><b>CVL</b> (LGT Pablo Neruda)</p>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
@@ -293,54 +323,55 @@ if (isset($_COOKIE["account"])) {
 <footer class="fr-footer" role="contentinfo" id="footer-1267">
   <div class="fr-container">
     <div class="fr-footer__body">
-      <!--<div class="fr-footer__brand fr-enlarge-link">
-          <a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-              <p class="fr-logo">
-                  Ministère
-                  <br>de l'éducation
-                  <br>nationale
-                  <br>et de la jeunesse
-              </p>
-          </a>
-      </div>-->
+      <div class="fr-footer__brand fr-enlarge-link">
+        <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
+            <p class="fr-logo">
+                Ministère
+                <br>de l'éducation
+                <br>nationale
+                <br>et de la jeunesse
+            </p>
+        </a>-->
+        <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+          <img class="fr-footer__logo" style="width:8rem;" src="../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
+        </a>
+      </div>
       <div class="fr-footer__content">
-        <p class="fr-footer__content-desc">Lorem ipsum dolor sit amet, consectetur adipiscing, incididunt, ut labore et dolore magna aliqua. Vitae sapien pellentesque habitant morbi tristique senectus et. Diam maecenas sed enim ut. Accumsan lacus vel facilisis volutpat est. Ut aliquam purus sit amet luctus. Lorem ipsum dolor sit amet consectetur adipiscing elit ut.</p>
+        <p class="fr-footer__content-desc">Un espace collaboratif et utilitaire destiné aux membres des instances lycéennes afin de faire vivre la démocratie scolaire au mieux.</p>
         <!--<ul class="fr-footer__content-list">
-          <li class="fr-footer__content-item">
-            <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
-          </li>
-          <li class="fr-footer__content-item">
-            <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
-          </li>
-          <li class="fr-footer__content-item">
-            <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
-          </li>
-          <li class="fr-footer__content-item">
-            <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
-          </li>
+            <li class="fr-footer__content-item">
+                <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
+            </li>
+            <li class="fr-footer__content-item">
+                <a class="fr-footer__content-link" target="_blank" href="https://gouvernement.fr">gouvernement.fr</a>
+            </li>
+            <li class="fr-footer__content-item">
+                <a class="fr-footer__content-link" target="_blank" href="https://service-public.fr">service-public.fr</a>
+            </li>
+            <li class="fr-footer__content-item">
+                <a class="fr-footer__content-link" target="_blank" href="https://data.gouv.fr">data.gouv.fr</a>
+            </li>
         </ul>-->
       </div>
     </div>
     <div class="fr-footer__bottom">
       <ul class="fr-footer__bottom-list">
         <li class="fr-footer__bottom-item">
-          <a class="fr-footer__bottom-link" href="#">Plan du site</a>
+          <a class="fr-footer__bottom-link" href="../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
         </li>
         <li class="fr-footer__bottom-item">
-          <a class="fr-footer__bottom-link" href="#">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+          <a class="fr-footer__bottom-link" href="../../legal.html" target="_blank">Mentions légales</a>
         </li>
         <li class="fr-footer__bottom-item">
-          <a class="fr-footer__bottom-link" href="#">Mentions légales</a>
-        </li>
-        <li class="fr-footer__bottom-item">
-          <a class="fr-footer__bottom-link" href="#">Données personnelles</a>
+          <a class="fr-footer__bottom-link" href="../../privacy.html" target="_blank">Données personnelles</a>
         </li>
         <li class="fr-footer__bottom-item">
           <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
         </li>
       </ul>
       <div class="fr-footer__bottom-copy">
-        <p>Sauf mention contraire, tous les contenus de ce site sont sous <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a>
+        <p>Sauf mention contraire, tous les contenus de ce site sont sous
+          <a class="fr-mr-2v" href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" target="_blank">licence etalab-2.0</a> &bullet; <a class="fr-ml-2v" href="https://github.com/Septhime/PIIL-EMIL" target="_blank">Code source</a>
         </p>
       </div>
     </div>

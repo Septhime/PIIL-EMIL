@@ -1,5 +1,5 @@
 /*!
- * DSFR v1.7.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
+ * DSFR v1.9.2 | SPDX-License-Identifier: MIT | License-Filename: LICENSE.md | restricted use (see terms and conditions)
  */
 @charset "UTF-8";
 
@@ -1019,6 +1019,74 @@
   fill: var(--artwork-major-red-marianne) !important;
 }
 
+.fr-artwork-major--green-tilleul-verveine {
+  fill: var(--artwork-major-green-tilleul-verveine) !important;
+}
+
+.fr-artwork-major--green-bourgeon {
+  fill: var(--artwork-major-green-bourgeon) !important;
+}
+
+.fr-artwork-major--green-emeraude {
+  fill: var(--artwork-major-green-emeraude) !important;
+}
+
+.fr-artwork-major--green-menthe {
+  fill: var(--artwork-major-green-menthe) !important;
+}
+
+.fr-artwork-major--green-archipel {
+  fill: var(--artwork-major-green-archipel) !important;
+}
+
+.fr-artwork-major--blue-ecume {
+  fill: var(--artwork-major-blue-ecume) !important;
+}
+
+.fr-artwork-major--blue-cumulus {
+  fill: var(--artwork-major-blue-cumulus) !important;
+}
+
+.fr-artwork-major--purple-glycine {
+  fill: var(--artwork-major-purple-glycine) !important;
+}
+
+.fr-artwork-major--pink-macaron {
+  fill: var(--artwork-major-pink-macaron) !important;
+}
+
+.fr-artwork-major--pink-tuile {
+  fill: var(--artwork-major-pink-tuile) !important;
+}
+
+.fr-artwork-major--yellow-tournesol {
+  fill: var(--artwork-major-yellow-tournesol) !important;
+}
+
+.fr-artwork-major--yellow-moutarde {
+  fill: var(--artwork-major-yellow-moutarde) !important;
+}
+
+.fr-artwork-major--orange-terre-battue {
+  fill: var(--artwork-major-orange-terre-battue) !important;
+}
+
+.fr-artwork-major--brown-cafe-creme {
+  fill: var(--artwork-major-brown-cafe-creme) !important;
+}
+
+.fr-artwork-major--brown-caramel {
+  fill: var(--artwork-major-brown-caramel) !important;
+}
+
+.fr-artwork-major--brown-opera {
+  fill: var(--artwork-major-brown-opera) !important;
+}
+
+.fr-artwork-major--beige-gris-galet {
+  fill: var(--artwork-major-beige-gris-galet) !important;
+}
+
 .fr-artwork-minor--blue-france {
   fill: var(--artwork-minor-blue-france) !important;
 }
@@ -1095,6 +1163,10 @@
   fill: var(--artwork-minor-beige-gris-galet) !important;
 }
 
+.fr-artwork-decorative--grey {
+  fill: var(--artwork-decorative-grey) !important;
+}
+
 .fr-artwork-decorative--blue-france {
   fill: var(--artwork-decorative-blue-france) !important;
 }
@@ -1103,12 +1175,232 @@
   fill: var(--artwork-decorative-red-marianne) !important;
 }
 
+.fr-artwork-decorative--green-tilleul-verveine {
+  fill: var(--artwork-decorative-green-tilleul-verveine) !important;
+}
+
+.fr-artwork-decorative--green-bourgeon {
+  fill: var(--artwork-decorative-green-bourgeon) !important;
+}
+
+.fr-artwork-decorative--green-emeraude {
+  fill: var(--artwork-decorative-green-emeraude) !important;
+}
+
+.fr-artwork-decorative--green-menthe {
+  fill: var(--artwork-decorative-green-menthe) !important;
+}
+
+.fr-artwork-decorative--green-archipel {
+  fill: var(--artwork-decorative-green-archipel) !important;
+}
+
+.fr-artwork-decorative--blue-ecume {
+  fill: var(--artwork-decorative-blue-ecume) !important;
+}
+
+.fr-artwork-decorative--blue-cumulus {
+  fill: var(--artwork-decorative-blue-cumulus) !important;
+}
+
+.fr-artwork-decorative--purple-glycine {
+  fill: var(--artwork-decorative-purple-glycine) !important;
+}
+
+.fr-artwork-decorative--pink-macaron {
+  fill: var(--artwork-decorative-pink-macaron) !important;
+}
+
+.fr-artwork-decorative--pink-tuile {
+  fill: var(--artwork-decorative-pink-tuile) !important;
+}
+
+.fr-artwork-decorative--yellow-tournesol {
+  fill: var(--artwork-decorative-yellow-tournesol) !important;
+}
+
+.fr-artwork-decorative--yellow-moutarde {
+  fill: var(--artwork-decorative-yellow-moutarde) !important;
+}
+
+.fr-artwork-decorative--orange-terre-battue {
+  fill: var(--artwork-decorative-orange-terre-battue) !important;
+}
+
+.fr-artwork-decorative--brown-cafe-creme {
+  fill: var(--artwork-decorative-brown-cafe-creme) !important;
+}
+
+.fr-artwork-decorative--brown-caramel {
+  fill: var(--artwork-decorative-brown-caramel) !important;
+}
+
+.fr-artwork-decorative--brown-opera {
+  fill: var(--artwork-decorative-brown-opera) !important;
+}
+
+.fr-artwork-decorative--beige-gris-galet {
+  fill: var(--artwork-decorative-beige-gris-galet) !important;
+}
+
 .fr-artwork-background--grey {
   fill: var(--artwork-background-grey) !important;
 }
 
+.fr-artwork-background--blue-france {
+  fill: var(--artwork-background-blue-france) !important;
+}
+
+.fr-artwork-background--red-marianne {
+  fill: var(--artwork-background-red-marianne) !important;
+}
+
+.fr-artwork-background--green-tilleul-verveine {
+  fill: var(--artwork-background-green-tilleul-verveine) !important;
+}
+
+.fr-artwork-background--green-bourgeon {
+  fill: var(--artwork-background-green-bourgeon) !important;
+}
+
+.fr-artwork-background--green-emeraude {
+  fill: var(--artwork-background-green-emeraude) !important;
+}
+
+.fr-artwork-background--green-menthe {
+  fill: var(--artwork-background-green-menthe) !important;
+}
+
+.fr-artwork-background--green-archipel {
+  fill: var(--artwork-background-green-archipel) !important;
+}
+
+.fr-artwork-background--blue-ecume {
+  fill: var(--artwork-background-blue-ecume) !important;
+}
+
+.fr-artwork-background--blue-cumulus {
+  fill: var(--artwork-background-blue-cumulus) !important;
+}
+
+.fr-artwork-background--purple-glycine {
+  fill: var(--artwork-background-purple-glycine) !important;
+}
+
+.fr-artwork-background--pink-macaron {
+  fill: var(--artwork-background-pink-macaron) !important;
+}
+
+.fr-artwork-background--pink-tuile {
+  fill: var(--artwork-background-pink-tuile) !important;
+}
+
+.fr-artwork-background--yellow-tournesol {
+  fill: var(--artwork-background-yellow-tournesol) !important;
+}
+
+.fr-artwork-background--yellow-moutarde {
+  fill: var(--artwork-background-yellow-moutarde) !important;
+}
+
+.fr-artwork-background--orange-terre-battue {
+  fill: var(--artwork-background-orange-terre-battue) !important;
+}
+
+.fr-artwork-background--brown-cafe-creme {
+  fill: var(--artwork-background-brown-cafe-creme) !important;
+}
+
+.fr-artwork-background--brown-caramel {
+  fill: var(--artwork-background-brown-caramel) !important;
+}
+
+.fr-artwork-background--brown-opera {
+  fill: var(--artwork-background-brown-opera) !important;
+}
+
+.fr-artwork-background--beige-gris-galet {
+  fill: var(--artwork-background-beige-gris-galet) !important;
+}
+
 .fr-artwork-motif--grey {
   fill: var(--artwork-motif-grey) !important;
+}
+
+.fr-artwork-motif--blue-france {
+  fill: var(--artwork-motif-blue-france) !important;
+}
+
+.fr-artwork-motif--red-marianne {
+  fill: var(--artwork-motif-red-marianne) !important;
+}
+
+.fr-artwork-motif--green-tilleul-verveine {
+  fill: var(--artwork-motif-green-tilleul-verveine) !important;
+}
+
+.fr-artwork-motif--green-bourgeon {
+  fill: var(--artwork-motif-green-bourgeon) !important;
+}
+
+.fr-artwork-motif--green-emeraude {
+  fill: var(--artwork-motif-green-emeraude) !important;
+}
+
+.fr-artwork-motif--green-menthe {
+  fill: var(--artwork-motif-green-menthe) !important;
+}
+
+.fr-artwork-motif--green-archipel {
+  fill: var(--artwork-motif-green-archipel) !important;
+}
+
+.fr-artwork-motif--blue-ecume {
+  fill: var(--artwork-motif-blue-ecume) !important;
+}
+
+.fr-artwork-motif--blue-cumulus {
+  fill: var(--artwork-motif-blue-cumulus) !important;
+}
+
+.fr-artwork-motif--purple-glycine {
+  fill: var(--artwork-motif-purple-glycine) !important;
+}
+
+.fr-artwork-motif--pink-macaron {
+  fill: var(--artwork-motif-pink-macaron) !important;
+}
+
+.fr-artwork-motif--pink-tuile {
+  fill: var(--artwork-motif-pink-tuile) !important;
+}
+
+.fr-artwork-motif--yellow-tournesol {
+  fill: var(--artwork-motif-yellow-tournesol) !important;
+}
+
+.fr-artwork-motif--yellow-moutarde {
+  fill: var(--artwork-motif-yellow-moutarde) !important;
+}
+
+.fr-artwork-motif--orange-terre-battue {
+  fill: var(--artwork-motif-orange-terre-battue) !important;
+}
+
+.fr-artwork-motif--brown-cafe-creme {
+  fill: var(--artwork-motif-brown-cafe-creme) !important;
+}
+
+.fr-artwork-motif--brown-caramel {
+  fill: var(--artwork-motif-brown-caramel) !important;
+}
+
+.fr-artwork-motif--brown-opera {
+  fill: var(--artwork-motif-brown-opera) !important;
+}
+
+.fr-artwork-motif--beige-gris-galet {
+  fill: var(--artwork-motif-beige-gris-galet) !important;
 }
 
 /* ¯¯¯¯¯¯¯¯¯ *\
@@ -3952,6 +4244,12 @@
 /* ¯¯¯¯¯¯¯¯¯ *\
   ICON COMMUNICATION
 \* ˍˍˍˍˍˍˍˍˍ */
+.fr-icon-align-left::before,
+.fr-icon-align-left::after {
+  -webkit-mask-image: url("../icons/media/align-left.svg");
+  mask-image: url("../icons/media/align-left.svg");
+}
+
 .fr-icon-camera-fill::before,
 .fr-icon-camera-fill::after {
   -webkit-mask-image: url("../icons/media/camera-fill.svg");
@@ -3998,6 +4296,12 @@
 .fr-icon-film-line::after {
   -webkit-mask-image: url("../icons/media/film-line.svg");
   mask-image: url("../icons/media/film-line.svg");
+}
+
+.fr-icon-fullscreen-line::before,
+.fr-icon-fullscreen-line::after {
+  -webkit-mask-image: url("../icons/media/fullscreen-line.svg");
+  mask-image: url("../icons/media/fullscreen-line.svg");
 }
 
 .fr-icon-gallery-fill::before,
@@ -4142,12 +4446,6 @@
 .fr-icon-stop-circle-line::after {
   -webkit-mask-image: url("../icons/media/stop-circle-line.svg");
   mask-image: url("../icons/media/stop-circle-line.svg");
-}
-
-.fr-icon-transcription::before,
-.fr-icon-transcription::after {
-  -webkit-mask-image: url("../icons/media/transcription.svg");
-  mask-image: url("../icons/media/transcription.svg");
 }
 
 .fr-icon-volume-down-fill::before,
@@ -4684,6 +4982,12 @@
   mask-image: url("../icons/system/fr--arrow-left-s-line-double.svg");
 }
 
+.fr-icon-arrow-right-down-circle-fill::before,
+.fr-icon-arrow-right-down-circle-fill::after {
+  -webkit-mask-image: url("../icons/system/fr--arrow-right-down-circle-fill.svg");
+  mask-image: url("../icons/system/fr--arrow-right-down-circle-fill.svg");
+}
+
 .fr-icon-arrow-right-s-last-line::before,
 .fr-icon-arrow-right-s-last-line::after {
   -webkit-mask-image: url("../icons/system/fr--arrow-right-s-last-line.svg");
@@ -4694,6 +4998,24 @@
 .fr-icon-arrow-right-s-line-double::after {
   -webkit-mask-image: url("../icons/system/fr--arrow-right-s-line-double.svg");
   mask-image: url("../icons/system/fr--arrow-right-s-line-double.svg");
+}
+
+.fr-icon-arrow-right-up-circle-fill::before,
+.fr-icon-arrow-right-up-circle-fill::after {
+  -webkit-mask-image: url("../icons/system/fr--arrow-right-up-circle-fill.svg");
+  mask-image: url("../icons/system/fr--arrow-right-up-circle-fill.svg");
+}
+
+.fr-icon-capslock-line::before,
+.fr-icon-capslock-line::after {
+  -webkit-mask-image: url("../icons/system/fr--capslock-line.svg");
+  mask-image: url("../icons/system/fr--capslock-line.svg");
+}
+
+.fr-icon-equal-circle-fill::before,
+.fr-icon-equal-circle-fill::after {
+  -webkit-mask-image: url("../icons/system/fr--equal-circle-fill.svg");
+  mask-image: url("../icons/system/fr--equal-circle-fill.svg");
 }
 
 .fr-icon-error-fill::before,
