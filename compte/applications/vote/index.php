@@ -154,7 +154,7 @@ include "../../commun.php";
                         </div>
                     </div>
                     <div class="fr-header__service">
-                        <a href="../" title="Messagerie - <?php echo $title ?>">
+                        <a href="../../" title="<?php echo $title ?>">
                             <p class="fr-header__service-title">
                                 <?php echo $title ?>
                                 <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
@@ -167,12 +167,12 @@ include "../../commun.php";
                     <div class="fr-header__tools-links">
                         <ul class="fr-btns-group">
                             <li>
-                                <a class="fr-btn fr-icon-account-circle-line" href="compte">
+                                <a class="fr-btn fr-icon-account-circle-line" href="../../compte">
                                     <b><?php echo $name[$_COOKIE["account"]].'<span class="fr-ml-1v fr-badge fr-badge--sm fr-badge--blue-cumulus">'.$r[$_COOKIE["account"]] ?></span></b>
                                 </a>
                             </li>
                             <li>
-                                <a class="fr-btn fr-icon-close-circle-line" href="../">
+                                <a class="fr-btn fr-icon-close-circle-line" href="../../../">
                                     <b>Se déconnecter</b>
                                 </a>
                             </li>
@@ -260,6 +260,7 @@ include "../../commun.php";
                 ?>
             </div>
             <div class="fr-grid-row fr-grid-row--gutters">
+                <?php if ($_COOKIE["account"] < 6 AND $_COOKIE["account"] != 3) { echo '
                 <div class="fr-col-12">
                     <h3 class="fr-m-0">CNVL</h3>
                 </div>
@@ -267,17 +268,17 @@ include "../../commun.php";
                     <div class="fr-tile fr-enlarge-link fr-tile--horizontal" id="tile-6568">
                         <div class="fr-tile__body">
                             <h3 class="fr-tile__title">
-                                <a class="fr-tile__link" href="<?php if ($_COOKIE['account'] != 2) {echo '../../../cnvl#elues-normandie';} else {echo "#";} ?>">Vote CNVL 2022<div class="fr-badge fr-badge--error fr-mx-2v">Vote clos</div></a>
-                            </h3>
-                            <?php if ($_COOKIE['account'] == 2) {
+                                <a class="fr-tile__link" href="'; if ($_COOKIE['account'] != 2) {echo '../../../cnvl#elues-normandie';} else {echo "#";} echo '">Vote CNVL pour élu.e.s normands 2022-2024<div class="fr-badge fr-badge--error fr-mx-2v">Vote clos</div></a>
+                            </h3>';
+                            if ($_COOKIE['account'] == 2) {
                                 echo '<p class="fr-tile__desc">Vous avez décidé de procéder à un vote matériel &bull; Cliquez pour modifier le vote</p>';
                             } else {
                                 echo '<p class="fr-tile__desc">Le DAVLC a décidé de procéder à un vote matériel &bull; Cliquez pour découvrir les résultats</p>';
-                            } ?>
+                            } echo '
                         </div>
                     </div>
                 </div>
-                <hr class="fr-hr--sm fr-my-2v">
+                <hr class="fr-hr--sm fr-my-2v">'; }?>
                 <div class="fr-col-12">
                     <h3 class="fr-m-0">CAVL</h3>
                 </div>
@@ -285,7 +286,7 @@ include "../../commun.php";
                     <div class="fr-tile fr-enlarge-link fr-tile--horizontal" id="tile-6568">
                         <div class="fr-tile__body">
                             <h3 class="fr-tile__title">
-                                <a class="fr-tile__link" href="<?php if ($_COOKIE['account'] != 2) {echo '../../../cavl/normandie#elues';} else {echo "#";} ?>">Vote CAVL de Normandie 2022<div class="fr-badge fr-badge--error fr-mx-2v">Vote clos</div></a>
+                                <a class="fr-tile__link" href="<?php if ($_COOKIE['account'] != 2) {echo '../../../cavl/normandie#elues';} else {echo "#";} ?>">Vote CAVL de Normandie 2022-2024 - Circonscription n°...<div class="fr-badge fr-badge--error fr-mx-2v">Vote clos</div></a>
                             </h3>
                             <?php if ($_COOKIE['account'] == 2) {
                                 echo '<p class="fr-tile__desc">356 votants &bull; 134 exprimées &bull; Cliquez pour modifier le vote</p>';

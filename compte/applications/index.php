@@ -314,6 +314,7 @@ if ($_COOKIE["account"] < 3) {
             </div>
           </div>';
           }
+          if ($_COOKIE["account"] < 6 AND $_COOKIE["account"] != 3) {
             echo '<div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
             <div class="fr-tile fr-enlarge-link">
               <div class="fr-tile__body">
@@ -325,7 +326,7 @@ if ($_COOKIE["account"] < 3) {
                 <span class="fr-icon-money-euro-box-fill fr-icon--lg"></span>
               </div>
             </div>
-          </div>';
+          </div>';};
           ?>
           <div class="fr-col-6 fr-col-md-4 fr-col-lg-3">
             <div class="fr-tile fr-enlarge-link">
@@ -390,7 +391,7 @@ if ($_COOKIE["account"] < 3) {
                     <br>et de la jeunesse
                 </p>
             </a>-->
-            <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+            <a id="footer-brand" class="fr-footer__brand-link" href="../" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
               <img class="fr-footer__logo" style="width:8rem;" src="../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
             </a>
           </div>

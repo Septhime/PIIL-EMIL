@@ -332,7 +332,7 @@ if (isset($_COOKIE["account"])) {
                 <br>et de la jeunesse
             </p>
         </a>-->
-        <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
+        <a id="footer-brand" class="fr-footer__brand-link" href="../" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
           <img class="fr-footer__logo" style="width:8rem;" src="../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
         </a>
       </div>
@@ -377,37 +377,6 @@ if (isset($_COOKIE["account"])) {
     </div>
   </div>
 </footer>
-<dialog id="modal-1033" class="fr-modal" role="dialog" aria-labelledby="modal-1033-title">
-  <div class="fr-container fr-container--fluid fr-container-md">
-    <div class="fr-grid-row fr-grid-row--center">
-      <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
-        <div class="fr-modal__body">
-          <div class="fr-modal__header">
-            <button class="fr-btn--close fr-btn" aria-controls="modal-1033" title="Fermer">
-              Fermer
-            </button>
-          </div>
-          <div class="fr-modal__content">
-            <h1 id="modal-1033-title" class="fr-modal__title">
-              <span class="fr-icon-arrow-right-line fr-icon--lg" aria-hidden="true"></span>
-              Modification impossible
-            </h1>
-            <p>Afin de modifier votre adresse mail, veuillez vous rendre sur Educonnect</p>
-          </div>
-          <div class="fr-modal__footer">
-            <ul class="fr-btns-group fr-btns-group--right fr-btns-group--inline-reverse fr-btns-group--inline-lg fr-btns-group--icon-left">
-              <li>
-                <a class="fr-btn" href="https://moncompte.educonnect.education.gouv.fr/educt-self-service/profil/consultationProfil" target="_self">
-                  Changer mon adresse mail
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</dialog>
 <button class="fr-display-button fr-background-default--grey fr-btn fr-btn--lg fr-icon-theme-fill fr-btn--secondary" aria-controls="fr-theme-modal" data-fr-opened="false" style="z-index: 1600">
   Label bouton
 </button>

@@ -27,42 +27,31 @@ if(isset($_GET['select-hint'])) {
   <link href="../dist/component/button/button.main.css" rel="stylesheet" file="main">
   <link href="../dist/scheme/scheme.css" rel="stylesheet" file="main">
   <link href="../dist/component/link/link.main.css" rel="stylesheet" file="main">
-  <link href="../dist/component/accordion/accordion.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/form/form.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/logo/logo.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/badge/badge.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/radio/radio.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/modal/modal.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/navigation/navigation.main.css" rel="stylesheet" file="main">
-  <link href="../dist/component/follow/follow.main.css" rel="stylesheet" file="main">
-  <link href="../dist/component/tile/tile.main.css" rel="stylesheet" file="main">
-  <link href="../dist/component/card/card.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/input/input.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/footer/footer.main.css" rel="stylesheet" file="main">
-  <link href="../dist/component/download/download.css" rel="stylesheet" file="main">
   <link href="../dist/utility/utility.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/search/search.main.css" rel="stylesheet" file="main">
-  <link href="../dist/component/translate/translate.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/header/header.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/select/select.main.css" rel="stylesheet" file="main">
   <link href="../dist/core/core.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
-  <link href="../dist/component/accordion/accordion.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/form/form.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/logo/logo.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/badge/badge.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/radio/radio.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/modal/modal.legacy.css" rel="stylesheet" file="legacy">
-  <link href="../dist/component/tile/tile.legacy.css" rel="stylesheet" file="legacy">
-  <link href="../dist/component/card/card.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/navigation/navigation.legacy.css" rel="stylesheet" file="legacy">
-  <link href="../dist/component/follow/follow.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/input/input.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/footer/footer.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/utility/utility.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/search/search.legacy.css" rel="stylesheet" file="legacy">
-  <link href="../dist/component/translate/translate.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/header/header.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/select/select.legacy.css" rel="stylesheet" file="legacy">
   <style>
@@ -165,7 +154,7 @@ if(isset($_GET['select-hint'])) {
             <ul class="fr-btns-group">
               <li>
                 <a class="fr-btn fr-icon-lock-line" href="../compte/login.php">
-                  Accéder à l'espace des élu.e.s
+                  Accéder à l'espace des membres
                 </a>
               </li>
             </ul>
@@ -330,7 +319,6 @@ if(isset($_GET['select-hint'])) {
       <figure class="fr-content-media fr-content-media--sm" role="group" aria-label="© Légende de l‘image">
         <div class="fr-content-media__img">
           <img class="fr-responsive-img fr-ratio-1x1" src="../assets/img/placeholder.1x1.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" />
-          <!-- L’alternative de l’image (attribut alt) doit toujours être présente, sa valeur peut-être vide (image n’apportant pas de sens supplémentaire au contexte) ou non (porteuse de texte ou apportant du sens) selon votre contexte -->
         </div>
         <figcaption style="text-align: center" class="fr-content-media__caption">Placeholder pour carte de la france cliquable</figcaption>
       </figure>
@@ -395,7 +383,7 @@ if(isset($_GET['select-hint'])) {
         </a>
       </div>
       <div class="fr-footer__content">
-        <p class="fr-footer__content-desc"><b>La plateforme informative des instances lycéennes</b> vous informe des dernières actualités concernant les différents conseils lycéens ainsi que des élu.e.s de ces derniers.</p>
+        <p class="fr-footer__content-desc"><b>La plateforme informative des instances lycéennes</b> vous communique les dernières actualités concernant les différents conseils lycéens ainsi que des élu.e.s de ces derniers.</p>
         <!--<ul class="fr-footer__content-list">
             <li class="fr-footer__content-item">
                 <a class="fr-footer__content-link" target="_blank" href="https://legifrance.gouv.fr">legifrance.gouv.fr</a>
@@ -514,18 +502,14 @@ if(isset($_GET['select-hint'])) {
 </dialog>
 <script type="module" src="../dist/core/core.module.js"></script>
 <script type="module" src="../dist/scheme/scheme.module.js"></script>
-<script type="module" src="../dist/component/accordion/accordion.module.js"></script>
 <script type="module" src="../dist/component/modal/modal.module.js"></script>
 <script type="module" src="../dist/component/navigation/navigation.module.js"></script>
-<script type="module" src="../dist/component/download/download.module.js"></script>
 <script type="module" src="../dist/component/display/display.module.js"></script>
 <script type="module" src="../dist/component/header/header.module.js"></script>
 <script type="text/javascript" nomodule src="../dist/legacy/legacy.nomodule.js"></script>
 <script type="text/javascript" nomodule src="../dist/core/core.nomodule.js"></script>
-<script type="text/javascript" nomodule src="../dist/component/accordion/accordion.nomodule.js"></script>
 <script type="text/javascript" nomodule src="../dist/component/modal/modal.nomodule.js"></script>
 <script type="text/javascript" nomodule src="../dist/component/navigation/navigation.nomodule.js"></script>
-<script type="text/javascript" nomodule src="../dist/component/download/download.nomodule.js"></script>
 <script type="text/javascript" nomodule src="../dist/component/display/display.nomodule.js"></script>
 <script type="text/javascript" nomodule src="../dist/component/header/header.nomodule.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
@@ -534,5 +518,4 @@ if(isset($_GET['select-hint'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
 </body>
-
 </html>

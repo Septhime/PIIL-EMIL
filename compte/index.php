@@ -238,6 +238,7 @@ include "commun.php";
                                     </div>
                                 </div>
                             </div>
+                            <?php if ($_COOKIE["account"] != 3 AND $_COOKIE["account"] != 6) { echo '
                             <div class="fr-col-12 fr-col-md-12">
                                 <div class="fr-card fr-enlarge-link fr-card--lg fr-card--horizontal">
                                     <div class="fr-card__body">
@@ -250,16 +251,17 @@ include "commun.php";
                                                 <ul class="fr-badge-group">
                                                     <li>
                                                         <p class="fr-badge">Visioconférence</p>
-                                                    </li>
+                                                    </li>'; if ($_COOKIE["account"] != 1) { echo '
                                                     <li>
                                                         <p class="fr-badge">Commission &Eacute;galité</p>
-                                                    </li>
+                                                    </li>';} echo'
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            '; if ($_COOKIE["account"] != 1) { echo '
                             <div class="fr-col-12 fr-col-md-12">
                                 <div class="fr-card fr-enlarge-link fr-card--lg fr-card--horizontal">
                                     <div class="fr-card__body">
@@ -281,7 +283,7 @@ include "commun.php";
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>';} echo '
                             <div class="fr-col-12 fr-col-md-12">
                                 <div class="fr-card fr-enlarge-link fr-card--lg fr-card--horizontal">
                                     <div class="fr-card__body">
@@ -289,7 +291,7 @@ include "commun.php";
                                             <h4 class="fr-card__title">
                                                 <a href="#">Nouvelle réunion !</a>
                                             </h4>
-                                            <p class="fr-card__desc">Une réunion du <b>CAVL de Normandie</b> à été organisée le ../../.... à ..H..</p>
+                                            <p class="fr-card__desc">Une réunion du  <b>'; if ($_COOKIE["account"] == 1) { echo 'CNVL';} else {echo 'CAVL de Normandie';} echo '</b> à été organisée le ../../.... à ..H..</p>
                                             <div class="fr-card__start">
                                                 <ul class="fr-badge-group">
                                                     <li>
@@ -303,7 +305,7 @@ include "commun.php";
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>';} ?>
                             <div class="fr-col-12 fr-col-md-12">
                                 <h4 style="text-align:center;">Fin de page</h4>
                             </div>

@@ -1,0 +1,1369 @@
+<!doctype html>
+<html lang="fr" data-fr-theme>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Modèle de bloc de nom et prénom - Design System</title>
+    <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
+    <link rel="apple-touch-icon" href="../../../dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="icon" href="../../../dist/favicon/favicon.svg" type="image/svg+xml">
+    <!-- si favicon.ico peut etre placé à la racine du serveur, retirer la ligne ci-dessous -->
+    <link rel="shortcut icon" href="../../../dist/favicon/favicon.ico" type="image/x-icon"><!-- 32×32 -->
+    <link rel="manifest" href="../../../dist/favicon/manifest.webmanifest" crossorigin="use-credentials">
+    <!-- Modifier les chemins relatifs des favicons en fonction de la structure du projet -->
+    <!-- Dans le fichier manifest.webmanifest aussi, modifier les chemins vers les images -->
+    <link href="../../../dist/core/core.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/scheme/scheme.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/link/link.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/accordion/accordion.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/form/form.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/button/button.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/radio/radio.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/modal/modal.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/checkbox/checkbox.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/select/select.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/utility/utility.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/input/input.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/core/core.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/accordion/accordion.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/form/form.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/radio/radio.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/modal/modal.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/checkbox/checkbox.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/select/select.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/utility/utility.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/input/input.legacy.css" rel="stylesheet" file="legacy">
+    <style>
+        code[class*="language-"],
+        pre[class*="language-"] {
+            white-space: pre-wrap;
+        }
+
+        .example-controls {
+            z-index: 100000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1), 0 8px 16px -16px rgba(0, 0, 0, 0.32);
+        }
+
+        .example-controls>button {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .example-controls__content {
+            padding: 16px;
+            background-color: var(--background-elevated-white);
+        }
+
+        .example-controls .fr-collapse--expanded~[aria-expanded] {
+            display: none;
+        }
+
+        .example-controls .fr-collapse:not(.fr-collapse--expanded)~button:not([aria-expanded]) {
+            display: none;
+        }
+
+        .example-controls [class*="-form-group"] {
+            margin-bottom: 0;
+        }
+
+        .fr-display-button {
+            position: fixed;
+            bottom: 3.5rem;
+            right: 2rem;
+        }
+
+        @media screen and (-ms-high-contrast: active),
+        (-ms-high-contrast: none) {
+
+            /* IE10+ specific styles go here */
+            .example-controls {
+                display: none;
+            }
+        }
+
+    </style>
+    <script>
+    window['dsfr'] = {
+      // verbose: true,
+      production: true,
+      // mode: 'manual',
+      analytics: {
+        domain: 'gva.et-gv.fr',
+        // collection: 'manual', // method of collection [manual, load, full, hash]
+        enableRating: true, // is click rate enabled
+        cmp: {
+          id: 'tarteaucitron'
+        },
+        page: {
+          // path: 'path_name/from/url', // path for page tracking
+          // referrer: 'path_name/ref/url/', // referrer for virtual pages (not for real page, eulerian automatically collects document.referrer)
+          // title: 'page title', // page title for virtual pages
+          // name: 'page name', // equivalent to title if not defined
+          // labels: ['category1', 'label2', 'label3', 'label4', 'label5'],
+          categories: ['category1', 'category2', 'category3'],
+          template: 'nom template', // page template
+          // group: 'group', // page group. if not defined, fallback to template value
+          // segment: 'segment', // site segment. if not defined, fallback to template value
+          // subtemplate: 'sous template', // page sub template
+          // theme: 'theme page', // page theme
+          // subtheme: 'page sous theme', // page subtheme
+          // related: 'page liée', // related page id
+          // depth: 2, // page depth
+          // isError: true, // is this an error page (404, 500, 503...)
+          // current: 4, // In case of pagination, current page number
+          // total: 40, // In case of pagination, total pages number
+          // filters: ['actualités', 'Dossier de presse'] // array of filters that were applied on the page (strings)
+        },
+        user: {
+          /*
+          connect: {
+            uid: 'XXX', // user id - required when connected
+            email: 'email@domain.com', // encoded user email - required when connected
+            isNew: true, // user just registered
+          },
+           */
+          // profile: 'visitor', // user profile
+          // language: '',
+          // type: 'pro',
+        },
+        site: {
+          // environment: 'production', // by default development ['development', 'stage', 'production']
+          entity: 'Ministère des armées', // Entity responsible for website
+          // language: '', // language of the website (ISO 639-1). default to html lang
+          // target: 'target', // site target
+          // type: 'type', // site type
+          // region: 'FR-IDF', // region of the website (ISO 3166-2:FR)
+          // department: 'FR-75', // department of the website (ISO 3166-2:FR)
+        },
+        /*
+        search: {
+          engine: 'principal',
+          results: 486,
+          terms: 'télécharger le cerfa 1234',
+          category: 'categorie',
+          theme: 'theme',
+          type: 'type',
+          method: ''
+        },
+        funnel: {
+          id: 'id',
+          type: 'type',
+          name: 'name',
+          step: 'step', // step name
+          current: 2, // step number
+          total: 7, // total number of steps
+          objective: 'objective', // form objective
+          error: 'email' // form's error type
+        }
+         */
+      }
+    };
+  </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+</head>
+
+<body id="top" class="fr-mb-12w">
+    <script type="module">
+  const e="system",t="dark",a="dark",c=()=>{document.documentElement.setAttribute("data-fr-theme",a),document.documentElement.style.colorScheme="dark"},o=()=>{window.matchMedia("(prefers-color-scheme: dark)").matches&&c()};(()=>{if(document.documentElement.matches(":root[data-fr-theme], :root[data-fr-scheme]")){const a=(()=>{try{return"localStorage"in window&&null!==window.localStorage}catch(e){return!1}})()?localStorage.getItem("scheme"):"",r=document.documentElement.getAttribute("data-fr-scheme");switch(!0){case a===t:c();break;case a===e:o();break;case r===t:c();break;case r===e:o()}}})();
+
+</script>
+    <span id="[url - à modifier]"></span>
+    <div class="fr-container fr-mt-2v fr-mb-8w">
+        <a class="fr-icon-arrow-left-line fr-link--icon-left fr-link" href="../">Retour</a>
+        <h1>Modèle de bloc de nom et prénom (name)</h1>
+        <p>La demande de nom et prénom permet d’aider un utilisateur à saisir son nom et son prénom.</p>
+    </div>
+    <div class="fr-mb-12w">
+        <div class="fr-container">
+            <div class="fr-mt-0">
+                <h2>Demande d’un nom et d’un prénom en France</h2>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Défaut</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="firstname-disabled-6757" aria-labelledby="firstname-disabled-6757-legend firstname-disabled-6757-messages">
+                        <legend class="fr-sr-only" id="firstname-disabled-6757-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6765">
+                                <label class="fr-label" for="family-name-6759">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6759-messages" name="family-name" autocomplete="family-name" id="family-name-6759" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6759-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6766">
+                                <label class="fr-label" for="given-6764">
+                                    Prénom
+                                </label>
+                                <input class="fr-input" aria-describedby="given-6764-messages" name="given-name" autocomplete="given-name" id="given-6764" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="given-6764-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="firstname-disabled-6757-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6777">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6777">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="firstname-disabled-6767" aria-labelledby="firstname-disabled-6767-legend firstname-disabled-6767-messages"&gt;
+    &lt;legend class="fr-sr-only" id="firstname-disabled-6767-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6775"&gt;
+            &lt;label class="fr-label" for="family-name-6769"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6769-messages" name="family-name" autocomplete="family-name" id="family-name-6769" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6769-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6776"&gt;
+            &lt;label class="fr-label" for="given-6774"&gt;
+                Prénom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="given-6774-messages" name="given-name" autocomplete="given-name" id="given-6774" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="given-6774-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="firstname-disabled-6767-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Avec prénom désactivé</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="firstname-disabled-6778" aria-labelledby="firstname-disabled-6778-legend firstname-disabled-6778-messages">
+                        <legend class="fr-sr-only" id="firstname-disabled-6778-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6788">
+                                <label class="fr-label" for="family-name-6780">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6780-messages" name="family-name" autocomplete="family-name" id="family-name-6780" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6780-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6786" disabled aria-labelledby="firstname-fieldset-6786-legend firstname-fieldset-6786-messages">
+                                <legend class="fr-sr-only" id="firstname-fieldset-6786-legend">
+                                    Prénom(s)
+                                </legend>
+                                <div class="fr-fieldset__element">
+                                    <div class="fr-input-group" id="input-group-6789">
+                                        <label class="fr-label" for="given-6785">
+                                            Prénom
+                                        </label>
+                                        <input class="fr-input" aria-describedby="given-6785-messages" name="given-name" autocomplete="given-name" id="given-6785" spellcheck="false" type="text">
+                                        <div class="fr-messages-group" id="given-6785-messages" aria-live="assertive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fr-messages-group" id="firstname-fieldset-6786-messages" aria-live="assertive">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-checkbox-group fr-checkbox-group--sm">
+                                <input onclick="const fieldset = document.getElementById('firstname-fieldset-6786');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6787" type="checkbox" aria-describedby="disabler-6787-messages">
+                                <label class="fr-label" for="disabler-6787">
+                                    Je n'ai pas de prénom
+                                </label>
+                                <div class="fr-messages-group" id="disabler-6787-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="firstname-disabled-6778-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6802">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6802">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="firstname-disabled-6790" aria-labelledby="firstname-disabled-6790-legend firstname-disabled-6790-messages"&gt;
+    &lt;legend class="fr-sr-only" id="firstname-disabled-6790-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6800"&gt;
+            &lt;label class="fr-label" for="family-name-6792"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6792-messages" name="family-name" autocomplete="family-name" id="family-name-6792" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6792-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6798" disabled aria-labelledby="firstname-fieldset-6798-legend firstname-fieldset-6798-messages"&gt;
+            &lt;legend class="fr-sr-only" id="firstname-fieldset-6798-legend"&gt;
+                Prénom(s)
+            &lt;/legend&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;div class="fr-input-group" id="input-group-6801"&gt;
+                    &lt;label class="fr-label" for="given-6797"&gt;
+                        Prénom
+                    &lt;/label&gt;
+                    &lt;input class="fr-input" aria-describedby="given-6797-messages" name="given-name" autocomplete="given-name" id="given-6797" spellcheck="false" type="text"&gt;
+                    &lt;div class="fr-messages-group" id="given-6797-messages" aria-live="assertive"&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-messages-group" id="firstname-fieldset-6798-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-checkbox-group fr-checkbox-group--sm"&gt;
+            &lt;input onclick="const fieldset = document.getElementById('firstname-fieldset-6798');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6799" type="checkbox" aria-describedby="disabler-6799-messages"&gt;
+            &lt;label class="fr-label" for="disabler-6799"&gt;
+                Je n'ai pas de prénom
+            &lt;/label&gt;
+            &lt;div class="fr-messages-group" id="disabler-6799-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="firstname-disabled-6790-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Avec nom d&#39;usage</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="married-name-6803" aria-labelledby="married-name-6803-legend married-name-6803-messages">
+                        <legend class="fr-sr-only" id="married-name-6803-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6811">
+                                <label class="fr-label" for="family-name-6805">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6805-messages" name="family-name" autocomplete="family-name" id="family-name-6805" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6805-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6812">
+                                <label class="fr-label" for="married-6808">
+                                    Nom d'usage
+                                    <span class="fr-hint-text">Ancien nom…</span>
+                                </label>
+                                <input class="fr-input" aria-describedby="married-6808-messages" name="married-name" autocomplete="family-name" id="married-6808" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="married-6808-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6813">
+                                <label class="fr-label" for="given-6810">
+                                    Prénom
+                                </label>
+                                <input class="fr-input" aria-describedby="given-6810-messages" name="given-name" autocomplete="given-name" id="given-6810" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="given-6810-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="married-name-6803-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6825">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6825">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="married-name-6814" aria-labelledby="married-name-6814-legend married-name-6814-messages"&gt;
+    &lt;legend class="fr-sr-only" id="married-name-6814-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6822"&gt;
+            &lt;label class="fr-label" for="family-name-6816"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6816-messages" name="family-name" autocomplete="family-name" id="family-name-6816" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6816-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6823"&gt;
+            &lt;label class="fr-label" for="married-6819"&gt;
+                Nom d'usage
+                &lt;span class="fr-hint-text"&gt;Ancien nom…&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="married-6819-messages" name="married-name" autocomplete="family-name" id="married-6819" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="married-6819-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6824"&gt;
+            &lt;label class="fr-label" for="given-6821"&gt;
+                Prénom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="given-6821-messages" name="given-name" autocomplete="given-name" id="given-6821" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="given-6821-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="married-name-6814-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Avec nom d&#39;usage + prénom désactivé</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="married-and-firstname-disabled-6826" aria-labelledby="married-and-firstname-disabled-6826-legend married-and-firstname-disabled-6826-messages">
+                        <legend class="fr-sr-only" id="married-and-firstname-disabled-6826-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6836">
+                                <label class="fr-label" for="family-name-6828">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6828-messages" name="family-name" autocomplete="family-name" id="family-name-6828" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6828-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6837">
+                                <label class="fr-label" for="married-6831">
+                                    Nom d'usage
+                                    <span class="fr-hint-text">Ancien nom…</span>
+                                </label>
+                                <input class="fr-input" aria-describedby="married-6831-messages" name="married-name" autocomplete="family-name" id="married-6831" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="married-6831-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6834" disabled aria-labelledby="firstname-fieldset-6834-legend firstname-fieldset-6834-messages">
+                                <legend class="fr-sr-only" id="firstname-fieldset-6834-legend">
+                                    Prénom(s)
+                                </legend>
+                                <div class="fr-fieldset__element">
+                                    <div class="fr-input-group" id="input-group-6838">
+                                        <label class="fr-label" for="given-6833">
+                                            Prénom
+                                        </label>
+                                        <input class="fr-input" aria-describedby="given-6833-messages" name="given-name" autocomplete="given-name" id="given-6833" spellcheck="false" type="text">
+                                        <div class="fr-messages-group" id="given-6833-messages" aria-live="assertive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fr-messages-group" id="firstname-fieldset-6834-messages" aria-live="assertive">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-checkbox-group fr-checkbox-group--sm">
+                                <input onclick="const fieldset = document.getElementById('firstname-fieldset-6834');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6835" type="checkbox" aria-describedby="disabler-6835-messages">
+                                <label class="fr-label" for="disabler-6835">
+                                    Je n'ai pas de prénom
+                                </label>
+                                <div class="fr-messages-group" id="disabler-6835-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="married-and-firstname-disabled-6826-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6852">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6852">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="married-and-firstname-disabled-6839" aria-labelledby="married-and-firstname-disabled-6839-legend married-and-firstname-disabled-6839-messages"&gt;
+    &lt;legend class="fr-sr-only" id="married-and-firstname-disabled-6839-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6849"&gt;
+            &lt;label class="fr-label" for="family-name-6841"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6841-messages" name="family-name" autocomplete="family-name" id="family-name-6841" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6841-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6850"&gt;
+            &lt;label class="fr-label" for="married-6844"&gt;
+                Nom d'usage
+                &lt;span class="fr-hint-text"&gt;Ancien nom…&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="married-6844-messages" name="married-name" autocomplete="family-name" id="married-6844" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="married-6844-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6847" disabled aria-labelledby="firstname-fieldset-6847-legend firstname-fieldset-6847-messages"&gt;
+            &lt;legend class="fr-sr-only" id="firstname-fieldset-6847-legend"&gt;
+                Prénom(s)
+            &lt;/legend&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;div class="fr-input-group" id="input-group-6851"&gt;
+                    &lt;label class="fr-label" for="given-6846"&gt;
+                        Prénom
+                    &lt;/label&gt;
+                    &lt;input class="fr-input" aria-describedby="given-6846-messages" name="given-name" autocomplete="given-name" id="given-6846" spellcheck="false" type="text"&gt;
+                    &lt;div class="fr-messages-group" id="given-6846-messages" aria-live="assertive"&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-messages-group" id="firstname-fieldset-6847-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-checkbox-group fr-checkbox-group--sm"&gt;
+            &lt;input onclick="const fieldset = document.getElementById('firstname-fieldset-6847');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6848" type="checkbox" aria-describedby="disabler-6848-messages"&gt;
+            &lt;label class="fr-label" for="disabler-6848"&gt;
+                Je n'ai pas de prénom
+            &lt;/label&gt;
+            &lt;div class="fr-messages-group" id="disabler-6848-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="married-and-firstname-disabled-6839-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Avec bouton</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="button-6853" aria-labelledby="button-6853-legend button-6853-messages">
+                        <legend class="fr-sr-only" id="button-6853-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6863">
+                                <label class="fr-label" for="family-name-6855">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6855-messages" name="family-name" autocomplete="family-name" id="family-name-6855" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6855-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6861" aria-labelledby="firstname-fieldset-6861-legend firstname-fieldset-6861-messages">
+                                <legend class="fr-sr-only" id="firstname-fieldset-6861-legend">
+                                    Prénom(s)
+                                </legend>
+                                <div class="fr-fieldset__element">
+                                    <div class="fr-input-group" id="input-group-6864">
+                                        <label class="fr-label" for="given-6860">
+                                            Prénom
+                                        </label>
+                                        <input class="fr-input" aria-describedby="given-6860-messages" name="given-name" autocomplete="given-name" id="given-6860" spellcheck="false" type="text">
+                                        <div class="fr-messages-group" id="given-6860-messages" aria-live="assertive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fr-fieldset__element">
+                                    <button class="fr-btn fr-btn--sm fr-icon-add-line fr-btn--icon-left fr-btn--tertiary" onclick="if (this.firstnamesCount === undefined) this.firstnamesCount = 1;
+else this.firstnamesCount++;
+
+const getFieldsetElement = (node) => {
+  const parent = node.parentNode;
+  if (parent.className.indexOf('fr-fieldset__element') > -1) return parent;
+  return getFieldsetElement(parent);
+};
+
+const firstname = getFieldsetElement(document.getElementById('given-6860'));
+
+const reference = getFieldsetElement(this);
+
+const copy = firstname.cloneNode(true);
+copy.innerHTML = copy.innerHTML.replace(/given-6860/g, `given-6860-added-${this.firstnamesCount}`).replace('name=&quot;given-name&quot;', `name=&quot;additional-name-${this.firstnamesCount}&quot;`).replace('autocomplete=&quot;given-name&quot;', 'autocomplete=&quot;additional-name&quot;');
+const container = reference.parentNode;
+container.insertBefore(copy, reference);
+" type="button" id="button-6865">
+                                        Ajouter un prénom
+                                    </button>
+                                </div>
+                                <div class="fr-messages-group" id="firstname-fieldset-6861-messages" aria-live="assertive">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-checkbox-group fr-checkbox-group--sm">
+                                <input onclick="const fieldset = document.getElementById('firstname-fieldset-6861');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" name="firstname-disabled" id="disabler-6862" type="checkbox" aria-describedby="disabler-6862-messages">
+                                <label class="fr-label" for="disabler-6862">
+                                    Je n'ai pas de prénom
+                                </label>
+                                <div class="fr-messages-group" id="disabler-6862-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="button-6853-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6879">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6879">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="button-6866" aria-labelledby="button-6866-legend button-6866-messages"&gt;
+    &lt;legend class="fr-sr-only" id="button-6866-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6876"&gt;
+            &lt;label class="fr-label" for="family-name-6868"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6868-messages" name="family-name" autocomplete="family-name" id="family-name-6868" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6868-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6874" aria-labelledby="firstname-fieldset-6874-legend firstname-fieldset-6874-messages"&gt;
+            &lt;legend class="fr-sr-only" id="firstname-fieldset-6874-legend"&gt;
+                Prénom(s)
+            &lt;/legend&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;div class="fr-input-group" id="input-group-6877"&gt;
+                    &lt;label class="fr-label" for="given-6873"&gt;
+                        Prénom
+                    &lt;/label&gt;
+                    &lt;input class="fr-input" aria-describedby="given-6873-messages" name="given-name" autocomplete="given-name" id="given-6873" spellcheck="false" type="text"&gt;
+                    &lt;div class="fr-messages-group" id="given-6873-messages" aria-live="assertive"&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;button class="fr-btn fr-btn--sm fr-icon-add-line fr-btn--icon-left fr-btn--tertiary" onclick="if (this.firstnamesCount === undefined) this.firstnamesCount = 1;
+else this.firstnamesCount++;
+
+const getFieldsetElement = (node) =&gt; {
+  const parent = node.parentNode;
+  if (parent.className.indexOf('fr-fieldset__element') &gt; -1) return parent;
+  return getFieldsetElement(parent);
+};
+
+const firstname = getFieldsetElement(document.getElementById('given-6873'));
+
+const reference = getFieldsetElement(this);
+
+const copy = firstname.cloneNode(true);
+copy.innerHTML = copy.innerHTML.replace(/given-6873/g, `given-6873-added-${this.firstnamesCount}`).replace('name=&amp;quot;given-name&amp;quot;', `name=&amp;quot;additional-name-${this.firstnamesCount}&amp;quot;`).replace('autocomplete=&amp;quot;given-name&amp;quot;', 'autocomplete=&amp;quot;additional-name&amp;quot;');
+const container = reference.parentNode;
+container.insertBefore(copy, reference);
+" type="button" id="button-6878"&gt;
+                    Ajouter un prénom
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-messages-group" id="firstname-fieldset-6874-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-checkbox-group fr-checkbox-group--sm"&gt;
+            &lt;input onclick="const fieldset = document.getElementById('firstname-fieldset-6874');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" name="firstname-disabled" id="disabler-6875" type="checkbox" aria-describedby="disabler-6875-messages"&gt;
+            &lt;label class="fr-label" for="disabler-6875"&gt;
+                Je n'ai pas de prénom
+            &lt;/label&gt;
+            &lt;div class="fr-messages-group" id="disabler-6875-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="button-6866-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Avec bouton + prénom désactivé</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="button-and-firstname-disabled-6880" aria-labelledby="button-and-firstname-disabled-6880-legend button-and-firstname-disabled-6880-messages">
+                        <legend class="fr-sr-only" id="button-and-firstname-disabled-6880-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6890">
+                                <label class="fr-label" for="family-name-6882">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6882-messages" name="family-name" autocomplete="family-name" id="family-name-6882" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6882-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6888" disabled aria-labelledby="firstname-fieldset-6888-legend firstname-fieldset-6888-messages">
+                                <legend class="fr-sr-only" id="firstname-fieldset-6888-legend">
+                                    Prénom(s)
+                                </legend>
+                                <div class="fr-fieldset__element">
+                                    <div class="fr-input-group" id="input-group-6891">
+                                        <label class="fr-label" for="given-6887">
+                                            Prénom
+                                        </label>
+                                        <input class="fr-input" aria-describedby="given-6887-messages" name="given-name" autocomplete="given-name" id="given-6887" spellcheck="false" type="text">
+                                        <div class="fr-messages-group" id="given-6887-messages" aria-live="assertive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fr-fieldset__element">
+                                    <button class="fr-btn fr-btn--sm fr-icon-add-line fr-btn--icon-left fr-btn--tertiary" onclick="if (this.firstnamesCount === undefined) this.firstnamesCount = 1;
+else this.firstnamesCount++;
+
+const getFieldsetElement = (node) => {
+  const parent = node.parentNode;
+  if (parent.className.indexOf('fr-fieldset__element') > -1) return parent;
+  return getFieldsetElement(parent);
+};
+
+const firstname = getFieldsetElement(document.getElementById('given-6887'));
+
+const reference = getFieldsetElement(this);
+
+const copy = firstname.cloneNode(true);
+copy.innerHTML = copy.innerHTML.replace(/given-6887/g, `given-6887-added-${this.firstnamesCount}`).replace('name=&quot;given-name&quot;', `name=&quot;additional-name-${this.firstnamesCount}&quot;`).replace('autocomplete=&quot;given-name&quot;', 'autocomplete=&quot;additional-name&quot;');
+const container = reference.parentNode;
+container.insertBefore(copy, reference);
+" type="button" id="button-6892">
+                                        Ajouter un prénom
+                                    </button>
+                                </div>
+                                <div class="fr-messages-group" id="firstname-fieldset-6888-messages" aria-live="assertive">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-checkbox-group fr-checkbox-group--sm">
+                                <input onclick="const fieldset = document.getElementById('firstname-fieldset-6888');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6889" type="checkbox" aria-describedby="disabler-6889-messages">
+                                <label class="fr-label" for="disabler-6889">
+                                    Je n'ai pas de prénom
+                                </label>
+                                <div class="fr-messages-group" id="disabler-6889-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="button-and-firstname-disabled-6880-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6906">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6906">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="button-and-firstname-disabled-6893" aria-labelledby="button-and-firstname-disabled-6893-legend button-and-firstname-disabled-6893-messages"&gt;
+    &lt;legend class="fr-sr-only" id="button-and-firstname-disabled-6893-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6903"&gt;
+            &lt;label class="fr-label" for="family-name-6895"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6895-messages" name="family-name" autocomplete="family-name" id="family-name-6895" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6895-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6901" disabled aria-labelledby="firstname-fieldset-6901-legend firstname-fieldset-6901-messages"&gt;
+            &lt;legend class="fr-sr-only" id="firstname-fieldset-6901-legend"&gt;
+                Prénom(s)
+            &lt;/legend&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;div class="fr-input-group" id="input-group-6904"&gt;
+                    &lt;label class="fr-label" for="given-6900"&gt;
+                        Prénom
+                    &lt;/label&gt;
+                    &lt;input class="fr-input" aria-describedby="given-6900-messages" name="given-name" autocomplete="given-name" id="given-6900" spellcheck="false" type="text"&gt;
+                    &lt;div class="fr-messages-group" id="given-6900-messages" aria-live="assertive"&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;button class="fr-btn fr-btn--sm fr-icon-add-line fr-btn--icon-left fr-btn--tertiary" onclick="if (this.firstnamesCount === undefined) this.firstnamesCount = 1;
+else this.firstnamesCount++;
+
+const getFieldsetElement = (node) =&gt; {
+  const parent = node.parentNode;
+  if (parent.className.indexOf('fr-fieldset__element') &gt; -1) return parent;
+  return getFieldsetElement(parent);
+};
+
+const firstname = getFieldsetElement(document.getElementById('given-6900'));
+
+const reference = getFieldsetElement(this);
+
+const copy = firstname.cloneNode(true);
+copy.innerHTML = copy.innerHTML.replace(/given-6900/g, `given-6900-added-${this.firstnamesCount}`).replace('name=&amp;quot;given-name&amp;quot;', `name=&amp;quot;additional-name-${this.firstnamesCount}&amp;quot;`).replace('autocomplete=&amp;quot;given-name&amp;quot;', 'autocomplete=&amp;quot;additional-name&amp;quot;');
+const container = reference.parentNode;
+container.insertBefore(copy, reference);
+" type="button" id="button-6905"&gt;
+                    Ajouter un prénom
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-messages-group" id="firstname-fieldset-6901-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-checkbox-group fr-checkbox-group--sm"&gt;
+            &lt;input onclick="const fieldset = document.getElementById('firstname-fieldset-6901');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6902" type="checkbox" aria-describedby="disabler-6902-messages"&gt;
+            &lt;label class="fr-label" for="disabler-6902"&gt;
+                Je n'ai pas de prénom
+            &lt;/label&gt;
+            &lt;div class="fr-messages-group" id="disabler-6902-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="button-and-firstname-disabled-6893-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-mt-0">
+                <h2>Demande d’un nom et d’un prénom à l’international</h2>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Défaut</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="name-international-6907" aria-labelledby="name-international-6907-legend name-international-6907-messages">
+                        <legend class="fr-sr-only" id="name-international-6907-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-select-group">
+                                <label class="fr-label" for="country-6908">
+                                    Pays
+                                </label>
+                                <select class="fr-select" aria-describedby="country-6908-messages" id="country-6908" name="country">
+                                    <option value="" selected disabled hidden>Sélectionner une option</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Allemagne</option>
+                                    <option value="IT">Italie</option>
+                                    <option value="ES">Espagne</option>
+                                    <option value="GB">Royaume-Uni</option>
+                                </select>
+                                <div class="fr-messages-group" id="country-6908-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6917">
+                                <label class="fr-label" for="family-name-6909">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6909-messages" name="family-name" autocomplete="family-name" id="family-name-6909" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6909-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6915" aria-labelledby="firstname-fieldset-6915-legend firstname-fieldset-6915-messages">
+                                <legend class="fr-sr-only" id="firstname-fieldset-6915-legend">
+                                    Prénom(s)
+                                </legend>
+                                <div class="fr-fieldset__element">
+                                    <div class="fr-input-group" id="input-group-6918">
+                                        <label class="fr-label" for="given-6914">
+                                            Prénom
+                                        </label>
+                                        <input class="fr-input" aria-describedby="given-6914-messages" name="given-name" autocomplete="given-name" id="given-6914" spellcheck="false" type="text">
+                                        <div class="fr-messages-group" id="given-6914-messages" aria-live="assertive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fr-messages-group" id="firstname-fieldset-6915-messages" aria-live="assertive">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-checkbox-group fr-checkbox-group--sm">
+                                <input onclick="const fieldset = document.getElementById('firstname-fieldset-6915');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" name="firstname-disabled" id="disabler-6916" type="checkbox" aria-describedby="disabler-6916-messages">
+                                <label class="fr-label" for="disabler-6916">
+                                    Je n'ai pas de prénom
+                                </label>
+                                <div class="fr-messages-group" id="disabler-6916-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="name-international-6907-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6931">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6931">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="name-international-6919" aria-labelledby="name-international-6919-legend name-international-6919-messages"&gt;
+    &lt;legend class="fr-sr-only" id="name-international-6919-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-select-group"&gt;
+            &lt;label class="fr-label" for="country-6920"&gt;
+                Pays
+            &lt;/label&gt;
+            &lt;select class="fr-select" aria-describedby="country-6920-messages" id="country-6920" name="country"&gt;
+                &lt;option value="" selected disabled hidden&gt;Sélectionner une option&lt;/option&gt;
+                &lt;option value="FR"&gt;France&lt;/option&gt;
+                &lt;option value="DE"&gt;Allemagne&lt;/option&gt;
+                &lt;option value="IT"&gt;Italie&lt;/option&gt;
+                &lt;option value="ES"&gt;Espagne&lt;/option&gt;
+                &lt;option value="GB"&gt;Royaume-Uni&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;div class="fr-messages-group" id="country-6920-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6929"&gt;
+            &lt;label class="fr-label" for="family-name-6921"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6921-messages" name="family-name" autocomplete="family-name" id="family-name-6921" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6921-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6927" aria-labelledby="firstname-fieldset-6927-legend firstname-fieldset-6927-messages"&gt;
+            &lt;legend class="fr-sr-only" id="firstname-fieldset-6927-legend"&gt;
+                Prénom(s)
+            &lt;/legend&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;div class="fr-input-group" id="input-group-6930"&gt;
+                    &lt;label class="fr-label" for="given-6926"&gt;
+                        Prénom
+                    &lt;/label&gt;
+                    &lt;input class="fr-input" aria-describedby="given-6926-messages" name="given-name" autocomplete="given-name" id="given-6926" spellcheck="false" type="text"&gt;
+                    &lt;div class="fr-messages-group" id="given-6926-messages" aria-live="assertive"&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-messages-group" id="firstname-fieldset-6927-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-checkbox-group fr-checkbox-group--sm"&gt;
+            &lt;input onclick="const fieldset = document.getElementById('firstname-fieldset-6927');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" name="firstname-disabled" id="disabler-6928" type="checkbox" aria-describedby="disabler-6928-messages"&gt;
+            &lt;label class="fr-label" for="disabler-6928"&gt;
+                Je n'ai pas de prénom
+            &lt;/label&gt;
+            &lt;div class="fr-messages-group" id="disabler-6928-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="name-international-6919-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <h4>Avec prénom désactivé</h4>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--center fr-mb-6v">
+                <div class="fr-col-md-8 fr-col-xl-6 fr-col-12">
+                    <fieldset class="fr-fieldset" id="name-international-6932" aria-labelledby="name-international-6932-legend name-international-6932-messages">
+                        <legend class="fr-sr-only" id="name-international-6932-legend">
+                            Nom
+                        </legend>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-select-group">
+                                <label class="fr-label" for="country-6933">
+                                    Pays
+                                </label>
+                                <select class="fr-select" aria-describedby="country-6933-messages" id="country-6933" name="country">
+                                    <option value="" selected disabled hidden>Sélectionner une option</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Allemagne</option>
+                                    <option value="IT">Italie</option>
+                                    <option value="ES">Espagne</option>
+                                    <option value="GB">Royaume-Uni</option>
+                                </select>
+                                <div class="fr-messages-group" id="country-6933-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-input-group" id="input-group-6942">
+                                <label class="fr-label" for="family-name-6934">
+                                    Nom
+                                </label>
+                                <input class="fr-input" aria-describedby="family-name-6934-messages" name="family-name" autocomplete="family-name" id="family-name-6934" spellcheck="false" type="text">
+                                <div class="fr-messages-group" id="family-name-6934-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6940" disabled aria-labelledby="firstname-fieldset-6940-legend firstname-fieldset-6940-messages">
+                                <legend class="fr-sr-only" id="firstname-fieldset-6940-legend">
+                                    Prénom(s)
+                                </legend>
+                                <div class="fr-fieldset__element">
+                                    <div class="fr-input-group" id="input-group-6943">
+                                        <label class="fr-label" for="given-6939">
+                                            Prénom
+                                        </label>
+                                        <input class="fr-input" aria-describedby="given-6939-messages" name="given-name" autocomplete="given-name" id="given-6939" spellcheck="false" type="text">
+                                        <div class="fr-messages-group" id="given-6939-messages" aria-live="assertive">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fr-messages-group" id="firstname-fieldset-6940-messages" aria-live="assertive">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="fr-fieldset__element">
+                            <div class="fr-checkbox-group fr-checkbox-group--sm">
+                                <input onclick="const fieldset = document.getElementById('firstname-fieldset-6940');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6941" type="checkbox" aria-describedby="disabler-6941-messages">
+                                <label class="fr-label" for="disabler-6941">
+                                    Je n'ai pas de prénom
+                                </label>
+                                <div class="fr-messages-group" id="disabler-6941-messages" aria-live="assertive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fr-messages-group" id="name-international-6932-messages" aria-live="assertive">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="fr-grid-row fr-mb-6v">
+                <div class="fr-col-12">
+                    <div class="fr-mb-12v">
+                        <section class="fr-accordion">
+                            <h3 class="fr-accordion__title">
+                                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="snippet-6956">Extrait de code</button>
+                            </h3>
+                            <div class="fr-collapse" id="snippet-6956">
+                                <pre class=" language-html"><code>&lt;fieldset class="fr-fieldset" id="name-international-6944" aria-labelledby="name-international-6944-legend name-international-6944-messages"&gt;
+    &lt;legend class="fr-sr-only" id="name-international-6944-legend"&gt;
+        Nom
+    &lt;/legend&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-select-group"&gt;
+            &lt;label class="fr-label" for="country-6945"&gt;
+                Pays
+            &lt;/label&gt;
+            &lt;select class="fr-select" aria-describedby="country-6945-messages" id="country-6945" name="country"&gt;
+                &lt;option value="" selected disabled hidden&gt;Sélectionner une option&lt;/option&gt;
+                &lt;option value="FR"&gt;France&lt;/option&gt;
+                &lt;option value="DE"&gt;Allemagne&lt;/option&gt;
+                &lt;option value="IT"&gt;Italie&lt;/option&gt;
+                &lt;option value="ES"&gt;Espagne&lt;/option&gt;
+                &lt;option value="GB"&gt;Royaume-Uni&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;div class="fr-messages-group" id="country-6945-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-input-group" id="input-group-6954"&gt;
+            &lt;label class="fr-label" for="family-name-6946"&gt;
+                Nom
+            &lt;/label&gt;
+            &lt;input class="fr-input" aria-describedby="family-name-6946-messages" name="family-name" autocomplete="family-name" id="family-name-6946" spellcheck="false" type="text"&gt;
+            &lt;div class="fr-messages-group" id="family-name-6946-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;fieldset class="fr-mb-n4v fr-fieldset" id="firstname-fieldset-6952" disabled aria-labelledby="firstname-fieldset-6952-legend firstname-fieldset-6952-messages"&gt;
+            &lt;legend class="fr-sr-only" id="firstname-fieldset-6952-legend"&gt;
+                Prénom(s)
+            &lt;/legend&gt;
+            &lt;div class="fr-fieldset__element"&gt;
+                &lt;div class="fr-input-group" id="input-group-6955"&gt;
+                    &lt;label class="fr-label" for="given-6951"&gt;
+                        Prénom
+                    &lt;/label&gt;
+                    &lt;input class="fr-input" aria-describedby="given-6951-messages" name="given-name" autocomplete="given-name" id="given-6951" spellcheck="false" type="text"&gt;
+                    &lt;div class="fr-messages-group" id="given-6951-messages" aria-live="assertive"&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="fr-messages-group" id="firstname-fieldset-6952-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-fieldset__element"&gt;
+        &lt;div class="fr-checkbox-group fr-checkbox-group--sm"&gt;
+            &lt;input onclick="const fieldset = document.getElementById('firstname-fieldset-6952');
+if (this.checked) fieldset.setAttribute('disabled', '');
+else fieldset.removeAttribute('disabled');
+" checked name="firstname-disabled" id="disabler-6953" type="checkbox" aria-describedby="disabler-6953-messages"&gt;
+            &lt;label class="fr-label" for="disabler-6953"&gt;
+                Je n'ai pas de prénom
+            &lt;/label&gt;
+            &lt;div class="fr-messages-group" id="disabler-6953-messages" aria-live="assertive"&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="fr-messages-group" id="name-international-6944-messages" aria-live="assertive"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="fr-display-button fr-background-default--grey fr-btn fr-btn--lg fr-icon-theme-fill fr-btn--secondary" aria-controls="fr-theme-modal" data-fr-opened="false" style="z-index: 1600" id="button-6957">
+        Label bouton
+    </button>
+    <dialog id="fr-theme-modal" class="fr-modal" role="dialog" aria-labelledby="fr-theme-modal-title">
+        <div class="fr-container fr-container--fluid fr-container-md">
+            <div class="fr-grid-row fr-grid-row--center">
+                <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
+                    <div class="fr-modal__body">
+                        <div class="fr-modal__header">
+                            <button class="fr-btn--close fr-btn" aria-controls="fr-theme-modal" id="button-6958" title="Fermer">
+                                Fermer
+                            </button>
+                        </div>
+                        <div class="fr-modal__content">
+                            <h1 id="fr-theme-modal-title" class="fr-modal__title">
+                                Paramètres d’affichage
+                            </h1>
+                            <div id="fr-display" class="fr-display">
+                                <fieldset class="fr-fieldset" id="display-fieldset">
+                                    <legend class="fr-fieldset__legend--regular fr-fieldset__legend" id="display-fieldset-legend">
+                                        Choisissez un thème pour personnaliser l’apparence du site.
+                                    </legend>
+                                    <div class="fr-fieldset__element">
+                                        <div class="fr-radio-group fr-radio-rich">
+                                            <input value="light" type="radio" id="fr-radios-theme-light" name="fr-radios-theme">
+                                            <label class="fr-label" for="fr-radios-theme-light">
+                                                Thème clair
+                                            </label>
+                                            <div class="fr-radio-rich__img">
+                                                <svg aria-hidden="true" class="fr-artwork" viewBox="0 0 80 80" width="80px" height="80px">
+                                                    <use class="fr-artwork-decorative" href="../../../dist/artwork/pictograms/environment/sun.svg#artwork-decorative"></use>
+                                                    <use class="fr-artwork-minor" href="../../../dist/artwork/pictograms/environment/sun.svg#artwork-minor"></use>
+                                                    <use class="fr-artwork-major" href="../../../dist/artwork/pictograms/environment/sun.svg#artwork-major"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fr-fieldset__element">
+                                        <div class="fr-radio-group fr-radio-rich">
+                                            <input value="dark" type="radio" id="fr-radios-theme-dark" name="fr-radios-theme">
+                                            <label class="fr-label" for="fr-radios-theme-dark">
+                                                Thème sombre
+                                            </label>
+                                            <div class="fr-radio-rich__img">
+                                                <svg aria-hidden="true" class="fr-artwork" viewBox="0 0 80 80" width="80px" height="80px">
+                                                    <use class="fr-artwork-decorative" href="../../../dist/artwork/pictograms/environment/moon.svg#artwork-decorative"></use>
+                                                    <use class="fr-artwork-minor" href="../../../dist/artwork/pictograms/environment/moon.svg#artwork-minor"></use>
+                                                    <use class="fr-artwork-major" href="../../../dist/artwork/pictograms/environment/moon.svg#artwork-major"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fr-fieldset__element">
+                                        <div class="fr-radio-group fr-radio-rich">
+                                            <input value="system" type="radio" id="fr-radios-theme-system" name="fr-radios-theme">
+                                            <label class="fr-label" for="fr-radios-theme-system">
+                                                Système
+                                                <span class="fr-hint-text">Utilise les paramètres système</span>
+                                            </label>
+                                            <div class="fr-radio-rich__img">
+                                                <svg aria-hidden="true" class="fr-artwork" viewBox="0 0 80 80" width="80px" height="80px">
+                                                    <use class="fr-artwork-decorative" href="../../../dist/artwork/pictograms/system/system.svg#artwork-decorative"></use>
+                                                    <use class="fr-artwork-minor" href="../../../dist/artwork/pictograms/system/system.svg#artwork-minor"></use>
+                                                    <use class="fr-artwork-major" href="../../../dist/artwork/pictograms/system/system.svg#artwork-major"></use>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+    <script type="module" src="../../../dist/patch/patch.module.js"></script>
+    <script type="module" src="../../../dist/core/core.module.js"></script>
+    <script type="module" src="../../../dist/scheme/scheme.module.js"></script>
+    <script type="module" src="../../../dist/component/accordion/accordion.module.js"></script>
+    <script type="module" src="../../../dist/component/modal/modal.module.js"></script>
+    <script type="module" src="../../../dist/component/display/display.module.js"></script>
+    <script type="text/javascript" nomodule src="../../../dist/legacy/legacy.nomodule.js"></script>
+    <script type="text/javascript" nomodule src="../../../dist/core/core.nomodule.js"></script>
+    <script type="text/javascript" nomodule src="../../../dist/component/accordion/accordion.nomodule.js"></script>
+    <script type="text/javascript" nomodule src="../../../dist/component/modal/modal.nomodule.js"></script>
+    <script type="text/javascript" nomodule src="../../../dist/component/display/display.nomodule.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+</body>
+
+</html>
