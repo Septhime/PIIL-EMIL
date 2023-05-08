@@ -344,16 +344,19 @@ include "../../commun.php";
         <div class="fr-footer__bottom">
           <ul class="fr-footer__bottom-list">
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="../../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+              <a class="fr-footer__bottom-link" href="../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="../../../legal.html" target="_blank">Mentions légales</a>
+              <a class="fr-footer__bottom-link" href="../../legal.html" target="_blank">Mentions légales</a>
             </li>
             <li class="fr-footer__bottom-item">
-              <a class="fr-footer__bottom-link" href="../../../privacy.html" target="_blank">Données personnelles</a>
+              <a class="fr-footer__bottom-link" href="../../privacy.html" target="_blank">Données personnelles</a>
             </li>
             <li class="fr-footer__bottom-item">
               <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
+            </li>
+            <li class="fr-footer__bottom-item">
+              <span id="version" class="fr-footer__bottom-link"><?php echo $version;?></span>
             </li>
           </ul>
           <div class="fr-footer__bottom-copy">

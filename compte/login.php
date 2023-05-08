@@ -209,9 +209,9 @@ if (isset($_GET['s'])) {
                     <div class="fr-tile fr-enlarge-link">
                         <div class="fr-tile__body">
                             <h4 class="fr-tile__title">
-                                <a class="fr-tile__link" href="login.php?s=3">Référent Vie Scolaire</a>
+                                <a class="fr-tile__link" href="login.php?s=3">Référent Lycéen</a>
                             </h4>
-                            <p class="fr-tile__desc">Connexion via ...</p>
+                            <p class="fr-tile__desc">Connexion via Arena</p>
                         </div>
                         <div class="fr-tile__img">
                             <span class="fr-icon-admin-line fr-icon--lg"></span>
@@ -416,6 +416,9 @@ if (isset($_GET['s'])) {
                 </li>
                 <li class="fr-footer__bottom-item">
                     <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
+                </li>
+                <li class="fr-footer__bottom-item">
+                    <span id="version" class="fr-footer__bottom-link">vf-1.1.0</span>
                 </li>
             </ul>
             <div class="fr-footer__bottom-copy">

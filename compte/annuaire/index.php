@@ -325,6 +325,9 @@ include "../commun.php";
             <li class="fr-footer__bottom-item">
               <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
             </li>
+            <li class="fr-footer__bottom-item">
+              <span id="version" class="fr-footer__bottom-link"><?php echo $version;?></span>
+            </li>
           </ul>
           <div class="fr-footer__bottom-copy">
             <p>Sauf mention contraire, tous les contenus de ce site sont sous

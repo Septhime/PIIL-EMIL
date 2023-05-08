@@ -224,7 +224,7 @@ include "commun.php";
                                     <div class="fr-card__body">
                                         <div class="fr-card__content">
                                             <h4 class="fr-card__title">
-                                                <a href="#">Nouveau message !</a>
+                                                <a href="messagerie">Nouveau message !</a>
                                             </h4>
                                             <p class="fr-card__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lorem sit amet enim fermentum interdum. Fusce mattis, orci quis...</p>
                                             <div class="fr-card__start">
@@ -244,7 +244,7 @@ include "commun.php";
                                     <div class="fr-card__body">
                                         <div class="fr-card__content">
                                             <h4 class="fr-card__title">
-                                                <a href="#">Nouvelle réunion en visioconférence !</a>
+                                                <a href="applications/visio">Nouvelle réunion en visioconférence !</a>
                                             </h4>
                                             <p class="fr-card__desc">Une nouvelle réunion en visioconférence a été programmé par M. ... le 24/06/2022 à 14H00</p>
                                             <div class="fr-card__start">
@@ -267,7 +267,7 @@ include "commun.php";
                                     <div class="fr-card__body">
                                         <div class="fr-card__content">
                                             <h4 class="fr-card__title">
-                                                <a href="#">Nouvelle affectation !</a>
+                                                <a href="applications/files">Nouvelle affectation !</a>
                                             </h4>
                                             <p class="fr-card__desc">Vous avez été affecté à la commission "égalité". Vous avez désormais accès aux ressources correspondantes.</p>
                                             <div class="fr-card__start">
@@ -289,7 +289,7 @@ include "commun.php";
                                     <div class="fr-card__body">
                                         <div class="fr-card__content">
                                             <h4 class="fr-card__title">
-                                                <a href="#">Nouvelle réunion !</a>
+                                                <a href="applications/calendar">Nouvelle réunion !</a>
                                             </h4>
                                             <p class="fr-card__desc">Une réunion du  <b>'; if ($_COOKIE["account"] == 1) { echo 'CNVL';} else {echo 'CAVL de Normandie';} echo '</b> à été organisée le ../../.... à ..H..</p>
                                             <div class="fr-card__start">
@@ -350,16 +350,19 @@ include "commun.php";
             <div class="fr-footer__bottom">
                 <ul class="fr-footer__bottom-list">
                     <li class="fr-footer__bottom-item">
-                        <a class="fr-footer__bottom-link" href="../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+                        <a class="fr-footer__bottom-link" href="../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
                     </li>
                     <li class="fr-footer__bottom-item">
-                        <a class="fr-footer__bottom-link" href="../legal.html" target="_blank">Mentions légales</a>
+                        <a class="fr-footer__bottom-link" href="../../legal.html" target="_blank">Mentions légales</a>
                     </li>
                     <li class="fr-footer__bottom-item">
-                        <a class="fr-footer__bottom-link" href="../privacy.html" target="_blank">Données personnelles</a>
+                        <a class="fr-footer__bottom-link" href="../../privacy.html" target="_blank">Données personnelles</a>
                     </li>
                     <li class="fr-footer__bottom-item">
                         <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
+                    </li>
+                    <li class="fr-footer__bottom-item">
+                        <span id="version" class="fr-footer__bottom-link"><?php echo $version;?></span>
                     </li>
                 </ul>
                 <div class="fr-footer__bottom-copy">

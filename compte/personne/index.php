@@ -137,14 +137,7 @@ if (isset($_COOKIE["account"])) {
       <div class="fr-header__body-row">
         <div class="fr-header__brand fr-enlarge-link">
           <div class="fr-header__brand-top">
-            <!--<div class="fr-header__logo">
-                <p class="fr-logo">
-                    Ministère
-                    <br>de l'éducation
-                    <br>nationale
-                    <br>et de la jeunesse
-                </p>
-            </div>-->
+            
             <div class="fr-header__navbar">
               <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-1257" aria-haspopup="menu" id="button-1258" title="Menu">
                 Menu
@@ -367,6 +360,9 @@ if (isset($_COOKIE["account"])) {
         </li>
         <li class="fr-footer__bottom-item">
           <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
+        </li>
+        <li class="fr-footer__bottom-item">
+          <span id="version" class="fr-footer__bottom-link"><?php echo $version;?></span>
         </li>
       </ul>
       <div class="fr-footer__bottom-copy">

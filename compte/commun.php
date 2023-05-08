@@ -8,6 +8,8 @@ echo '<!-- Conçu par Timothée Varin grâce au DSFR - CAVL de Normandie -->
 
 $title = "Espace des membres d'instances lycéennes";
 
+$version = "vf-1.1.0";
+
 $footer = "";
 
 if (isset($_COOKIE["account"])) {
@@ -23,7 +25,7 @@ if (isset($_COOKIE["account"])) {
 $r = [
     1 => 'DNVLC',
     2 => 'DAVLC',
-    3 => 'Référent Vie Scolaire',
+    3 => 'Référent Lycéen',
     4 => 'CNVL',
     5 => 'CAVL',
     6 => 'CVL',

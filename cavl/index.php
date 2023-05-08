@@ -126,14 +126,7 @@ if(isset($_GET['select-hint'])) {
       <div class="fr-header__body-row">
         <div class="fr-header__brand fr-enlarge-link">
           <div class="fr-header__brand-top">
-            <!--<div class="fr-header__logo">
-                <p class="fr-logo">
-                    Ministère
-                    <br>de l'éducation
-                    <br>nationale
-                    <br>et de la jeunesse
-                </p>
-            </div>-->
+            
             <div class="fr-header__navbar">
               <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-616" aria-haspopup="menu" id="button-617" title="Menu">
                 Menu
@@ -218,7 +211,7 @@ if(isset($_GET['select-hint'])) {
                         <a class="fr-nav__link" href="#" target="_self">Académie de Corse</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Crétail</a>
+                        <a class="fr-nav__link" href="#" target="_self">Académie de Créteil</a>
                       </li>
                       <li>
                         <a class="fr-nav__link" href="#" target="_self">Académie de Dijon</a>
@@ -416,6 +409,9 @@ if(isset($_GET['select-hint'])) {
         </li>
         <li class="fr-footer__bottom-item">
           <a class="fr-footer__bottom-link" id="footer__bottom-link-5974" href="#">Gestion des cookies</a>
+        </li>
+        <li class="fr-footer__bottom-item">
+          <span class="fr-footer__bottom-link" id="version">vf-1.1.0</span>
         </li>
       </ul>
       <div class="fr-footer__bottom-copy">
