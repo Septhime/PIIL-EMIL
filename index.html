@@ -16,9 +16,6 @@
     <link rel="icon" href="dist/favicon/favicon.svg" type="image/svg+xml">
     <!-- si favicon.ico peut etre placé à la racine du serveur, retirer la ligne ci-dessous -->
     <link rel="shortcut icon" href="dist/favicon/favicon.ico" type="image/x-icon"><!-- 32×32 -->
-    <link rel="manifest" href="dist/favicon/manifest.webmanifest" crossorigin="use-credentials">
-    <!-- Modifier les chemins relatifs des favicons en fonction de la structure du projet -->
-    <!-- Dans le fichier manifest.webmanifest aussi, modifier les chemins vers les images -->
     <link href="dist/core/core.main.css" rel="stylesheet" file="main">
     <link href="dist/component/button/button.main.css" rel="stylesheet" file="main">
     <link href="dist/scheme/scheme.css" rel="stylesheet" file="main">
@@ -447,20 +444,20 @@
                                     <h3 class="fr-card__title">Representation des différents types d'établissements dans les instances académique</h3>
                                     <div class="fr-card__desc">
                                         <div class="fr-grid-row fr-grid-row--gutters fr-mt-5v">
-                                            <div class="fr-col-4">
+                                            <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
                                                 <h1 style="text-align: center;">49,1 %</h1>
                                                 <h4 style="text-align: center;">LEGT</h4>
                                             </div>
-                                            <div class="fr-col-4">
+                                            <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
                                                 <h1 style="text-align: center;">34,4 %</h1>
                                                 <h4 style="text-align: center;">LP</h4>
                                             </div>
-                                            <div class="fr-col-4">
+                                            <div class="fr-col-12 fr-col-md-6 fr-col-lg-4">
                                                 <h1 style="text-align: center">16,5 %</h1>
                                                 <h4 style="text-align: center">EREA</h4>
                                             </div>
                                         </div>
-                                        <p style="text-align: center"><i>Les chiffres sont fictifs</i></p>
+                                        <p class="fr-mt-5v" style="text-align: center"><i>Les chiffres sont fictifs</i></p>
                                         <div class="fr-my-5v fr-mx-5v fr fr-grid-row fr-grid-row--right">
                                             <a class="fr-link fr-icon-arrow-right-line fr-link--icon-right" href="#">
                                                 Voir plus
@@ -516,12 +513,6 @@
     <div class="fr-container">
         <div class="fr-footer__body">
             <div class="fr-footer__brand fr-enlarge-link">
-                <!--<p class="fr-logo">
-                    Ministère
-                    <br>de l'éducation
-                    <br>nationale
-                    <br>et de la jeunesse
-                </p>-->
                 <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Plateforme informative des instances lycéennes">
                     <img class="fr-footer__logo" style="width:8rem;" src="assets/img/piil_logo.svg" alt="Logo du Projet PIIL" />
                 </a>
@@ -562,7 +553,7 @@
                     <a class="fr-footer__bottom-link" id="footer__bottom-link-5974" href="#">Gestion des cookies</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <span class="fr-footer__bottom-link" id="version">vf-1.1.0</span>
+                    <span class="fr-footer__bottom-link" id="version">vf-1.1.1</span>
                 </li>
             </ul>
             <div class="fr-footer__bottom-copy">

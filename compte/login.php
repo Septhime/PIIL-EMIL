@@ -146,42 +146,45 @@ if (isset($_GET['s'])) {
             <div class="fr-header__body-row">
                 <div class="fr-header__brand fr-enlarge-link">
                     <div class="fr-header__brand-top">
-                        <!--<div class="fr-header__logo">
-                            <p class="fr-logo">
-                                Ministère
-                                <br>de l'éducation
-                                <br>nationale
-                                <br>et de la jeunesse
-                            </p>
-                        </div>-->
                         <div class="fr-header__navbar">
-                            <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-1257" aria-haspopup="menu" id="button-1258" title="Menu">
+                            <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-2295" aria-haspopup="menu" id="button-2296" title="Menu">
                                 Menu
                             </button>
                         </div>
                     </div>
                     <div class="fr-header__service">
-                        <a href="/" title="Accueil - Espace des membres d'instances lycéennes">
+                        <a href="#" title="Accueil - Espace des membres d'instances lycéennes">
                             <p class="fr-header__service-title">
-                                Espace des membres d'instances lycéennes
-                                <span class="fr-badge fr-badge--sm fr-badge--green-emeraude">PROTOTYPE</span>
+                                Espace des membres d'instances lycéennes <span class="fr-badge fr-badge--green-emeraude fr-badge--sm">PROTOTYPE</span>
                             </p>
                         </a>
-                        <!--<p class="fr-header__service-tagline">baseline - précisions sur l‘organisation</p>-->
                     </div>
                 </div>
                 <div class="fr-header__tools">
                     <div class="fr-header__tools-links">
                         <ul class="fr-btns-group">
                             <li>
-                                <a class="fr-btn fr-icon-arrow-go-back-line" href="../index.html">
-                                    Revenir à l'accueil
+                                <a class="fr-btn fr-icon-arrow-go-back-line" id="button-2298" href="../">
+                                    Revenir en arrière
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="fr-header__menu fr-modal" id="modal-2295" aria-labelledby="button-2296">
+        <div class="fr-container">
+            <button class="fr-btn--close fr-btn" aria-controls="modal-2295" id="button-2301" title="Fermer">
+                Fermer
+            </button>
+            <div class="fr-header__menu-links">
+            </div>
+            <nav class="fr-nav" id="navigation-2302" role="navigation" aria-label="Menu principal">
+                <ul class="fr-nav__list">
+                </ul>
+            </nav>
         </div>
     </div>
 </header>
@@ -197,7 +200,7 @@ if (isset($_GET['s'])) {
                             <h4 class="fr-tile__title">
                                 <a class="fr-tile__link" href="#" data-fr-opened="false" aria-controls="fr-modal-3">DAVLC & DNVLC</a>
                             </h4>
-                            <p class="fr-tile__desc">Connexion via ...</p>
+                            <p class="fr-tile__desc">Connexion via Arena</p>
                         </div>
                         <div class="fr-tile__img">
                             <span class="fr-icon-team-line fr-icon--lg"></span>
@@ -373,14 +376,7 @@ if (isset($_GET['s'])) {
     <div class="fr-container">
         <div class="fr-footer__body">
             <div class="fr-footer__brand fr-enlarge-link">
-                <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                    <p class="fr-logo">
-                        Ministère
-                        <br>de l'éducation
-                        <br>nationale
-                        <br>et de la jeunesse
-                    </p>
-                </a>-->
+                fr-col-lg-4
                 <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Espace des membres d'instances lycéennes">
                     <img class="fr-footer__logo" style="width:8rem;" src="../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
                 </a>
@@ -418,7 +414,7 @@ if (isset($_GET['s'])) {
                     <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <span id="version" class="fr-footer__bottom-link">vf-1.1.0</span>
+                    <span id="version" class="fr-footer__bottom-link">vf-1.1.1</span>
                 </li>
             </ul>
             <div class="fr-footer__bottom-copy">

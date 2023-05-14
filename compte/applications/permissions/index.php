@@ -146,14 +146,7 @@ if ($_COOKIE['account'] > 3) {
             <div class="fr-header__body-row">
                 <div class="fr-header__brand fr-enlarge-link">
                     <div class="fr-header__brand-top">
-                        <!--<div class="fr-header__logo">
-                            <p class="fr-logo">
-                                Ministère
-                                <br>de l'éducation
-                                <br>nationale
-                                <br>et de la jeunesse
-                            </p>
-                        </div>-->
+                        
                         <div class="fr-header__navbar">
                             <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-1257" aria-haspopup="menu" id="button-1258" title="Menu">
                                 Menu
@@ -258,7 +251,7 @@ if ($_COOKIE['account'] > 3) {
             </label>
             <select class="fr-select" aria-describedby="select-messages" id="select" name="select">
                 <option value="" disabled><?php if($_COOKIE['account'] == 1) {echo 'CNVL';} elseif($_COOKIE['account'] == 2) {echo 'CAVL';} else {echo 'LGT Pablo Neruda';} ?></option>
-                <option value="" selected>Tous membre <?php if($_COOKIE['account'] == 1) {echo 'du CNVL';} elseif($_COOKIE['account'] == 2) {echo 'du CAVL de Normandie';} else {echo 'de LGT Pablo Neruda';} ?></option>
+                <option value="" selected>Tous membre <?php if($_COOKIE['account'] == 1) {echo 'du CNVL';} elseif($_COOKIE['account'] == 2) {echo 'du CAVL de Normandie';} else {echo 'du CVL de LGT Pablo Neruda';} ?></option>
                 <option value=""><?php if($_COOKIE['account'] == 2 OR $_COOKIE['account'] == 3) {echo 'Varin T.';} else {echo '...';} ?></option>
                 <option value="">...</option>
                 <option value="">...</option>
@@ -389,14 +382,7 @@ if ($_COOKIE['account'] > 3) {
     <div class="fr-container fr-px-3w">
         <div class="fr-footer__body">
             <div class="fr-footer__brand fr-enlarge-link">
-                <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                    <p class="fr-logo">
-                        Ministère
-                        <br>de l'éducation
-                        <br>nationale
-                        <br>et de la jeunesse
-                    </p>
-                </a>-->
+                
                 <a id="footer-brand" class="fr-footer__brand-link" href="../../" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
                     <img class="fr-footer__logo" style="width:8rem;" src="../../../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
                 </a>
@@ -422,13 +408,13 @@ if ($_COOKIE['account'] > 3) {
         <div class="fr-footer__bottom">
             <ul class="fr-footer__bottom-list">
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
+                    <a class="fr-footer__bottom-link" href="../../../accessibility.html" target="_blank">Accessibilité : non<!--/partiellement/totalement--> conforme</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="../../legal.html" target="_blank">Mentions légales</a>
+                    <a class="fr-footer__bottom-link" href="../../../legal.html" target="_blank">Mentions légales</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <a class="fr-footer__bottom-link" href="../../privacy.html" target="_blank">Données personnelles</a>
+                    <a class="fr-footer__bottom-link" href="../../../privacy.html" target="_blank">Données personnelles</a>
                 </li>
                 <li class="fr-footer__bottom-item">
                     <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>

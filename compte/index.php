@@ -130,14 +130,7 @@ include "commun.php";
                         <div class="fr-header__body-row">
                             <div class="fr-header__brand fr-enlarge-link">
                                 <div class="fr-header__brand-top">
-                                    <!--<div class="fr-header__logo">
-                                        <p class="fr-logo">
-                                            Ministère
-                                            <br>de l'éducation
-                                            <br>nationale
-                                            <br>et de la jeunesse
-                                        </p>
-                                    </div>-->
+                                    
                                     <div class="fr-header__navbar">
                                         <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-1257" aria-haspopup="menu" id="button-1258" title="Menu">
                                             Menu
@@ -317,14 +310,6 @@ include "commun.php";
         <div class="fr-container">
             <div class="fr-footer__body">
                 <div class="fr-footer__brand fr-enlarge-link">
-                    <!--<a href="/" title="Retour à l’accueil du site - Nom de l’entité (ministère, secrétariat d‘état, gouvernement)">
-                        <p class="fr-logo">
-                            Ministère
-                            <br>de l'éducation
-                            <br>nationale
-                            <br>et de la jeunesse
-                        </p>
-                    </a>-->
                     <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Espace des membres d'instances lycéennes">
                         <img class="fr-footer__logo" style="width:8rem;" src="../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
                     </a>

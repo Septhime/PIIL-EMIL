@@ -1,8 +1,8 @@
 # PILL & EMIL
 
-Ces projets sont l'aboutissement de plusieurs mois de travail. Ils ont été réalisés dans le cadre de mon mandat au CAVL.
+Ces projets sont l'aboutissement de plusieurs mois de travail (Janvier - Mai 2023). Ils ont été réalisés dans le cadre de mon mandat au CAVL de Normandie.
 
-Ces deux projets répondent à des problématiques sur la démocratie scolaire qui, je l'espère, seront résolus par ces solutions.
+Ces deux projets répondent à des problématiques sur la démocratie scolaire telle que le manque de communication entre instances lycéennes ainsi qu'entre les élu.e.s lycéen.ne.s. et les non-élu.e.s.
 
 #### ⚠️ Attention !
 > Ces projets utilisent la bibliothèque 'DSFR' qui appartient à l'état et est sous licence MIT.
