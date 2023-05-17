@@ -5,11 +5,10 @@
 <!-- En aucun cas, la création de ce site est à but trompeur ou frauduleux et elle n'est pas à usage commercial. -->
 <!doctype html>
 <html lang="fr" data-fr-theme>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Engagement Lycéen</title>
+  <title>Mentions légales - Engagement Lycéen</title>
   <meta name="robots" content="noindex"/>
   <meta name="theme-color" content="#000091"><!-- Défini la couleur de thème du navigateur (Safari/Android) -->
   <link rel="apple-touch-icon" href="dist/favicon/apple-touch-icon.png"><!-- 180×180 -->
@@ -36,6 +35,7 @@
   <link href="dist/component/translate/translate.main.css" rel="stylesheet" file="main">
   <link href="dist/component/header/header.main.css" rel="stylesheet" file="main">
   <link href="dist/component/alert/alert.main.css" rel="stylesheet" file="main">
+  <link href="dist/component/skiplink/skiplink.main.css" rel="stylesheet" file="main">
   <link href="dist/core/core.legacy.css" rel="stylesheet" file="legacy">
   <link href="dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
   <link href="dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
@@ -51,7 +51,8 @@
   <link href="dist/component/search/search.legacy.css" rel="stylesheet" file="legacy">
   <link href="dist/component/translate/translate.legacy.css" rel="stylesheet" file="legacy">
   <link href="dist/component/header/header.legacy.css" rel="stylesheet" file="legacy">
-    <link href="dist/component/alert/alert.legacy.css" rel="stylesheet" file="legacy">
+  <link href="dist/component/alert/alert.legacy.css" rel="stylesheet" file="legacy">
+  <link href="dist/component/skiplink/skiplink.legacy.css" rel="stylesheet" file="legacy">
   <style>
     code[class*="language-"],
     pre[class*="language-"] {
@@ -118,6 +119,21 @@
 </head>
 
 <body id="top">
+<div class="fr-skiplinks">
+  <nav aria-label="Accès rapide" class="fr-container" role="navigation">
+    <ul class="fr-skiplinks__list">
+      <li>
+        <a class="fr-link" href="#content">Contenu</a>
+      </li>
+      <li>
+        <a class="fr-link" href="#header-navigation">Menu</a>
+      </li>
+      <li>
+        <a class="fr-link" href="#footer">Pied de page</a>
+      </li>
+    </ul>
+  </nav>
+</div>
 <header role="banner" class="fr-header">
   <div class="fr-header__body">
     <div class="fr-container">
@@ -161,7 +177,7 @@
       </button>
       <div class="fr-header__menu-links">
       </div>
-      <nav class="fr-nav" id="navigation-1259" role="navigation" aria-label="Menu principal">
+      <nav class="fr-nav" id="header-navigation" role="navigation" aria-label="Menu principal">
         <ul class="fr-nav__list">
           <li class="fr-nav__item">
             <a class="fr-nav__link" href="cse" target="_self">CSE</a>
@@ -183,7 +199,7 @@
                     <div class="fr-mega-menu__leader">
                       <h4 class="fr-h4 fr-mb-2v">Conseils Académique de Vie Lycéenne</h4>
                       <p class="fr-hidden fr-unhidden-lg">Découvrez les actualités et le compte rendu de séance des CAVL de chaque académie de métropole & d'outre-mer.</p>
-                      <a class="fr-link fr-icon-arrow-right-line fr-link--icon-right" href="../">
+                      <a class="fr-link fr-icon-arrow-right-line fr-link--icon-right" href="cavl">
                         Qu'est-ce que le CAVL ?
                       </a>
                     </div>
@@ -307,7 +323,7 @@
         <div class="fr-mt-5y">
           <div class="fr-col-12">
             <div id="alert-660" class="fr-alert fr-alert--info fr-mb-2w">
-              <h3 class="fr-alert__title">Information prototype <div class="fr-badge fr-badge--info">Developer mode</div></h3>
+              <h3 class="fr-alert__title">Information prototype <div class="fr-badge fr-badge--sm fr-badge--info">Developer mode</div></h3>
               <p>L'hébergement des projets PIIL & EMIL sont opéré par Timothée Varin, un particulier qui ne récupère aucune recette à l'action de celui-ci.</p>
               <p>Le serveur hébergeant ces projets est situé en Allemagne et est entretenu par <a href="https://www.ionos.fr/" target="_blank">IONOS SE</a> - <a href="https://www.ionos.fr/terms-gtc/fileadmin/pdf/terms-gtc/FR/Mentions_legales/2022/2022_07_26_FR_Mentions_Legales.pdf" target="_blank">Mention légale de IONOS</a></p>
             </div>
@@ -322,7 +338,7 @@
     </div>
   </div>
 </main>
-<footer class="fr-footer" role="contentinfo" id="footer-5965">
+<footer class="fr-footer" role="contentinfo" id="footer">
   <div class="fr-container">
     <div class="fr-footer__body">
       <div class="fr-footer__brand fr-enlarge-link">
@@ -368,7 +384,7 @@
           <a class="fr-footer__bottom-link" id="footer__bottom-link-5974" href="#">Gestion des cookies</a>
         </li>
         <li class="fr-footer__bottom-item">
-          <span class="fr-footer__bottom-link" id="version">vf-1.1.1</span>
+          <span class="fr-footer__bottom-link" id="version">vf-1.2.0</span>
         </li>
       </ul>
       <div class="fr-footer__bottom-copy">

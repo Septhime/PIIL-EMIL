@@ -8,7 +8,7 @@ echo '<!-- Conçu par Timothée Varin grâce au DSFR - CAVL de Normandie -->
 
 $title = "Espace des membres d'instances lycéennes";
 
-$version = "vf-1.1.1";
+$version = "vf-1.2.0";
 
 $footer = "";
 

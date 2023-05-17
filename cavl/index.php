@@ -39,6 +39,7 @@ if(isset($_GET['select-hint'])) {
   <link href="../dist/component/search/search.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/header/header.main.css" rel="stylesheet" file="main">
   <link href="../dist/component/select/select.main.css" rel="stylesheet" file="main">
+  <link href="../dist/component/skiplink/skiplink.main.css" rel="stylesheet" file="main">
   <link href="../dist/core/core.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
@@ -54,6 +55,7 @@ if(isset($_GET['select-hint'])) {
   <link href="../dist/component/search/search.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/header/header.legacy.css" rel="stylesheet" file="legacy">
   <link href="../dist/component/select/select.legacy.css" rel="stylesheet" file="legacy">
+  <link href="../dist/component/skiplink/skiplink.legacy.css" rel="stylesheet" file="legacy">
   <style>
     code[class*="language-"],
     pre[class*="language-"] {
@@ -120,13 +122,42 @@ if(isset($_GET['select-hint'])) {
 </head>
 
 <body id="top">
+<div class="fr-skiplinks">
+    <nav aria-label="Accès rapide" class="fr-container" role="navigation">
+        <ul class="fr-skiplinks__list">
+            <li>
+                <a class="fr-link" href="#content">Contenu</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#header-navigation">Menu</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#footer">Pied de page</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="fr-skiplinks">
+  <nav role="navigation" aria-label="Accès rapide" class="fr-container">
+    <ul class="fr-skiplinks__list">
+      <li>
+        <a class="fr-link" href="#content">Contenu</a>
+      </li>
+      <li>
+        <a class="fr-link" href="#header-navigation">Menu</a>
+      </li>
+      <li>
+        <a class="fr-link" href="#footer">Pied de page</a>
+      </li>
+    </ul>
+  </nav>
+</div>
 <header role="banner" class="fr-header">
   <div class="fr-header__body">
     <div class="fr-container">
       <div class="fr-header__body-row">
         <div class="fr-header__brand fr-enlarge-link">
           <div class="fr-header__brand-top">
-            
             <div class="fr-header__navbar">
               <button class="fr-btn--menu fr-btn" data-fr-opened="false" aria-controls="modal-616" aria-haspopup="menu" id="button-617" title="Menu">
                 Menu
@@ -163,7 +194,7 @@ if(isset($_GET['select-hint'])) {
       </button>
       <div class="fr-header__menu-links">
       </div>
-      <nav class="fr-nav" id="navigation-1259" role="navigation" aria-label="Menu principal">
+      <nav class="fr-nav" id="header-navigation" role="navigation" aria-label="Menu principal">
         <ul class="fr-nav__list">
           <li class="fr-nav__item">
             <a class="fr-nav__link" href="../cse" target="_self">CSE</a>
@@ -193,102 +224,102 @@ if(isset($_GET['select-hint'])) {
                   <div class="fr-col-12 fr-col-lg-4">
                     <ul class="fr-mega-menu__list">
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie d'Aix-Marseille</a>
+                        <a class="fr-nav__link" href="aix-marseille" target="_self">Académie d'Aix-Marseille</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie d'Amiens</a>
+                        <a class="fr-nav__link" href="amiens" target="_self">Académie d'Amiens</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Besançon</a>
+                        <a class="fr-nav__link" href="besancon" target="_self">Académie de Besançon</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Bordeaux</a>
+                        <a class="fr-nav__link" href="bordeaux" target="_self">Académie de Bordeaux</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Clermont-Ferrand</a>
+                        <a class="fr-nav__link" href="clermont-ferrand" target="_self">Académie de Clermont-Ferrand</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Corse</a>
+                        <a class="fr-nav__link" href="corse" target="_self">Académie de Corse</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Créteil</a>
+                        <a class="fr-nav__link" href="creteil" target="_self">Académie de Créteil</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Dijon</a>
+                        <a class="fr-nav__link" href="dijon" target="_self">Académie de Dijon</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Grenoble</a>
+                        <a class="fr-nav__link" href="grenoble" target="_self">Académie de Grenoble</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de la Guadeloupe</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="fr-col-12 fr-col-lg-4">
-                    <ul class="fr-mega-menu__list">
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de la Guyane</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de La Réunion</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Lille</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Limoges</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Lyon</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de la Martinique</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Mayotte</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Montpellier</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Nancy-Metz</a>
-                      </li>
-                      <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Nantes</a>
+                        <a class="fr-nav__link" href="guadeloupe" target="_self">Académie de la Guadeloupe</a>
                       </li>
                     </ul>
                   </div>
                   <div class="fr-col-12 fr-col-lg-4">
                     <ul class="fr-mega-menu__list">
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Nice</a>
+                        <a class="fr-nav__link" href="guyane" target="_self">Académie de la Guyane</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="la-reunion" target="_self">Académie de La Réunion</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="lille" target="_self">Académie de Lille</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="limoges" target="_self">Académie de Limoges</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="lyon" target="_self">Académie de Lyon</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="martinique" target="_self">Académie de la Martinique</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="mayotte" target="_self">Académie de Mayotte</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="montpellier" target="_self">Académie de Montpellier</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="nancy-metz" target="_self">Académie de Nancy-Metz</a>
+                      </li>
+                      <li>
+                        <a class="fr-nav__link" href="nantes" target="_self">Académie de Nantes</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="fr-col-12 fr-col-lg-4">
+                    <ul class="fr-mega-menu__list">
+                      <li>
+                        <a class="fr-nav__link" href="nice" target="_self">Académie de Nice</a>
                       </li>
                       <li>
                         <a class="fr-nav__link" href="normandie" target="_self">Académie de Normandie</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie d'Orléans-Tours</a>
+                        <a class="fr-nav__link" href="orleans-tours" target="_self">Académie d'Orléans-Tours</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Paris</a>
+                        <a class="fr-nav__link" href="paris" target="_self">Académie de Paris</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Poitiers</a>
+                        <a class="fr-nav__link" href="poitiers" target="_self">Académie de Poitiers</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Reims</a>
+                        <a class="fr-nav__link" href="reims" target="_self">Académie de Reims</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Rennes</a>
+                        <a class="fr-nav__link" href="rennes" target="_self">Académie de Rennes</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Strasbourg</a>
+                        <a class="fr-nav__link" href="strasbourg" target="_self">Académie de Strasbourg</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Toulouse</a>
+                        <a class="fr-nav__link" href="toulouse" target="_self">Académie de Toulouse</a>
                       </li>
                       <li>
-                        <a class="fr-nav__link" href="#" target="_self">Académie de Versailles</a>
+                        <a class="fr-nav__link" href="versailles" target="_self">Académie de Versailles</a>
                       </li>
                     </ul>
                   </div>
@@ -311,12 +342,13 @@ if(isset($_GET['select-hint'])) {
       <h1>Voir les actualités de mon académie</h1>
       <figure class="fr-content-media fr-content-media--sm" role="group" aria-label="© Légende de l‘image">
         <div class="fr-content-media__img">
-          <img class="fr-responsive-img fr-ratio-1x1" src="../assets/img/placeholder.1x1.png" alt="[À MODIFIER - vide ou texte alternatif de l’image]" />
+          <img class="fr-responsive-img fr-ratio-1x1" src="../assets/img/placeholder.1x1.png" alt="Image vide afin de simuler la place que prendra la carte de la France cliquable" />
         </div>
         <figcaption style="text-align: center" class="fr-content-media__caption">Placeholder pour carte de la france cliquable</figcaption>
       </figure>
-      <form action="#">
-          <div class="fr-grid-row--bottom fr-grid-row fr-grid-row--gutters fr-grid-row fr-grid-row--gutter">
+      <!-- TODO : Rendre compatible avec les petits écrans et mobiles -->
+      <form action="#" class="fr-pr-5v fr-pl-10v">
+          <div class="fr-grid-row fr-grid-row--bottom fr-grid-row--gutters fr-grid-row--left">
             <div class="fr-col-11">
               <div class="fr-select-group">
                 <select class="fr-select" id="select-hint" name="select-hint">
@@ -362,12 +394,11 @@ if(isset($_GET['select-hint'])) {
     </div>
   </div>
 </main>
-<footer class="fr-footer" role="contentinfo" id="footer-5965">
+<footer class="fr-footer" role="contentinfo" id="footer">
   <div class="fr-container">
     <div class="fr-footer__body">
       <div class="fr-footer__brand fr-enlarge-link">
-        
-        <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Retour à l’accueil du site - Plateforme informative des instances lycéennes">
+        <a id="footer-brand" class="fr-footer__brand-link" href="../" title="Retour à l’accueil du site - Plateforme informative des instances lycéennes">
           <img class="fr-footer__logo" style="width:8rem;" src="../assets/img/piil_logo.svg" alt="Logo du Projet PIIL" />
           <!-- L’alternative de l’image (attribut alt) doit impérativement être renseignée et reprendre le texte visible dans l’image -->
         </a>
@@ -408,7 +439,7 @@ if(isset($_GET['select-hint'])) {
           <a class="fr-footer__bottom-link" id="footer__bottom-link-5974" href="#">Gestion des cookies</a>
         </li>
         <li class="fr-footer__bottom-item">
-          <span class="fr-footer__bottom-link" id="version">vf-1.1.1</span>
+          <span class="fr-footer__bottom-link" id="version">vf-1.2.0</span>
         </li>
       </ul>
       <div class="fr-footer__bottom-copy">

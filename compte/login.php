@@ -49,6 +49,7 @@ if (isset($_GET['s'])) {
     <link href="../dist/component/translate/translate.main.css" rel="stylesheet" file="main">
     <link href="../dist/component/header/header.main.css" rel="stylesheet" file="main">
     <link href="../dist/component/tag/tag.main.css" rel="stylesheet" file="main">
+    <link href="../dist/component/skiplink/skiplink.main.css" rel="stylesheet" file="main">
     <link href="../dist/core/core.legacy.css" rel="stylesheet" file="legacy">
     <link href="../dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
     <link href="../dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
@@ -69,6 +70,7 @@ if (isset($_GET['s'])) {
     <link href="../dist/component/translate/translate.legacy.css" rel="stylesheet" file="legacy">
     <link href="../dist/component/header/header.legacy.css" rel="stylesheet" file="legacy">
     <link href="../dist/component/tag/tag.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../dist/component/skiplink/skiplink.legacy.css" rel="stylesheet" file="legacy">
     <style>
         code[class*="language-"],
         pre[class*="language-"] {
@@ -140,6 +142,21 @@ if (isset($_GET['s'])) {
 </head>
 
 <body id="top">
+<div class="fr-skiplinks">
+    <nav aria-label="Accès rapide" class="fr-container" role="navigation">
+        <ul class="fr-skiplinks__list">
+            <li>
+                <a class="fr-link" href="#content">Contenu</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#back-button">Revenir en arrière</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#footer">Pied de page</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 <header role="banner" class="fr-header">
     <div class="fr-header__body">
         <div class="fr-container">
@@ -164,7 +181,7 @@ if (isset($_GET['s'])) {
                     <div class="fr-header__tools-links">
                         <ul class="fr-btns-group">
                             <li>
-                                <a class="fr-btn fr-icon-arrow-go-back-line" id="button-2298" href="../">
+                                <a class="fr-btn fr-icon-arrow-go-back-line" id="back-button" href="../">
                                     Revenir en arrière
                                 </a>
                             </li>
@@ -264,7 +281,7 @@ if (isset($_GET['s'])) {
                         <div class="fr-modal__content">
                             <h1 id="fr-modal-2-title" class="fr-modal__title">
                                 <span class="fr-fi-arrow-right-line fr-fi--lg"></span>
-                                Simuler un élève membre d'une instance lycéenne <p class="fr-badge fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
+                                Simuler un élève membre d'une instance lycéenne <p class="fr-badge fr-badge--sm fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
                             </h1>
                             <p></p>
                         </div>
@@ -279,7 +296,7 @@ if (isset($_GET['s'])) {
                                             <p class="fr-tile__desc">Simuler un membre du CNVL<br></p>
                                         </div>
                                         <div class="fr-tile__img">
-                                            <span class="fr-icon-team-line fr-icon--lg"></span>
+                                            <span class="fr-icon-admin-fill fr-icon--lg"></span>
                                             <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
                                         </div>
                                     </div>
@@ -293,7 +310,7 @@ if (isset($_GET['s'])) {
                                             <p class="fr-tile__desc">Simuler un membre du CAVL de Normandie</p>
                                         </div>
                                         <div class="fr-tile__img">
-                                            <span class="fr-icon-admin-line fr-icon--lg"></span>
+                                            <span class="fr-icon-user-fill fr-icon--lg"></span>
                                             <!-- L'alternative de l'image (attribut alt) doit à priori rester vide car l'image est illustrative et ne doit pas être restituée aux technologies d’assistance. Vous pouvez toutefois remplir l'alternative si vous estimer qu'elle apporte une information essentielle à la compréhension du contenu non présente dans le texte -->
                                         </div>
                                     </div>
@@ -325,12 +342,12 @@ if (isset($_GET['s'])) {
                 <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
                     <div class="fr-modal__body">
                         <div class="fr-modal__header">
-                            <button class="fr-link--close fr-link" aria-controls="fr-modal-2">Fermer</button>
+                            <button class="fr-link--close fr-link" aria-controls="fr-modal-3">Fermer</button>
                         </div>
                         <div class="fr-modal__content">
                             <h1 id="fr-modal-2-title" class="fr-modal__title">
                                 <span class="fr-fi-arrow-right-line fr-fi--lg"></span>
-                                Simuler un Délégué à la vie lycéenne et collégienne <p class="fr-badge fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
+                                Simuler un Délégué à la vie lycéenne et collégienne <p class="fr-badge fr-badge--sm fr-badge--info" title="Cette mention apparaît pour informer que cette fenêtre (Modal) n'apparaît que lors du prototypage.">Developer Mode</p>
                             </h1>
                             <p></p>
                         </div>
@@ -372,11 +389,10 @@ if (isset($_GET['s'])) {
         </div>
     </dialog>
 </main>
-<footer class="fr-footer" role="contentinfo" id="footer-1267">
+<footer class="fr-footer" role="contentinfo" id="footer">
     <div class="fr-container">
         <div class="fr-footer__body">
             <div class="fr-footer__brand fr-enlarge-link">
-                fr-col-lg-4
                 <a id="footer-brand" class="fr-footer__brand-link" href="#" title="Espace des membres d'instances lycéennes">
                     <img class="fr-footer__logo" style="width:8rem;" src="../assets/img/emil_logo.svg" alt="Logo du Projet EMIL" />
                 </a>
@@ -414,7 +430,7 @@ if (isset($_GET['s'])) {
                     <a class="fr-footer__bottom-link" href="#">Gestion des cookies</a>
                 </li>
                 <li class="fr-footer__bottom-item">
-                    <span id="version" class="fr-footer__bottom-link">vf-1.1.1</span>
+                    <span id="version" class="fr-footer__bottom-link">vf-1.2.0</span>
                 </li>
             </ul>
             <div class="fr-footer__bottom-copy">

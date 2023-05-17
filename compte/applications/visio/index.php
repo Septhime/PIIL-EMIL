@@ -44,6 +44,7 @@ include "../../commun.php";
     <link href="../../../dist/component/header/header.main.css" rel="stylesheet" file="main">
     <link href="../../../dist/component/tile/tile.main.css" rel="stylesheet" file="main">
     <link href="../../../dist/component/breadcrumb/breadcrumb.main.css" rel="stylesheet" file="main">
+    <link href="../../../dist/component/skiplink/skiplink.main.css" rel="stylesheet" file="main">
     <link href="../../../dist/core/core.legacy.css" rel="stylesheet" file="legacy">
     <link href="../../../dist/component/button/button.legacy.css" rel="stylesheet" file="legacy">
     <link href="../../../dist/component/link/link.legacy.css" rel="stylesheet" file="legacy">
@@ -67,6 +68,7 @@ include "../../commun.php";
     <link href="../../../dist/component/table/table.legacy.css" rel="stylesheet" file="legacy">
     <link href="../../../dist/component/tile/tile.legacy.css" rel="stylesheet" file="legacy">
     <link href="../../../dist/component/breadcrumb/breadcrumb.legacy.css" rel="stylesheet" file="legacy">
+    <link href="../../../dist/component/skiplink/skiplink.legacy.css" rel="stylesheet" file="legacy">
     <style>
         code[class*="language-"],
         pre[class*="language-"] {
@@ -133,6 +135,21 @@ include "../../commun.php";
 </head>
 
 <body id="top">
+<div class="fr-skiplinks">
+    <nav aria-label="Accès rapide" class="fr-container" role="navigation">
+        <ul class="fr-skiplinks__list">
+            <li>
+                <a class="fr-link" href="#content">Contenu</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#header-navigation">Menu</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#footer">Pied de page</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 <header role="banner" class="fr-header">
     <div class="fr-header__body">
         <div class="fr-container">
@@ -182,7 +199,7 @@ include "../../commun.php";
             </button>
             <div class="fr-header__menu-links">
             </div>
-            <nav class="fr-nav" id="navigation-1259" role="navigation" aria-label="Menu principal">
+            <nav class="fr-nav" id="header-navigation" role="navigation" aria-label="Menu principal">
                 <ul class="fr-nav__list">
                     <li class="fr-nav__item">
                         <a class="fr-nav__link" href="../../" target="_self">Fil d'actualité</a>
@@ -315,7 +332,7 @@ include "../../commun.php";
         </div>
     </div>
 </main>
-<footer class="fr-footer" role="contentinfo" id="footer-1267">
+<footer class="fr-footer" role="contentinfo" id="footer">
     <div class="fr-container">
         <div class="fr-footer__body">
             <div class="fr-footer__brand fr-enlarge-link">
